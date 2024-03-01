@@ -17,7 +17,7 @@ nacionalidade varchar(20) default 'Brasil',
 primary key(id)
 ) default charset = utf8mb4;
 
-create table if not exists sulamericana_2023 (
+create table if not exists campeonato_ano (
 id int not null auto_increment,
 `data` date,
 fase varchar(30) default 'Fase de Grupos',
@@ -30,7 +30,7 @@ resultado enum('Vitória','Empate','Derrota'),
 primary key(id)
 ) default charset = utf8mb4;
 
-create table if not exists brasileirao_2023 (
+create table if not exists campeonato_ano (
 id int not null auto_increment,
 `data` date,
 turno int,
@@ -43,7 +43,7 @@ resultado enum('Vitória','Empate','Derrota'),
 primary key(id)
 ) default charset = utf8mb4;
 
-create table if not exists copadobrasil_2023 (
+create table if not exists campeonato_ano (
 id int not null auto_increment,
 `data` date,
 fase varchar(30),
