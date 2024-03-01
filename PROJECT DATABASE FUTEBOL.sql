@@ -29,29 +29,3 @@ gp2 int not null,
 resultado enum('Vitória','Empate','Derrota'),
 primary key(id)
 ) default charset = utf8mb4;
-
-create table if not exists campeonato_ano (
-id int not null auto_increment,
-`data` date,
-turno int,
-`estádio` varchar(40) not null,
-`time 1` varchar(25) not null,
-gp1 int not null,
-gp2 int not null,
-`time 2` varchar(25) not null,
-resultado enum('Vitória','Empate','Derrota'),
-primary key(id)
-) default charset = utf8mb4;
-
-create table if not exists campeonato_ano (
-id int not null auto_increment,
-`data` date,
-fase varchar(30),
-`estádio` varchar(40) not null,
-`time 1` varchar(25) not null,
-gp1 int not null,
-gp2 int not null,
-`time 2` varchar(25) not null,
-resultado enum('Vitória','Empate','Derrota'),
-primary key(id)
-) default charset = utf8mb4;
