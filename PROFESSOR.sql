@@ -1,8 +1,8 @@
-create database reforço
+create database professor
 default character set utf8mb4
 default collate utf8mb4_general_ci;
 
-use reforço;
+use professor;
 
 create table `finanças` (
 id int not null auto_increment,
