@@ -1,2 +1,2 @@
-# MySQL
-Repositório dedicado a projetos, na linguagem SQL, de banco de dados.
+# Database (MySQL)
+This repository is dedicated to database projects, in SQL language.
