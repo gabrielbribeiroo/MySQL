@@ -1,28 +1,26 @@
-create database professor
+create database teacher
 default character set utf8mb4
 default collate utf8mb4_general_ci;
 
-use professor;
-
-create table `finanças` (
+create table `finance` (
 id int not null auto_increment,
-`data` date,
-referência varchar(15) not null,
-valor decimal(5,2) not null,
-cliente varchar(20),
-banco varchar(15),
-beneficiário varchar(20),
-banco_rec varchar(15),  
+`date` date,
+reference varchar(15) not null,
+`value` decimal(5,2) not null,
+client varchar(20),
+bank_origin varchar(15),
+beneficiary varchar(20),
+bank_destination varchar(15),  
 primary key(id)
 ) default charset = utf8mb4;
 
-create table if not exists aulas_mes (
+create table if not exists classes_month (
 id int not null,
-`data` date,
-aluno varchar(30) not null,
-série varchar(3),
-matérias varchar(25) not null,
-`conteúdo` varchar(60) not null,
-`acréscimos` varchar(30),
-primary key(`conteúdo`)
+`date` date,
+student varchar(30) not null,
+series varchar(3),
+subjects varchar(25) not null,
+content varchar(60) not null,
+additional varchar(30),
+primary key(additional)
 ) default charset = utf8mb4;
