@@ -7,7 +7,7 @@ This repository is dedicated to database projects, in SQL language.
 - **Providing insights**: From the selection and processing of data, valuable information can be obtained.
 - **Data organization**: Organize data that a system uses.
 - **Data modeling**: Reduces errors in database software development.
-- **Information storage, retrieval and management**: Create consistency in data documentation and system design across the organization.
+- **Information storage, retrieval, and management**: Create consistency in data documentation and system design across the organization.
 
 ## Languages
 <div style="display: inline_block"><cbr>
