@@ -1,31 +1,31 @@
-create database futebol
+create database soccer
 default character set utf8mb4
 default collate utf8mb4_general_ci;
 
-create table if not exists jogadores (
+create table if not exists player (
 id int not null auto_increment,
-nome varchar(30) not null,
-`time` varchar(30),
-posição varchar(15) not null,
-inicio date,
-fim date,
-valor numeric,
-contrato varchar(15) default 'Compra',
-nascimento date,
-altura decimal(3,2),
-nacionalidade varchar(20) default 'Brasil',
+name varchar(30) not null,
+team varchar(30),
+position varchar(15) not null,
+`start` date,
+`end` date,
+`value` numeric,
+contract varchar(15) default 'Buy',
+birth date,
+height decimal(3,2),
+nationality varchar(20) default 'Brazil',
 primary key(id)
 ) default charset = utf8mb4;
 
-create table if not exists campeonato_ano (
+create table if not exists championship_year (
 id int not null auto_increment,
-`data` date,
-fase varchar(30) default 'Fase de Grupos',
-`estádio` varchar(40) not null,
-`time 1` varchar(25) not null,
+`date` date,
+fase varchar(30) default 'Group Stage',
+stadium varchar(40) not null,
+team1 varchar(25) not null,
 gp1 int not null,
 gp2 int not null,
-`time 2` varchar(25) not null,
-resultado enum('Vitória','Empate','Derrota'),
+team2 varchar(25) not null,
+result enum('Victory', 'Draw', 'Defeat'),
 primary key(id)
 ) default charset = utf8mb4;
