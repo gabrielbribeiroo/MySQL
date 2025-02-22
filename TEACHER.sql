@@ -63,3 +63,10 @@ create table if not exists classes_month_year (
   foreign key (series_id) references series(id) on delete set null on update cascade,
   foreign key (subject_id) references subject(id) on delete cascade on update cascade
 ) default charset = utf8mb4;
+
+-- updating finance_year table with foreign key references
+alter table finance_year
+add constraint fk_finance_client foreign key (client_id) references student(id) on delete set null on update cascade,
+add constraint fk_finance_bank_origin foreign key (bank_origin_id) references bank(id) on delete set null on update cascade,
+add constraint fk_finance_beneficiary foreign key (beneficiary_id) references student(id) on delete set null on update cascade,
+add constraint fk_finance_bank_destination foreign key (bank_destination_id) references bank(id) on delete set null on update cascade;
