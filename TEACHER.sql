@@ -39,14 +39,27 @@ create table if not exists series (
   name varchar(5) not null unique, -- grade level (e.g., "1st", "2nd", "High School")
   primary key (id)
 ) default charset = utf8mb4;
-  
+
+-- table for subjects 
+create table if not exists subject (
+  id int not null auto_increment,
+  name varchar(50) not null unique, -- subject name (e.g., "Mathematics", "History")
+  primary key (id)
+) default charset = utf8mb4;
+
+-- table for class records per month and year
 create table if not exists classes_month_year (
-  id int not null,
-  `date` date,
-  student varchar(30) not null,
-  series varchar(3),
-  subjects varchar(25) not null,
-  content varchar(60) not null,
-  additional varchar(30),
-  primary key(additional)
+  id int not null auto_increment,
+  `date` date not null, -- class date
+  student_id int not null, -- linked to student table
+  series_id int not null, -- linked to series table
+  subject_id int not null, -- linked to subject table
+  content varchar(255) not null, -- detailed class content
+  additional_notes text, -- additional notes (changed to text for flexibility)
+  created_at timestamp default current_timestamp,
+  updated_at TIMESTAMP default current_timestamp on update current_timestamp,
+  primary key (id),
+  foreign key (student_id) references student(id) on delete cascade on update cascade,
+  foreign key (series_id) references series(id) on delete set null on update cascade,
+  foreign key (subject_id) references subject(id) on delete cascade on update cascade
 ) default charset = utf8mb4;
