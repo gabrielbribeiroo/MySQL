@@ -52,6 +52,13 @@ create table if not exists player (
   foreign key (contract) references contract on delete restrict on update cascade
 ) default charset = utf8mb4;
 
+-- table for match results --
+create table if not exists match_result (
+  id int not null auto_increment,
+  result varchar(10) not null unique,
+  primary key (id)
+) default charset = utf8mb4;
+
 create table if not exists championship_year (
   id int not null auto_increment,
   `date` date,
