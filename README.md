@@ -4,7 +4,7 @@
 This repository is dedicated to database projects, in SQL language.
 
 ## Goals
-- **Providing insights**: From the selection and processing of data, valuable information can be obtained.
+- **Providing insights**: Valuable information can be obtained from the selection and processing of data.
 - **Data organization**: Organize data that a system uses.
 - **Data modeling**: Reduces errors in database software development.
 - **Information storage, retrieval, and management**: Create consistency in data documentation and system design across the organization.
