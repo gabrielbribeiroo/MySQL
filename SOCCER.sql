@@ -4,16 +4,30 @@ default collate utf8mb4_general_ci;
 
 create table if not exists player (
   id int not null auto_increment,
-  name varchar(30) not null,
+  name varchar(50) not null,
   team varchar(30),
   position varchar(15) not null,
   `start` date,
   `end` date,
   `value` numeric,
   contract varchar(15) default 'Buy',
-  birth date,
+  birth date check (birth <= CURDATE()),
   height decimal(3,2),
   nationality varchar(20) default 'Brazil',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  primary key(id)
+) default charset = utf8mb4;
+
+create table if not exists team (
+  id int not null auto_increment,
+  name varchar(30) not null,
+  stadium varchar(50),
+  birth date check (birth <= CURDATE()),
+  nationality varchar(20) default 'Brazil',
+  title enum('World', 'National', 'Regional', 'Defeat'),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   primary key(id)
 ) default charset = utf8mb4;
 
@@ -27,5 +41,7 @@ create table if not exists championship_year (
   gp2 int not null,
   team2 varchar(25) not null,
   result enum('Victory', 'Draw', 'Defeat'),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   primary key(id)
 ) default charset = utf8mb4;
