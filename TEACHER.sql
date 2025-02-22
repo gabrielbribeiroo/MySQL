@@ -32,6 +32,13 @@ create table if not exists student (
   name varchar(50) not null unique, -- student's full name
   primary key (id)
 ) default charset = utf8mb4;
+
+-- table for school series (grades)
+create table if not exists series (
+  id int not null auto_increment,
+  name varchar(5) not null unique, -- grade level (e.g., "1st", "2nd", "High School")
+  primary key (id)
+) default charset = utf8mb4;
   
 create table if not exists classes_month_year (
   id int not null,
