@@ -24,6 +24,13 @@ create table if not exists position (
   primary key (id)
 ) default charset = utf8mb4;
 
+-- table for contract types --
+create table if not exists contract (
+  id int not null auto_increment,
+  type varchar(15) not null unique,
+  primary key (id)
+) default charset = utf8mb4;
+
 -- table for players -- 
 create table if not exists player (
   id int not null auto_increment,
