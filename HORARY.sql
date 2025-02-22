@@ -33,3 +33,13 @@ create table if not exists horary_schedule (
   foreign key (horary_id) references horary(id) on delete cascade on update cascade,
   foreign key (day_id) REFERENCES day_of_week(id) on delete cascade on update cascade
 ) default charset = utf8mb4;
+
+-- insert default values for days of the week
+insert into day_week (name) values 
+('Monday'), 
+('Tuesday'), 
+('Wednesday'), 
+('Thursday'), 
+('Friday'), 
+('Saturday'), 
+('Sunday');
