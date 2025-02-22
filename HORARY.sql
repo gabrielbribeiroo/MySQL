@@ -13,3 +13,10 @@ create table if not exists horary (
   updated_at TIMESTAMP default current_timestamp on update current_timestamp,
   primary key (id)
 ) default charset = utf8mb4;
+
+-- table for day of the week --
+create table if not exists day_week (
+  id int not null auto_increment,
+  name varchar(10) not null unique,
+  primary key (id)
+) default charset = utf8mb4;
