@@ -26,6 +26,13 @@ create table if not exists bank (
   primary key (id)
 ) default charset = utf8mb4;
 
+-- table for students
+create table if not exists student (
+  id not null auto_increment,
+  name varchar(50) not null unique, -- student's full name
+  primary key (id)
+) default charset = utf8mb4;
+  
 create table if not exists classes_month_year (
   id int not null,
   `date` date,
