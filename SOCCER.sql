@@ -4,6 +4,26 @@ default collate utf8mb4_general_ci;
 
 use soccer;
 
+-- table for teams --
+create table if not exists team (
+  id int not null auto_increment,
+  name varchar(30) not null,
+  stadium varchar(50),
+  birth date check (birth <= CURDATE()),
+  nationality varchar(20) default 'Brazil',
+  title enum('World', 'National', 'Regional', 'Defeat'),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  primary key(id)
+) default charset = utf8mb4;
+
+-- table for player positions --
+create table if not exists position (
+  id int not null auto_increment,
+  name varchar(20) not null unique,
+  primary key (id)
+) default charset = utf8mb4;
+
 -- table for players -- 
 create table if not exists player (
   id int not null auto_increment,
@@ -23,18 +43,6 @@ create table if not exists player (
   foreign key (team_id) references team(id) on delete set null on update cascade,
   foreign key (position_id) references position(id) on delete restrict on update cascade,
   foreign key (contract) references contract on delete restrict on update cascade
-) default charset = utf8mb4;
-
-create table if not exists team (
-  id int not null auto_increment,
-  name varchar(30) not null,
-  stadium varchar(50),
-  birth date check (birth <= CURDATE()),
-  nationality varchar(20) default 'Brazil',
-  title enum('World', 'National', 'Regional', 'Defeat'),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  primary key(id)
 ) default charset = utf8mb4;
 
 create table if not exists championship_year (
