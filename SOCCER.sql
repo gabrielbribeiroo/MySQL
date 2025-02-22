@@ -12,8 +12,8 @@ create table if not exists team (
   birth date check (birth <= CURDATE()),
   nationality varchar(20) default 'Brazil',
   title enum('World', 'National', 'Regional', 'Defeat'),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  created_at timestamp default current_timestamp,
+  updated_at TIMESTAMP default current_timestamp on update current_timestamp,
   primary key(id)
 ) default charset = utf8mb4;
 
@@ -59,17 +59,21 @@ create table if not exists match_result (
   primary key (id)
 ) default charset = utf8mb4;
 
+-- table for championship --
 create table if not exists championship_year (
   id int not null auto_increment,
   `date` date,
   fase varchar(30) default 'Group Stage',
-  stadium varchar(40) not null,
-  team1 varchar(25) not null,
-  gp1 int not null,
-  gp2 int not null,
-  team2 varchar(25) not null,
-  result enum('Victory', 'Draw', 'Defeat'),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  primary key(id)
+  stadium varchar(50) not null,
+  team1_id int not null,
+  gp1 int not null default 0,
+  gp2 int not null default 0,
+  team2_id int not null,
+  result_id int not null,
+  created_at TIMESTAMP default current_timestamp,
+  updated_at TIMESTAMP default current_timestamp on update current_timestamp,
+  primary key(id),
+  foreign key (team1_id) references team(id) on delete cascade on update cascade,
+  FOREIGN KEY (team2_id) references team(id) on delete cascade on update cascade,
+  FOREIGN KEY (result_id) references match_result(id) on delete restrict on update cascade
 ) default charset = utf8mb4;
