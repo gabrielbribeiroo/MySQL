@@ -7,17 +7,17 @@ use timeline;
 -- table for time slots
 create table if not exists horary (
   id int not null auto_increment,
-  start_time time NOT NULL,
-  end_time time NOT NULL,
+  start_time time NOT NULL, -- standardized time format
+  end_time time NOT NULL, -- standardized time format
   created_at timestamp default current_timestamp,
   updated_at timestamp default current_timestamp on update current_timestamp,
   primary key (id)
 ) default charset = utf8mb4;
 
--- table for day of the week
+-- table for the day of the week
 create table if not exists day_week (
   id int not null auto_increment,
-  name varchar(10) not null unique,
+  name varchar(10) not null unique, -- stores day names (Monday, Tuesday, etc.)
   primary key (id)
 ) default charset = utf8mb4;
 
@@ -26,7 +26,7 @@ create table if not exists horary_schedule (
   id int not null auto_increment,
   horary_id int not null,
   day_id int not null,
-  description text, 
+  description text, -- event or task description
   created_at timestamp default current_timestamp,
   updated_at timestamp default current_timestamp on update current_timestamp,
   primary key (id),
