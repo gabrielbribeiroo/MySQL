@@ -7,11 +7,11 @@ use soccer;
 -- table for teams --
 create table if not exists team (
   id int not null auto_increment,
-  name varchar(30) not null,
-  stadium varchar(50),
-  birth date check (birth <= CURDATE()),
-  nationality varchar(20) default 'Brazil',
-  title enum('World', 'National', 'Regional', 'Defeat'),
+  name varchar(30) not null, -- unique team name
+  stadium varchar(50), -- name of the stadium
+  birth date check (birth <= CURDATE()), -- ensures no future foundation dates
+  nationality varchar(20) default 'Brazil', -- default nationality
+  title enum('World', 'National', 'Regional', 'Defeat'), -- club recognition level
   created_at timestamp default current_timestamp,
   updated_at TIMESTAMP default current_timestamp on update current_timestamp,
   primary key(id)
@@ -20,30 +20,30 @@ create table if not exists team (
 -- table for player positions --
 create table if not exists position (
   id int not null auto_increment,
-  name varchar(20) not null unique,
+  name varchar(20) not null unique, -- unique position name (e.g., Goalkeeper, Defender)
   primary key (id)
 ) default charset = utf8mb4;
 
 -- table for contract types --
 create table if not exists contract (
   id int not null auto_increment,
-  type varchar(15) not null unique,
+  type varchar(15) not null unique, -- contract types (Buy, Loan, Free Transfer)
   primary key (id)
 ) default charset = utf8mb4;
 
 -- table for players -- 
 create table if not exists player (
   id int not null auto_increment,
-  name varchar(50) not null,
-  team_id int,
-  position_id int not null,
-  `start` date,
-  `end` date,
-  `value` decimal(10, 2),
-  contract int default 1,
-  birth date check (birth <= CURDATE()),
-  height decimal(3,2),
-  nationality varchar(20) default 'Brazil',
+  name varchar(50) not null, -- player's full name
+  team_id int, -- reference to the team
+  position_id int not null, -- reference to the position
+  `start` date, -- start of the contract
+  `end` date, -- end of the contract
+  `value` decimal(10, 2), -- player's market value
+  contract int default 1, -- default contract type is 'Buy'
+  birth date check (birth <= CURDATE()), -- ensures no future birth dates
+  height decimal(3,2), -- player's height (in meters)
+  nationality varchar(20) default 'Brazil', -- default nationality
   created_at timestamp default current_timestamp,
   updated_at timestamp default current_timestamp on update current_timestamp,
   primary key(id),
