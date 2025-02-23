@@ -55,21 +55,21 @@ create table if not exists player (
 -- table for match results --
 create table if not exists match_result (
   id int not null auto_increment,
-  result varchar(10) not null unique,
+  result varchar(10) not null unique, -- possible results: Victory, Draw, Defeat
   primary key (id)
 ) default charset = utf8mb4;
 
 -- table for championship --
 create table if not exists championship_year (
   id int not null auto_increment,
-  `date` date,
-  fase varchar(30) default 'Group Stage',
-  stadium varchar(50) not null,
-  team1_id int not null,
-  gp1 int not null default 0,
-  gp2 int not null default 0,
-  team2_id int not null,
-  result_id int not null,
+  `date` date, -- match date
+  stage varchar(30) default 'Group Stage', -- match phase
+  stadium varchar(50) not null, -- match stadium
+  team1_id int not null, -- reference to first team
+  gp1 int not null default 0, -- goals scored by team 1
+  gp2 int not null default 0, -- goals scored by team 2
+  team2_id int not null, -- reference to second team
+  result_id int not null, -- match result (Victory, Draw, Defeat)
   created_at TIMESTAMP default current_timestamp,
   updated_at TIMESTAMP default current_timestamp on update current_timestamp,
   primary key(id),
