@@ -16,3 +16,6 @@ This repository is dedicated to database projects, in SQL language.
 
 ## Tools
 - **MySQL Workbench**: Visual database design tool that integrates SQL development, administration, and database design.
+
+## License
+This project is licensed under the MIT License.
