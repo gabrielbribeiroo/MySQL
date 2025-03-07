@@ -58,3 +58,7 @@ CREATE TABLE IF NOT EXISTS expenses (
   FOREIGN KEY (payment_method_id) REFERENCES payment_methods(id) ON DELETE CASCADE, -- Links the expense to a payment method
   FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE -- Links the expense to a financial account
 ) DEFAULT CHARSET = utf8mb4;
+
+-- New user registration
+INSERT INTO users (name, email, password_hash)
+VALUES ('Gabriel Ribeiro', 'gabriel@email.com', 'hash_da_senha');
