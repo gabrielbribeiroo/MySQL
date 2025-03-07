@@ -75,4 +75,13 @@ VALUES (1,
         (SELECT id FROM accounts WHERE name = 'Banco Itaú - Checking Account'),  
         50.75, 'Dinner at the restaurant', '2025-02-20');  
 
+-- Select all user expenses
+SELECT e.id, e.amount, e.description, e.expense_date, 
+       c.name AS category, p.name AS payment_method, a.name AS account
+FROM expenses e
+JOIN categories c ON e.category_id = c.id
+JOIN payment_methods p ON e.payment_method_id = p.id
+JOIN accounts a ON e.account_id = a.id
+WHERE e.user_id = 1
+ORDER BY e.expense_date DESC;
 
