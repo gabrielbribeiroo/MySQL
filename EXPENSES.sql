@@ -85,3 +85,6 @@ JOIN accounts a ON e.account_id = a.id
 WHERE e.user_id = 1
 ORDER BY e.expense_date DESC;
 
+-- Check updated account balances
+SELECT name, balance FROM accounts WHERE user_id = 1;
+
