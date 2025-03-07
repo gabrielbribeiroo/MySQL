@@ -67,3 +67,12 @@ VALUES ('Gabriel Ribeiro', 'gabriel@email.com', 'hash');
 INSERT INTO accounts (user_id, name, balance)
 VALUES (1, 'Nubank - Conta Corrente', 5000.00);
 
+-- Record a new expense
+INSERT INTO expenses (user_id, category_id, payment_method_id, account_id, amount, description, expense_date)  
+VALUES (1,  
+        (SELECT id FROM categories WHERE name = 'Food'),  
+        (SELECT id FROM payment_methods WHERE name = 'Credit Card'),  
+        (SELECT id FROM accounts WHERE name = 'Banco Itaú - Checking Account'),  
+        50.75, 'Dinner at the restaurant', '2025-02-20');  
+
+
