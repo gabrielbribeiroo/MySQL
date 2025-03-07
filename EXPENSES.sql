@@ -88,3 +88,10 @@ ORDER BY e.expense_date DESC;
 -- Check updated account balances
 SELECT name, balance FROM accounts WHERE user_id = 1;
 
+-- Total spending by category in a month
+SELECT c.name AS category, SUM(e.amount) AS total_spent
+FROM expenses e
+JOIN categories c ON e.category_id = c.id
+WHERE e.user_id = 1 AND MONTH(e.expense_date) = 2 AND YEAR(e.expense_date) = 2025
+GROUP BY c.name
+ORDER BY total_spent DESC;
