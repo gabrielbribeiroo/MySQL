@@ -61,4 +61,9 @@ CREATE TABLE IF NOT EXISTS expenses (
 
 -- New user registration
 INSERT INTO users (name, email, password_hash)
-VALUES ('Gabriel Ribeiro', 'gabriel@email.com', 'hash_da_senha');
+VALUES ('Gabriel Ribeiro', 'gabriel@email.com', 'hash');
+
+-- Create a new financial account
+INSERT INTO accounts (user_id, name, balance)
+VALUES (1, 'Nubank - Conta Corrente', 5000.00);
+
