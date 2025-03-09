@@ -23,3 +23,14 @@ CREATE TABLE IF NOT EXISTS investment_types (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Accounts table (e.g., Brokerage Accounts, Bank Accounts)
+CREATE TABLE IF NOT EXISTS accounts (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  name VARCHAR(50) NOT NULL, -- Account name (e.g., "Interactive Brokers - Brokerage Account")
+  balance DECIMAL(12,2) DEFAULT 0.00, -- Account balance
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
