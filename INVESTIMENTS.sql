@@ -34,3 +34,21 @@ CREATE TABLE IF NOT EXISTS accounts (
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Investments table (tracks individual investments)
+CREATE TABLE IF NOT EXISTS investments (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL, -- Investor
+  investment_type_id INT NOT NULL, -- Type of investment (e.g., Stocks, REITs)
+  account_id INT NOT NULL, -- Account used for the investment
+  asset_name VARCHAR(100) NOT NULL, -- Asset name (e.g., AAPL, TSLA, BTC)
+  quantity DECIMAL(10,4) NOT NULL, -- Number of shares/units
+  purchase_price DECIMAL(12,2) NOT NULL, -- Price per unit
+  purchase_date DATE NOT NULL, -- Date of purchase
+  current_value DECIMAL(12,2) DEFAULT NULL, -- Current market value
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (investment_type_id) REFERENCES investment_types(id) ON DELETE CASCADE,
+  FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
