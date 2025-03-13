@@ -80,3 +80,16 @@ CREATE TABLE IF NOT EXISTS dividends (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (investment_id) REFERENCES investments(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Investment goals table (tracks financial objectives)
+CREATE TABLE IF NOT EXISTS goals (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  goal_name VARCHAR(100) NOT NULL, -- Name of the goal (e.g., "Retirement Fund")
+  target_amount DECIMAL(12,2) NOT NULL, -- Target amount to reach
+  current_savings DECIMAL(12,2) DEFAULT 0.00, -- Current saved amount
+  deadline DATE NOT NULL, -- Target completion date
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
