@@ -67,3 +67,16 @@ CREATE TABLE IF NOT EXISTS transactions (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Dividends table (records received dividends)
+CREATE TABLE IF NOT EXISTS dividends (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  investment_id INT NOT NULL,
+  amount DECIMAL(12,2) NOT NULL,
+  payment_date DATE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (investment_id) REFERENCES investments(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
