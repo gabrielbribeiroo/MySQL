@@ -93,3 +93,11 @@ CREATE TABLE IF NOT EXISTS goals (
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Insert default investment types
+INSERT INTO investment_types (name, description) VALUES
+('Stocks', 'Equity investments in companies'),
+('Bonds', 'Fixed income securities'),
+('Real Estate Investment Trusts (REITs)', 'Investments in real estate funds'),
+('Cryptocurrency', 'Digital assets such as Bitcoin and Ethereum'),
+('Mutual Funds', 'Pooled investment funds managed by professionals');
