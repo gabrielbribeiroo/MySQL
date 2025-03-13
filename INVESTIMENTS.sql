@@ -52,3 +52,18 @@ CREATE TABLE IF NOT EXISTS investments (
   FOREIGN KEY (investment_type_id) REFERENCES investment_types(id) ON DELETE CASCADE,
   FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Transactions table (tracks deposits, withdrawals, and purchases)
+CREATE TABLE IF NOT EXISTS transactions (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  account_id INT NOT NULL,
+  transaction_type ENUM('Deposit', 'Withdrawal', 'Investment Purchase', 'Investment Sale') NOT NULL,
+  amount DECIMAL(12,2) NOT NULL,
+  transaction_date DATE NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
