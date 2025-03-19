@@ -110,4 +110,9 @@ VALUES ('Gabriel Ribeiro', 'gabriel@email.com', 'hashed_password');
 INSERT INTO accounts (user_id, name, balance)
 VALUES (1, 'XP Investimentos - Conta Corretora', 10000.00);
 
-
+-- Register a new investment
+INSERT INTO investments (user_id, investment_type_id, account_id, asset_name, quantity, purchase_price, purchase_date)
+VALUES (1, 
+        (SELECT id FROM investment_types WHERE name = 'Stocks'),
+        (SELECT id FROM accounts WHERE name = 'XP Investimentos - Conta Corretora'),
+        'AAPL', 10, 150.00, '2025-02-20');
