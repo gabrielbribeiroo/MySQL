@@ -101,3 +101,8 @@ INSERT INTO investment_types (name, description) VALUES
 ('Real Estate Investment Trusts (REITs)', 'Investments in real estate funds'),
 ('Cryptocurrency', 'Digital assets such as Bitcoin and Ethereum'),
 ('Mutual Funds', 'Pooled investment funds managed by professionals');
+
+-- Register a new user
+INSERT INTO users (name, email, password_hash)
+VALUES ('Gabriel Ribeiro', 'gabriel@email.com', 'hashed_password');
+
