@@ -106,3 +106,8 @@ INSERT INTO investment_types (name, description) VALUES
 INSERT INTO users (name, email, password_hash)
 VALUES ('Gabriel Ribeiro', 'gabriel@email.com', 'hashed_password');
 
+-- Create a new investment account
+INSERT INTO accounts (user_id, name, balance)
+VALUES (1, 'XP Investimentos - Conta Corretora', 10000.00);
+
+
