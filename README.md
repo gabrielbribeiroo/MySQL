@@ -3,11 +3,11 @@
 ## Abstract
 This repository is dedicated to database projects, in SQL language.
 
-## Goals
-- **Providing insights**: Valuable information can be obtained from the selection and processing of data.
-- **Data organization**: Organize data that a system uses.
-- **Data modeling**: Reduces errors in database software development.
-- **Information storage, retrieval, and management**: Create consistency in data documentation and system design across the organization.
+## Goals  
+- **Provide meaningful insights**: Extract valuable information through efficient data selection and processing.  
+- **Ensure structured data organization**: Systematically organize and manage data for optimal system performance.  
+- **Enhance data modeling**: Minimize errors and improve accuracy in database software development.  
+- **Optimize information storage, retrieval, and management**: Establish consistency in data documentation and system design across the organization.  
 
 ## Languages
 <div style="display: inline_block"><cbr>
