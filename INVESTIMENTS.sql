@@ -133,3 +133,12 @@ FROM investments i
 JOIN investment_types t ON i.investment_type_id = t.id
 WHERE i.user_id = 1
 ORDER BY i.purchase_date DESC;
+
+-- Total invested by investment type
+SELECT t.name AS investment_type, SUM(i.quantity * i.purchase_price) AS total_invested
+FROM investments i
+JOIN investment_types t ON i.investment_type_id = t.id
+WHERE i.user_id = 1
+GROUP BY t.name
+ORDER BY total_invested DESC;
+
