@@ -122,3 +122,8 @@ INSERT INTO dividends (user_id, investment_id, amount, payment_date)
 VALUES (1, 
         (SELECT id FROM investments WHERE asset_name = 'AAPL'),
         50.00, '2025-03-15');
+
+-- Create an investment goal
+INSERT INTO goals (user_id, goal_name, target_amount, deadline)
+VALUES (1, 'Retirement Fund', 500000.00, '2045-12-31');
+
