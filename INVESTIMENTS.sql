@@ -127,3 +127,9 @@ VALUES (1,
 INSERT INTO goals (user_id, goal_name, target_amount, deadline)
 VALUES (1, 'Retirement Fund', 500000.00, '2045-12-31');
 
+-- Get all investments of a user
+SELECT i.asset_name, i.quantity, i.purchase_price, i.purchase_date, t.name AS investment_type
+FROM investments i
+JOIN investment_types t ON i.investment_type_id = t.id
+WHERE i.user_id = 1
+ORDER BY i.purchase_date DESC;
