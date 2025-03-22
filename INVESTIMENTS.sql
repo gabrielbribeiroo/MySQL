@@ -116,3 +116,9 @@ VALUES (1,
         (SELECT id FROM investment_types WHERE name = 'Stocks'),
         (SELECT id FROM accounts WHERE name = 'XP Investimentos - Conta Corretora'),
         'AAPL', 10, 150.00, '2025-02-20');
+
+-- Dividend receipt recorder
+INSERT INTO dividends (user_id, investment_id, amount, payment_date)
+VALUES (1, 
+        (SELECT id FROM investments WHERE asset_name = 'AAPL'),
+        50.00, '2025-03-15');
