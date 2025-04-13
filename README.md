@@ -1,7 +1,7 @@
 # Database (MySQL)
 
 ## Abstract
-This repository is dedicated to database projects, in SQL language.
+This repository is dedicated to database projects in SQL language.
 
 ## Goals  
 - **Provide meaningful insights**: Extract valuable information through efficient data selection and processing.  
