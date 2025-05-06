@@ -60,3 +60,13 @@ CREATE TABLE IF NOT EXISTS order_items (
   FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
   FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
+
+-- Payments table
+CREATE TABLE IF NOT EXISTS payments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  order_id INT NOT NULL,
+  payment_date DATE NOT NULL,
+  amount DECIMAL(12,2) NOT NULL,
+  method ENUM('Cash', 'Credit Card', 'Bank Transfer', 'PIX') DEFAULT 'Cash',
+  FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+);
