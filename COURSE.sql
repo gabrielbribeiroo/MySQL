@@ -14,3 +14,13 @@ CREATE TABLE IF NOT EXISTS users (
   role ENUM('Student', 'Instructor', 'Admin') DEFAULT 'Student',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Courses table
+CREATE TABLE IF NOT EXISTS courses (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100) NOT NULL,
+  description TEXT,
+  instructor_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (instructor_id) REFERENCES users(id) ON DELETE SET NULL
+);
