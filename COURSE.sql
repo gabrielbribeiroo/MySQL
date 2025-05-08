@@ -24,3 +24,12 @@ CREATE TABLE IF NOT EXISTS courses (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (instructor_id) REFERENCES users(id) ON DELETE SET NULL
 );
+
+-- Modules within courses
+CREATE TABLE IF NOT EXISTS modules (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  course_id INT NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  module_order INT NOT NULL,
+  FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+);
