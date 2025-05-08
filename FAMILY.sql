@@ -50,3 +50,17 @@ CREATE TABLE IF NOT EXISTS forecasts (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
   -- Consider UNIQUE(category_id, user_id, month, month_number) for data consistency
 );
+
+-- Table for actual expenses
+CREATE TABLE IF NOT EXISTS expenses (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  category_id INT NOT NULL,
+  amount DECIMAL(10,2) NOT NULL,
+  expense_date DATE NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+  -- Index on (expense_date) could be added for performance in time-based queries
+);
