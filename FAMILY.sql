@@ -24,3 +24,16 @@ CREATE TABLE IF NOT EXISTS categories (
   description TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Table to define monthly limits per category and user
+CREATE TABLE IF NOT EXISTS category_limits (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  category_id INT NOT NULL,
+  user_id INT,
+  month YEAR NOT NULL,
+  month_number TINYINT NOT NULL CHECK (month_number BETWEEN 1 AND 12),
+  limit_amount DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+  -- You might want to add a UNIQUE(category_id, user_id, month, month_number)
+);
