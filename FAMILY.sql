@@ -37,3 +37,16 @@ CREATE TABLE IF NOT EXISTS category_limits (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
   -- You might want to add a UNIQUE(category_id, user_id, month, month_number)
 );
+
+-- Table for planned budget (forecasted values)
+CREATE TABLE IF NOT EXISTS forecasts (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  category_id INT NOT NULL,
+  user_id INT,
+  month YEAR NOT NULL,
+  month_number TINYINT NOT NULL CHECK (month_number BETWEEN 1 AND 12),
+  forecast_amount DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+  -- Consider UNIQUE(category_id, user_id, month, month_number) for data consistency
+);
