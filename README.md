@@ -1,14 +1,14 @@
 # 📊 Database Projects (MySQL)
 
 ## 📌 Abstract
-This repository showcases a collection of relational database models developed using SQL (MySQL).  
+This repository showcases relational database models developed using SQL (MySQL).  
 Each project demonstrates practical structures for real-world scenarios, such as financial control, scheduling, education, sports, investment tracking, online learning, and family budgeting.
 
 ---
 
 ## 🎯 Goals
 - **Provide meaningful insights**: Extract valuable information through well-structured queries and data processing.
-- **Ensure structured data organization**: Maintain consistent, normalized, and scalable data architectures for optimal performance.
+- **Ensure structured data organization**: Maintain consistent, normalized, scalable data architectures for optimal performance.
 - **Enhance data modeling**: Reduce errors and improve maintainability and efficiency in database design and development.
 - **Optimize information handling**: Standardize data storage, retrieval, and management practices across different systems and domains.
 
