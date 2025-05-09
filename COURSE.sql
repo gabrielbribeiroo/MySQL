@@ -33,3 +33,14 @@ CREATE TABLE IF NOT EXISTS modules (
   module_order INT NOT NULL,
   FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
+
+-- Lessons within modules
+CREATE TABLE IF NOT EXISTS lessons (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  module_id INT NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  content TEXT,
+  video_url TEXT,
+  lesson_order INT NOT NULL,
+  FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
+);
