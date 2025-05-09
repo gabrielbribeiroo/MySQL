@@ -2,7 +2,7 @@
 
 ## 📌 Abstract
 This repository showcases a collection of relational database models developed using SQL (MySQL).  
-Each project demonstrates practical structures for real-world scenarios, such as financial control, scheduling, education, sports, investment tracking, and library management.
+Each project demonstrates practical structures for real-world scenarios, such as financial control, scheduling, education, sports, investment tracking, online learning, and family budgeting.
 
 ---
 
@@ -21,6 +21,8 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `soccer`: Sports database for teams, players, match results, championships, and historical tracking.
 - `teacher`: Educational system for managing student classes, subjects taught, class contents, and financial records for teaching services.
 - `library`: Library management system including books, authors, members, and loan tracking.
+- `online_courses`: Online course platform including courses, modules, lessons, student progress, grades, and certificates.
+- `family_budget`: Family budgeting system with categories, monthly limits, planned vs. actual tracking, and spending analysis.
 
 ---
 
