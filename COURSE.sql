@@ -44,3 +44,14 @@ CREATE TABLE IF NOT EXISTS lessons (
   lesson_order INT NOT NULL,
   FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
 );
+
+-- Table to track student progress through lessons
+CREATE TABLE IF NOT EXISTS lesson_progress (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  lesson_id INT NOT NULL,
+  completed BOOLEAN DEFAULT FALSE,
+  completed_at DATETIME,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (lesson_id) REFERENCES lessons(id) ON DELETE CASCADE
+);
