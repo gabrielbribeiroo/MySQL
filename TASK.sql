@@ -24,3 +24,10 @@ CREATE TABLE IF NOT EXISTS projects (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Enum table for task priority levels
+CREATE TABLE IF NOT EXISTS priorities (
+  id INT NOT NULL AUTO_INCREMENT,
+  name ENUM('Low', 'Medium', 'High', 'Critical') NOT NULL,
+  PRIMARY KEY (id)
+) DEFAULT CHARSET = utf8mb4;
