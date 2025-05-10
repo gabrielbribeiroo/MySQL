@@ -38,3 +38,22 @@ CREATE TABLE IF NOT EXISTS statuses (
   name ENUM('To Do', 'In Progress', 'Done', 'Blocked') NOT NULL,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Main table of tasks
+CREATE TABLE IF NOT EXISTS tasks (
+  id INT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(100) NOT NULL,
+  description TEXT,
+  deadline DATE,
+  user_id INT, -- Assigned to user
+  project_id INT, -- Belongs to a project
+  priority_id INT,
+  status_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
+  FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE SET NULL,
+  FOREIGN KEY (priority_id) REFERENCES priorities(id),
+  FOREIGN KEY (status_id) REFERENCES statuses(id)
+) DEFAULT CHARSET = utf8mb4;
