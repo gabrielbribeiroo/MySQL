@@ -60,3 +60,18 @@ CREATE TABLE IF NOT EXISTS votes (
   FOREIGN KEY (candidate_id) REFERENCES candidates(id) ON DELETE CASCADE,
   UNIQUE (voter_id, session_id) -- Prevents multiple votes in the same session
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Optional view for election results
+CREATE VIEW voting_results AS
+SELECT 
+  s.id AS session_id,
+  s.title AS session_title,
+  c.id AS candidate_id,
+  c.name AS candidate_name,
+  COUNT(v.id) AS total_votes
+FROM voting_sessions s
+JOIN session_candidates sc ON sc.session_id = s.id
+JOIN candidates c ON c.id = sc.candidate_id
+LEFT JOIN votes v ON v.candidate_id = c.id AND v.session_id = s.id
+GROUP BY s.id, c.id
+ORDER BY s.id, total_votes DESC;
