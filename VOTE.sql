@@ -4,3 +4,13 @@ DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
 
 USE online_voting;
+
+-- Table for registered voters
+CREATE TABLE IF NOT EXISTS voters (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  cpf VARCHAR(14) NOT NULL UNIQUE, -- Brazilian ID format (XXX.XXX.XXX-XX)
+  email VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) DEFAULT CHARSET = utf8mb4;
