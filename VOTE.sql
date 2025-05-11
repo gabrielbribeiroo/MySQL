@@ -36,3 +36,13 @@ CREATE TABLE IF NOT EXISTS voting_sessions (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table to link candidates to specific voting sessions
+CREATE TABLE IF NOT EXISTS session_candidates (
+  id INT NOT NULL AUTO_INCREMENT,
+  session_id INT NOT NULL,
+  candidate_id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (session_id) REFERENCES voting_sessions(id) ON DELETE CASCADE,
+  FOREIGN KEY (candidate_id) REFERENCES candidates(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
