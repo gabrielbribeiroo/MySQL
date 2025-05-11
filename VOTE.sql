@@ -24,3 +24,15 @@ CREATE TABLE IF NOT EXISTS candidates (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for voting sessions (e.g., "Presidential 2025", "School Council 2024")
+CREATE TABLE IF NOT EXISTS voting_sessions (
+  id INT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(100) NOT NULL,
+  description TEXT,
+  start_date DATETIME NOT NULL,
+  end_date DATETIME NOT NULL,
+  is_active BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) DEFAULT CHARSET = utf8mb4;
