@@ -46,3 +46,17 @@ CREATE TABLE IF NOT EXISTS session_candidates (
   FOREIGN KEY (session_id) REFERENCES voting_sessions(id) ON DELETE CASCADE,
   FOREIGN KEY (candidate_id) REFERENCES candidates(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for storing votes
+CREATE TABLE IF NOT EXISTS votes (
+  id INT NOT NULL AUTO_INCREMENT,
+  voter_id INT NOT NULL,
+  session_id INT NOT NULL,
+  candidate_id INT NOT NULL,
+  vote_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (voter_id) REFERENCES voters(id) ON DELETE CASCADE,
+  FOREIGN KEY (session_id) REFERENCES voting_sessions(id) ON DELETE CASCADE,
+  FOREIGN KEY (candidate_id) REFERENCES candidates(id) ON DELETE CASCADE,
+  UNIQUE (voter_id, session_id) -- Prevents multiple votes in the same session
+) DEFAULT CHARSET = utf8mb4;
