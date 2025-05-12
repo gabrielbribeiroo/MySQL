@@ -16,3 +16,18 @@ CREATE TABLE IF NOT EXISTS clients (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table to store physical evaluations (weight, height, body fat, etc.)
+CREATE TABLE IF NOT EXISTS physical_records (
+  id INT NOT NULL AUTO_INCREMENT,
+  client_id INT NOT NULL,
+  record_date DATE NOT NULL,
+  weight DECIMAL(5,2), -- in kg
+  height DECIMAL(4,2), -- in meters
+  body_fat_percent DECIMAL(4,2),
+  muscle_mass DECIMAL(5,2),
+  observations TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
