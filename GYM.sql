@@ -31,3 +31,13 @@ CREATE TABLE IF NOT EXISTS physical_records (
   PRIMARY KEY (id),
   FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table to store training plans (ex: "Hypertrophy", "Weight Loss")
+CREATE TABLE IF NOT EXISTS training_plans (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  description TEXT,
+  duration_weeks INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) DEFAULT CHARSET = utf8mb4;
