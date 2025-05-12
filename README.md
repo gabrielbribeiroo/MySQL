@@ -23,6 +23,8 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `library`: Library management system including books, authors, members, and loan tracking.
 - `online_courses`: Online course platform including courses, modules, lessons, student progress, grades, and certificates.
 - `family_budget`: Family budgeting system with categories, monthly limits, planned vs. actual tracking, and spending analysis.
+- `task_manager`: Task management system with projects, users, deadlines, priorities, and task statuses.
+- `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.
 
 ---
 
