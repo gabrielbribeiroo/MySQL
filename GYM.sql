@@ -64,3 +64,17 @@ CREATE TABLE IF NOT EXISTS attendance (
   PRIMARY KEY (id),
   FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table to store individual exercises per training plan
+CREATE TABLE IF NOT EXISTS exercises (
+  id INT NOT NULL AUTO_INCREMENT,
+  training_plan_id INT NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  muscle_group VARCHAR(30),
+  series INT,
+  repetitions INT,
+  rest_time_seconds INT,
+  instructions TEXT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (training_plan_id) REFERENCES training_plans(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
