@@ -54,3 +54,13 @@ CREATE TABLE IF NOT EXISTS client_training (
   FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE,
   FOREIGN KEY (training_plan_id) REFERENCES training_plans(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for training sessions/frequency tracking
+CREATE TABLE IF NOT EXISTS attendance (
+  id INT NOT NULL AUTO_INCREMENT,
+  client_id INT NOT NULL,
+  check_in DATETIME NOT NULL,
+  check_out DATETIME,
+  PRIMARY KEY (id),
+  FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
