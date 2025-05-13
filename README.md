@@ -1,8 +1,8 @@
 # 📊 Database Projects (MySQL)
 
 ## 📌 Abstract
-This repository showcases a collection of relational database models developed using SQL (MySQL).  
-Each project demonstrates practical structures for real-world scenarios, such as financial control, scheduling, education, sports, investment tracking, library management, and more.
+This repository showcases relational database models developed using SQL (MySQL).  
+Each project demonstrates practical structures for real-world scenarios, such as financial control, scheduling, education, sports, investment tracking, library management, etc.
 
 ---
 
