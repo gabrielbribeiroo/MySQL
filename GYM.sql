@@ -41,3 +41,16 @@ CREATE TABLE IF NOT EXISTS training_plans (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table to associate a training plan with a client
+CREATE TABLE IF NOT EXISTS client_training (
+  id INT NOT NULL AUTO_INCREMENT,
+  client_id INT NOT NULL,
+  training_plan_id INT NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE,
+  active BOOLEAN DEFAULT TRUE,
+  PRIMARY KEY (id),
+  FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE,
+  FOREIGN KEY (training_plan_id) REFERENCES training_plans(id)
+) DEFAULT CHARSET = utf8mb4;
