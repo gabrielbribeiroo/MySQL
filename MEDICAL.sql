@@ -29,3 +29,10 @@ CREATE TABLE IF NOT EXISTS doctors (
   PRIMARY KEY (id),
   FOREIGN KEY (specialty_id) REFERENCES specialties(id) ON DELETE SET NULL
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for specialties (e.g., Cardiology, Pediatrics)
+CREATE TABLE IF NOT EXISTS specialties (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  PRIMARY KEY (id)
+) DEFAULT CHARSET = utf8mb4;
