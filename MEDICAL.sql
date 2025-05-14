@@ -50,3 +50,19 @@ CREATE TABLE IF NOT EXISTS appointments (
   FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE,
   FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for medical records
+CREATE TABLE IF NOT EXISTS medical_records (
+  id INT NOT NULL AUTO_INCREMENT,
+  patient_id INT NOT NULL,
+  doctor_id INT NOT NULL,
+  appointment_id INT,
+  diagnosis TEXT,
+  prescription TEXT,
+  notes TEXT,
+  record_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE,
+  FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE SET NULL,
+  FOREIGN KEY (appointment_id) REFERENCES appointments(id) ON DELETE SET NULL
+) DEFAULT CHARSET = utf8mb4;
