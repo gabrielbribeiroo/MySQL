@@ -36,3 +36,17 @@ CREATE TABLE IF NOT EXISTS specialties (
   name VARCHAR(100) NOT NULL UNIQUE,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for appointments
+CREATE TABLE IF NOT EXISTS appointments (
+  id INT NOT NULL AUTO_INCREMENT,
+  patient_id INT NOT NULL,
+  doctor_id INT NOT NULL,
+  appointment_date DATETIME NOT NULL,
+  reason TEXT,
+  status ENUM('Scheduled', 'Completed', 'Canceled') DEFAULT 'Scheduled',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE,
+  FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
