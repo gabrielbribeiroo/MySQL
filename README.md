@@ -1,8 +1,8 @@
 # 📊 Database Projects (MySQL)
 
 ## 📌 Abstract
-This repository showcases relational database models developed using SQL (MySQL).  
-Each project demonstrates practical structures for real-world scenarios, such as financial control, scheduling, education, sports, investment tracking, library systems, fitness management, etc.
+This repository showcases a collection of relational database models developed using SQL (MySQL).  
+Each project demonstrates practical structures for real-world scenarios, such as financial control, scheduling, education, sports, investment tracking, library management, healthcare, and more.
 
 ---
 
@@ -24,8 +24,8 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `online_courses`: Online course platform including courses, modules, lessons, student progress, grades, and certificates.
 - `family_budget`: Family budgeting system with categories, monthly limits, planned vs. actual tracking, and spending analysis.
 - `task_manager`: Task management system with projects, users, deadlines, priorities, and task statuses.
-- `online_voting`: Online voting platform for managing voters, candidates, voting sessions, ballots, and real-time result tracking.
-- `gym`: Fitness center management system with training plans, physical records, client attendance, and personalized workout routines.
+- `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.
+- `medical_clinic`: Medical clinic system including patient records, doctors, specialties, appointments, and medical histories.
 
 ---
 
@@ -44,9 +44,8 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - Referential integrity through `FOREIGN KEY` constraints.
 - Timestamp fields (`created_at`, `updated_at`) for auditing and tracking data changes.
 - Default values and validation to ensure data consistency and usability.
-- Domain-specific modeling tailored to real-world use cases.
-- Modular and scalable design ready for integration with backend systems and applications.
-
+- Domain-specific modeling tailored to practical use cases.
+  
 ---
 
 ## 📜 License
