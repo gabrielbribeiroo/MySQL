@@ -28,3 +28,20 @@ CREATE TABLE IF NOT EXISTS projects (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Tasks under each project
+CREATE TABLE IF NOT EXISTS tasks (
+  id INT NOT NULL AUTO_INCREMENT,
+  project_id INT NOT NULL,
+  assigned_to INT NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  description TEXT,
+  status ENUM('Pending', 'In Progress', 'Completed', 'Blocked') DEFAULT 'Pending',
+  priority ENUM('Low', 'Medium', 'High') DEFAULT 'Medium',
+  deadline DATE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY(id),
+  FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,
+  FOREIGN KEY (assigned_to) REFERENCES users(id) ON DELETE SET NULL
+) DEFAULT CHARSET = utf8mb4;
