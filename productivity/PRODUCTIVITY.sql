@@ -59,3 +59,16 @@ CREATE TABLE IF NOT EXISTS time_logs (
   FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Personal or team productivity goals
+CREATE TABLE IF NOT EXISTS goals (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT,
+  title VARCHAR(100) NOT NULL,
+  description TEXT,
+  target_date DATE NOT NULL,
+  is_completed BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY(id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+) DEFAULT CHARSET = utf8mb4;
