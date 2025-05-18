@@ -13,3 +13,15 @@ CREATE TABLE IF NOT EXISTS users (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Polls (set of questions grouped under a single theme)
+CREATE TABLE IF NOT EXISTS polls (
+  id INT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(100) NOT NULL,
+  description TEXT,
+  is_public BOOLEAN DEFAULT TRUE, -- true = any user can vote
+  start_date DATE,
+  end_date DATE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) DEFAULT CHARSET = utf8mb4;
