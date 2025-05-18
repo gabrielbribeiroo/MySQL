@@ -25,3 +25,13 @@ CREATE TABLE IF NOT EXISTS polls (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Questions within a poll
+CREATE TABLE IF NOT EXISTS questions (
+  id INT NOT NULL AUTO_INCREMENT,
+  poll_id INT NOT NULL,
+  question_text TEXT NOT NULL,
+  question_type ENUM('single', 'multiple') DEFAULT 'single', -- single/multiple choice
+  PRIMARY KEY (id),
+  FOREIGN KEY (poll_id) REFERENCES polls(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
