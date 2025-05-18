@@ -35,3 +35,12 @@ CREATE TABLE IF NOT EXISTS questions (
   PRIMARY KEY (id),
   FOREIGN KEY (poll_id) REFERENCES polls(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Options available for each question
+CREATE TABLE IF NOT EXISTS options (
+  id INT NOT NULL AUTO_INCREMENT,
+  question_id INT NOT NULL,
+  option_text VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
