@@ -30,8 +30,6 @@ Each project demonstrates practical structures for real-world scenarios, such as
 ### 🎓 Education & Courses
 - `teacher`: Educational system for managing student classes, subjects taught, class contents, and financial records for teaching services.
 - `online_courses`: Online course platform including courses, modules, lessons, student progress, grades, and certificates.
-
-### 📚 Library & Knowledge
 - `library`: Library management system including books, authors, members, and loan tracking.
 
 ### ⚽ Sports & Recreation
