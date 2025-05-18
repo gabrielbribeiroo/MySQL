@@ -44,3 +44,14 @@ CREATE TABLE IF NOT EXISTS options (
   PRIMARY KEY (id),
   FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Votes cast by users
+CREATE TABLE IF NOT EXISTS votes (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT, -- nullable for anonymous voting
+  option_id INT NOT NULL,
+  vote_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
+  FOREIGN KEY (option_id) REFERENCES options(id) ON DELETE CASCADE
+) DEFAULT CHARSET = utf8mb4;
