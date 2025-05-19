@@ -33,3 +33,12 @@ CREATE TABLE IF NOT EXISTS patient (
   emergency_contact VARCHAR(100),
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for rooms
+CREATE TABLE IF NOT EXISTS room (
+  id INT NOT NULL AUTO_INCREMENT,
+  room_number VARCHAR(10) NOT NULL UNIQUE,
+  room_type ENUM('General', 'Private', 'ICU') NOT NULL,
+  is_occupied BOOLEAN DEFAULT FALSE,
+  PRIMARY KEY (id)
+) DEFAULT CHARSET = utf8mb4;
