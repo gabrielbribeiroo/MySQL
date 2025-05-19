@@ -80,3 +80,14 @@ CREATE TABLE IF NOT EXISTS patient_procedure (
   FOREIGN KEY (procedure_id) REFERENCES procedure(id),
   FOREIGN KEY (performed_by) REFERENCES staff(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for billing
+CREATE TABLE IF NOT EXISTS bill (
+  id INT NOT NULL AUTO_INCREMENT,
+  admission_id INT NOT NULL,
+  total_amount DECIMAL(10,2) NOT NULL,
+  paid BOOLEAN DEFAULT FALSE,
+  payment_date DATETIME,
+  PRIMARY KEY (id),
+  FOREIGN KEY (admission_id) REFERENCES admission(id)
+) DEFAULT CHARSET = utf8mb4;
