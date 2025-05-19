@@ -57,3 +57,12 @@ CREATE TABLE IF NOT EXISTS admission (
   FOREIGN KEY (room_id) REFERENCES room(id),
   FOREIGN KEY (staff_id) REFERENCES staff(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for medical procedures
+CREATE TABLE IF NOT EXISTS procedure (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  cost DECIMAL(10, 2) NOT NULL,
+  PRIMARY KEY (id)
+) DEFAULT CHARSET = utf8mb4;
