@@ -6,3 +6,17 @@ CREATE TABLE IF NOT EXISTS department (
   name VARCHAR(100) NOT NULL,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+
+-- Table for hospital staff (doctors, nurses, admin)
+CREATE TABLE IF NOT EXISTS staff (
+  id INT NOT NULL AUTO_INCREMENT,
+  full_name VARCHAR(100) NOT NULL,
+  role ENUM('Doctor', 'Nurse', 'Technician', 'Admin') NOT NULL,
+  department_id INT,
+  hire_date DATE NOT NULL,
+  phone VARCHAR(20),
+  email VARCHAR(100),
+  PRIMARY KEY (id),
+  FOREIGN KEY (department_id) REFERENCES department(id)
+) DEFAULT CHARSET = utf8mb4;
