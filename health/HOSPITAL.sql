@@ -42,3 +42,18 @@ CREATE TABLE IF NOT EXISTS room (
   is_occupied BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for admissions
+CREATE TABLE IF NOT EXISTS admission (
+  id INT NOT NULL AUTO_INCREMENT,
+  patient_id INT NOT NULL,
+  room_id INT NOT NULL,
+  staff_id INT, -- admitting doctor
+  admission_date DATETIME NOT NULL,
+  discharge_date DATETIME,
+  diagnosis TEXT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (patient_id) REFERENCES patient(id),
+  FOREIGN KEY (room_id) REFERENCES room(id),
+  FOREIGN KEY (staff_id) REFERENCES staff(id)
+) DEFAULT CHARSET = utf8mb4;
