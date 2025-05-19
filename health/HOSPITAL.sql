@@ -20,3 +20,16 @@ CREATE TABLE IF NOT EXISTS staff (
   PRIMARY KEY (id),
   FOREIGN KEY (department_id) REFERENCES department(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for patients
+CREATE TABLE IF NOT EXISTS patient (
+  id INT NOT NULL AUTO_INCREMENT,
+  full_name VARCHAR(100) NOT NULL,
+  birth_date DATE NOT NULL,
+  gender ENUM('Male', 'Female', 'Other') NOT NULL,
+  phone VARCHAR(20),
+  email VARCHAR(100),
+  address TEXT,
+  emergency_contact VARCHAR(100),
+  PRIMARY KEY (id)
+) DEFAULT CHARSET = utf8mb4;
