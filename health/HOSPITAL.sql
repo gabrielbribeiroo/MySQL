@@ -66,3 +66,17 @@ CREATE TABLE IF NOT EXISTS procedure (
   cost DECIMAL(10, 2) NOT NULL,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for patient procedures
+CREATE TABLE IF NOT EXISTS patient_procedure (
+  id INT NOT NULL AUTO_INCREMENT,
+  admission_id INT NOT NULL,
+  procedure_id INT NOT NULL,
+  performed_by INT, -- staff id
+  performed_on DATETIME NOT NULL,
+  notes TEXT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (admission_id) REFERENCES admission(id),
+  FOREIGN KEY (procedure_id) REFERENCES procedure(id),
+  FOREIGN KEY (performed_by) REFERENCES staff(id)
+) DEFAULT CHARSET = utf8mb4;
