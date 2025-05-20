@@ -60,3 +60,15 @@ CREATE TABLE IF NOT EXISTS debts (
   PRIMARY KEY (id),
   FOREIGN KEY (credit_line_id) REFERENCES credit_lines(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Score history for users (monthly or per update)
+CREATE TABLE IF NOT EXISTS credit_scores (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  score INT NOT NULL CHECK (score BETWEEN 0 AND 1000),
+  calculated_on DATE NOT NULL,
+  source VARCHAR(50), -- e.g., Serasa, SPC, Boa Vista
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+) DEFAULT CHARSET = utf8mb4;
