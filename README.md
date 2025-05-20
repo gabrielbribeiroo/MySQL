@@ -42,6 +42,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 
 ### 🏥 Healthcare
 - `medical_clinic`: Medical clinic system including patient records, doctors, specialties, appointments, and medical histories.
+- `hospital`: Hospital management system with departments, admissions, discharges, procedures, patients, and billing records.
 
 ---
 
