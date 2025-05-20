@@ -45,3 +45,18 @@ CREATE TABLE IF NOT EXISTS credit_lines (
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (institution_id) REFERENCES institutions(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Debt records for each credit line
+CREATE TABLE IF NOT EXISTS debts (
+  id INT NOT NULL AUTO_INCREMENT,
+  credit_line_id INT NOT NULL,
+  description VARCHAR(255),
+  value DECIMAL(12,2) NOT NULL,
+  due_date DATE NOT NULL,
+  payment_date DATE,
+  status ENUM('pending', 'paid', 'late') DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (credit_line_id) REFERENCES credit_lines(id)
+) DEFAULT CHARSET = utf8mb4;
