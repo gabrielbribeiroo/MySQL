@@ -25,3 +25,10 @@ CREATE TABLE IF NOT EXISTS neighborhoods (
   zone ENUM('North', 'South', 'East', 'West', 'Central') NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Urban topic categories (e.g., sanitation, public safety, transportation)
+CREATE TABLE IF NOT EXISTS categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  description TEXT
+) DEFAULT CHARSET = utf8mb4;
