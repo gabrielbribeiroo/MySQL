@@ -32,3 +32,19 @@ CREATE TABLE IF NOT EXISTS categories (
   name VARCHAR(100) NOT NULL UNIQUE,
   description TEXT
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Main table for citizen feedback entries
+CREATE TABLE IF NOT EXISTS feedback (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  citizen_id INT,
+  neighborhood_id INT,
+  category_id INT NOT NULL,
+  type ENUM('complaint', 'suggestion') NOT NULL,
+  title VARCHAR(150) NOT NULL,
+  description TEXT NOT NULL,
+  status ENUM('pending', 'under review', 'resolved', 'ignored') DEFAULT 'pending',
+  submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (citizen_id) REFERENCES citizens(id),
+  FOREIGN KEY (neighborhood_id) REFERENCES neighborhoods(id),
+  FOREIGN KEY (category_id) REFERENCES categories(id)
+) DEFAULT CHARSET = utf8mb4;
