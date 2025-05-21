@@ -8,3 +8,12 @@ DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
 
 USE city_feedback;
+
+-- Citizens registered in the system
+CREATE TABLE IF NOT EXISTS citizens (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  cpf VARCHAR(14) UNIQUE, -- Brazilian personal ID (can be optional or removed for general use)
+  email VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) DEFAULT CHARSET = utf8mb4;
