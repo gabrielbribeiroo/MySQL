@@ -17,3 +17,11 @@ CREATE TABLE IF NOT EXISTS citizens (
   email VARCHAR(100),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) DEFAULT CHARSET = utf8mb4;
+
+-- City neighborhoods or regions
+CREATE TABLE IF NOT EXISTS neighborhoods (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL UNIQUE,
+  zone ENUM('North', 'South', 'East', 'West', 'Central') NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) DEFAULT CHARSET = utf8mb4;
