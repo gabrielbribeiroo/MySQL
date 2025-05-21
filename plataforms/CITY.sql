@@ -48,3 +48,13 @@ CREATE TABLE IF NOT EXISTS feedback (
   FOREIGN KEY (neighborhood_id) REFERENCES neighborhoods(id),
   FOREIGN KEY (category_id) REFERENCES categories(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Table for municipal responses or follow-ups
+CREATE TABLE IF NOT EXISTS responses (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  feedback_id INT NOT NULL,
+  responder_name VARCHAR(100) NOT NULL,
+  message TEXT NOT NULL,
+  responded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (feedback_id) REFERENCES feedback(id)
+) DEFAULT CHARSET = utf8mb4;
