@@ -28,3 +28,13 @@ CREATE TABLE IF NOT EXISTS batches (
   arrival_date DATE NOT NULL,
   FOREIGN KEY (medicine_id) REFERENCES medicines(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Clients who purchase or receive medication (can be used with or without prescriptions)
+CREATE TABLE IF NOT EXISTS clients (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  cpf VARCHAR(14) UNIQUE,
+  birth_date DATE,
+  email VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) DEFAULT CHARSET = utf8mb4;
