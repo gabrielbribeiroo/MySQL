@@ -38,3 +38,14 @@ CREATE TABLE IF NOT EXISTS clients (
   email VARCHAR(100),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Medical prescriptions issued to clients
+CREATE TABLE IF NOT EXISTS prescriptions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  client_id INT NOT NULL,
+  doctor_name VARCHAR(100) NOT NULL,
+  issued_date DATE NOT NULL,
+  valid_until DATE NOT NULL,
+  notes TEXT,
+  FOREIGN KEY (client_id) REFERENCES clients(id)
+) DEFAULT CHARSET = utf8mb4;
