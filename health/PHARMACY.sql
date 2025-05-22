@@ -49,3 +49,14 @@ CREATE TABLE IF NOT EXISTS prescriptions (
   notes TEXT,
   FOREIGN KEY (client_id) REFERENCES clients(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Medications included in a prescription
+CREATE TABLE IF NOT EXISTS prescription_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  prescription_id INT NOT NULL,
+  medicine_id INT NOT NULL,
+  dosage VARCHAR(50) NOT NULL,
+  quantity INT NOT NULL,
+  FOREIGN KEY (prescription_id) REFERENCES prescriptions(id),
+  FOREIGN KEY (medicine_id) REFERENCES medicines(id)
+) DEFAULT CHARSET = utf8mb4;
