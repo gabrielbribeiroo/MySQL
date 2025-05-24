@@ -71,3 +71,14 @@ CREATE TABLE IF NOT EXISTS sales (
   FOREIGN KEY (client_id) REFERENCES clients(id),
   FOREIGN KEY (prescription_id) REFERENCES prescriptions(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Items sold in each sale (linked to batch for traceability)
+CREATE TABLE IF NOT EXISTS sale_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  sale_id INT NOT NULL,
+  batch_id INT NOT NULL,
+  quantity INT NOT NULL,
+  unit_price DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (sale_id) REFERENCES sales(id),
+  FOREIGN KEY (batch_id) REFERENCES batches(id)
+) DEFAULT CHARSET = utf8mb4;
