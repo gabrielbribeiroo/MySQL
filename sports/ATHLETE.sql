@@ -50,3 +50,15 @@ CREATE TABLE performance_reviews (
     comments TEXT,
     FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
 );
+
+-- Table: injuries
+CREATE TABLE injuries (
+    injury_id INT AUTO_INCREMENT PRIMARY KEY,
+    athlete_id INT NOT NULL,
+    injury_date DATE NOT NULL,
+    injury_type VARCHAR(100),
+    severity ENUM('Mild', 'Moderate', 'Severe'),
+    recovery_time_days INT,
+    treatment TEXT,
+    FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
+);
