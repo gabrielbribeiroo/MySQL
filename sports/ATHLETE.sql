@@ -27,3 +27,15 @@ CREATE TABLE physical_tests (
     notes TEXT,
     FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
 );
+
+-- Table: training_sessions
+CREATE TABLE training_sessions (
+    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    athlete_id INT NOT NULL,
+    session_date DATE NOT NULL,
+    duration_minutes INT,
+    intensity_level ENUM('Low', 'Moderate', 'High') NOT NULL,
+    focus_area VARCHAR(100),
+    notes TEXT,
+    FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
+);
