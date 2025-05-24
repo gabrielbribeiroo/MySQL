@@ -60,3 +60,14 @@ CREATE TABLE IF NOT EXISTS prescription_items (
   FOREIGN KEY (prescription_id) REFERENCES prescriptions(id),
   FOREIGN KEY (medicine_id) REFERENCES medicines(id)
 ) DEFAULT CHARSET = utf8mb4;
+
+-- Sale records for medications (with or without prescription)
+CREATE TABLE IF NOT EXISTS sales (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  client_id INT,
+  sale_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  total_value DECIMAL(10,2) NOT NULL,
+  prescription_id INT,
+  FOREIGN KEY (client_id) REFERENCES clients(id),
+  FOREIGN KEY (prescription_id) REFERENCES prescriptions(id)
+) DEFAULT CHARSET = utf8mb4;
