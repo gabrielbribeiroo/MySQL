@@ -21,6 +21,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `investments`: Investment portfolio management, including asset types, transactions, dividends, and financial goal tracking.
 - `family_budget`: Family budgeting system with categories, monthly limits, planned vs. actual tracking, and spending analysis.
 - `erp`: Simplified ERP system for finance, clients, and services.
+- `credit_score`: Credit scoring system to evaluate individuals based on income, payment history, age, and credit records.
 
 ### 📅 Scheduling & Productivity
 - `horary`: Weekly schedule management for organizing events, appointments, or classes by day and time slots.
@@ -39,10 +40,12 @@ Each project demonstrates practical structures for real-world scenarios, such as
 ### 🗳️ Participatory Platforms
 - `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.
 - `online_polls`: Online survey and poll platform for collecting public or private opinions across various topics.
+- `city_feedback`: Urban feedback platform for registering citizen suggestions and complaints by neighborhood and theme.
 
 ### 🏥 Healthcare
 - `medical_clinic`: Medical clinic system including patient records, doctors, specialties, appointments, and medical histories.
 - `hospital`: Hospital management system with departments, admissions, discharges, procedures, patients, and billing records.
+- `pharmacy`: Pharmacy management system including medication inventory, prescriptions, batches, expiration dates, and sales.
 
 ---
 
