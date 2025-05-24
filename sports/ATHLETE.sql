@@ -39,3 +39,14 @@ CREATE TABLE training_sessions (
     notes TEXT,
     FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
 );
+
+-- Table: performance_reviews
+CREATE TABLE performance_reviews (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    athlete_id INT NOT NULL,
+    review_date DATE NOT NULL,
+    coach_name VARCHAR(100),
+    evaluation_score DECIMAL(3,1),
+    comments TEXT,
+    FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
+);
