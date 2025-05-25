@@ -23,3 +23,11 @@ CREATE TABLE vaccines (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (manufacturer_id) REFERENCES manufacturers(id)
 );
+
+-- Table to define age groups for campaigns
+CREATE TABLE age_groups (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    description VARCHAR(100) NOT NULL,      -- e.g. "Children 5-11", "Adults 60+"
+    min_age INT,
+    max_age INT
+);
