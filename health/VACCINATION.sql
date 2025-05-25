@@ -31,3 +31,17 @@ CREATE TABLE age_groups (
     min_age INT,
     max_age INT
 );
+
+-- Table to register citizens
+CREATE TABLE citizens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(150) NOT NULL,
+    birth_date DATE NOT NULL,
+    gender ENUM('M', 'F', 'O'),
+    cpf CHAR(11) UNIQUE,                    -- National ID (example: Brazil)
+    address TEXT,
+    neighborhood VARCHAR(100),
+    city VARCHAR(100),
+    state CHAR(2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
