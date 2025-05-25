@@ -11,3 +11,15 @@ CREATE TABLE manufacturers (
     country VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Table to store available vaccines
+CREATE TABLE vaccines (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    manufacturer_id INT,
+    doses_required INT DEFAULT 1,           -- Number of doses needed for full immunization
+    effective_days INT,                     -- Days after which the vaccine becomes effective
+    approved BOOLEAN DEFAULT TRUE,          -- Indicates if the vaccine is approved for use
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (manufacturer_id) REFERENCES manufacturers(id)
+);
