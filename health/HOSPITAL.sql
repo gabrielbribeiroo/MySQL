@@ -1,5 +1,12 @@
 -- Hospital Management System
 
+-- Create the database
+CREATE DATABASE IF NOT EXISTS hospital
+DEFAULT CHARACTER SET utf8mb4
+DEFAULT COLLATE utf8mb4_general_ci;
+
+USE hospital;
+
 -- Table for departments
 CREATE TABLE IF NOT EXISTS department (
   id INT NOT NULL AUTO_INCREMENT,
