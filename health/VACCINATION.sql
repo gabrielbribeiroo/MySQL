@@ -57,3 +57,19 @@ CREATE TABLE vaccination_campaigns (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (target_group_id) REFERENCES age_groups(id)
 );
+
+-- Table to record vaccinations applied
+CREATE TABLE vaccinations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    citizen_id INT NOT NULL,
+    vaccine_id INT NOT NULL,
+    campaign_id INT,                        -- Optional: links to the campaign
+    dose_number INT NOT NULL,               -- e.g. 1 for first dose, 2 for second
+    application_date DATE NOT NULL,
+    health_professional VARCHAR(100),
+    health_unit VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (citizen_id) REFERENCES citizens(id),
+    FOREIGN KEY (vaccine_id) REFERENCES vaccines(id),
+    FOREIGN KEY (campaign_id) REFERENCES vaccination_campaigns(id)
+);
