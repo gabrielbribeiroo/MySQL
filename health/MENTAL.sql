@@ -4,3 +4,13 @@ DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
 
 USE mental_health;
+
+-- Table to register therapists
+CREATE TABLE therapists (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(150) NOT NULL,
+    specialization VARCHAR(100),
+    license_number VARCHAR(50) UNIQUE,
+    contact_email VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
