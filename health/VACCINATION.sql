@@ -45,3 +45,15 @@ CREATE TABLE citizens (
     state CHAR(2),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Table to store vaccination campaigns
+CREATE TABLE vaccination_campaigns (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE,
+    target_group_id INT,                    -- Links to a specific age group
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (target_group_id) REFERENCES age_groups(id)
+);
