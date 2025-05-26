@@ -25,3 +25,10 @@ CREATE TABLE patients (
     phone VARCHAR(20),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Table to define different types of therapies
+CREATE TABLE therapies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,            -- e.g. CBT, psychoanalysis, etc.
+    description TEXT
+);
