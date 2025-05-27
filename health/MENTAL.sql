@@ -58,3 +58,14 @@ CREATE TABLE sessions (
     FOREIGN KEY (therapist_id) REFERENCES therapists(id),
     FOREIGN KEY (therapy_id) REFERENCES therapies(id)
 );
+
+-- Table to log mood tracking over time
+CREATE TABLE mood_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    log_date DATE NOT NULL,
+    mood_level TINYINT NOT NULL CHECK (mood_level BETWEEN 1 AND 10), -- Scale from 1 (very bad) to 10 (excellent)
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(id)
+);
