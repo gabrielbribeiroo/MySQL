@@ -47,6 +47,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `medical_clinic`: Medical clinic system including patient records, doctors, specialties, appointments, and medical histories.
 - `hospital`: Hospital management system with departments, admissions, discharges, procedures, patients, and billing records.
 - `pharmacy`: Pharmacy management system including medication inventory, prescriptions, batches, expiration dates, and sales.
+- `mental_health`: Mental health monitoring system with session tracking, mood logs, therapy types, and patient goals.
 
 ---
 
