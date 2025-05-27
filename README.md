@@ -48,6 +48,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `hospital`: Hospital management system with departments, admissions, discharges, procedures, patients, and billing records.
 - `pharmacy`: Pharmacy management system including medication inventory, prescriptions, batches, expiration dates, and sales.
 - `mental_health`: Mental health monitoring system with session tracking, mood logs, therapy types, and patient goals.
+- `vaccination_center`: Vaccination center database tracking vaccine applications, age-based schedules, manufacturers, and public health campaigns.
 
 ---
 
