@@ -32,3 +32,14 @@ CREATE TABLE therapies (
     name VARCHAR(100) NOT NULL,            -- e.g. CBT, psychoanalysis, etc.
     description TEXT
 );
+
+-- Table to track therapy goals for each patient
+CREATE TABLE patient_goals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    description TEXT NOT NULL,
+    is_achieved BOOLEAN DEFAULT FALSE,
+    target_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(id)
+);
