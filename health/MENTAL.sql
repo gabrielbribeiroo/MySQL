@@ -43,3 +43,18 @@ CREATE TABLE patient_goals (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (patient_id) REFERENCES patients(id)
 );
+
+-- Table to register psychological sessions
+CREATE TABLE sessions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    therapist_id INT NOT NULL,
+    therapy_id INT,                        -- Optional: type of therapy used in the session
+    session_date DATETIME NOT NULL,
+    duration_minutes INT,
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(id),
+    FOREIGN KEY (therapist_id) REFERENCES therapists(id),
+    FOREIGN KEY (therapy_id) REFERENCES therapies(id)
+);
