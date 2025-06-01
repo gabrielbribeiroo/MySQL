@@ -46,3 +46,13 @@ CREATE TABLE classes (
     FOREIGN KEY (modality_id) REFERENCES modalities(id),
     FOREIGN KEY (monitor_id) REFERENCES monitors(id)
 );
+
+-- Many-to-many relationship between members and classes
+CREATE TABLE enrollments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    member_id INT,
+    class_id INT,
+    enrollment_date DATE DEFAULT CURRENT_DATE,
+    FOREIGN KEY (member_id) REFERENCES members(id),
+    FOREIGN KEY (class_id) REFERENCES classes(id)
+);
