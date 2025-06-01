@@ -33,3 +33,16 @@ CREATE TABLE members (
     address TEXT,
     registration_date DATE DEFAULT CURRENT_DATE
 );
+
+-- Class schedule for each modality
+CREATE TABLE classes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    modality_id INT,
+    monitor_id INT,
+    day_of_week ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
+    start_time TIME,
+    end_time TIME,
+    location VARCHAR(100),
+    FOREIGN KEY (modality_id) REFERENCES modalities(id),
+    FOREIGN KEY (monitor_id) REFERENCES monitors(id)
+);
