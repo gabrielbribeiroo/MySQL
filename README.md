@@ -37,6 +37,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `soccer`: Sports database for teams, players, match results, championships, and historical tracking.
 - `gym`: Gym management system with training routines, memberships, attendance, and physical progress records.
 - `athlete_performance`: Performance tracking system for high-performance athletes, including physical tests, training logs, evaluations, and metrics.
+- `sports_club`: Multisport club management system with modality registration, class schedules, monitors, and member enrollments.
 
 ### 🗳️ Participatory Platforms
 - `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.
