@@ -22,3 +22,14 @@ CREATE TABLE monitors (
     specialization VARCHAR(100),
     hire_date DATE
 );
+
+-- Table for club members
+CREATE TABLE members (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    birth_date DATE,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(20),
+    address TEXT,
+    registration_date DATE DEFAULT CURRENT_DATE
+);
