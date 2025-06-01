@@ -12,3 +12,13 @@ CREATE TABLE modalities (
     description TEXT,
     active BOOLEAN DEFAULT TRUE
 );
+
+-- Table to register monitors (coaches/trainers)
+CREATE TABLE monitors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(20),
+    specialization VARCHAR(100),
+    hire_date DATE
+);
