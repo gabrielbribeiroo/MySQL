@@ -59,3 +59,13 @@ CREATE TABLE IF NOT EXISTS votes (
   FOREIGN KEY (proposal_id) REFERENCES proposals(id) ON DELETE CASCADE,
   FOREIGN KEY (citizen_id) REFERENCES citizens(id) ON DELETE CASCADE
 );
+
+-- Approved projects with allocated amounts
+CREATE TABLE IF NOT EXISTS funded_projects (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  proposal_id INT NOT NULL,
+  approved_amount DECIMAL(12,2) NOT NULL,
+  approval_date DATE NOT NULL,
+  status ENUM('Planned', 'In Progress', 'Completed') DEFAULT 'Planned',
+  FOREIGN KEY (proposal_id) REFERENCES proposals(id)
+);
