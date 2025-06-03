@@ -34,3 +34,18 @@ CREATE TABLE IF NOT EXISTS citizens (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (district_id) REFERENCES districts(id)
 );
+
+-- Project proposals submitted by the community
+CREATE TABLE IF NOT EXISTS proposals (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(150) NOT NULL,
+  description TEXT NOT NULL,
+  amount_requested DECIMAL(12,2) NOT NULL,
+  district_id INT,
+  cycle_id INT,
+  submitted_by INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (district_id) REFERENCES districts(id),
+  FOREIGN KEY (cycle_id) REFERENCES budget_cycles(id),
+  FOREIGN KEY (submitted_by) REFERENCES citizens(id)
+);
