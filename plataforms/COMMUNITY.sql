@@ -14,3 +14,12 @@ CREATE TABLE IF NOT EXISTS districts (
   description TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Budget cycles or annual participatory planning rounds
+CREATE TABLE IF NOT EXISTS budget_cycles (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  year YEAR NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
