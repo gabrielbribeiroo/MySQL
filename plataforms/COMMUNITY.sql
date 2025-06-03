@@ -49,3 +49,13 @@ CREATE TABLE IF NOT EXISTS proposals (
   FOREIGN KEY (cycle_id) REFERENCES budget_cycles(id),
   FOREIGN KEY (submitted_by) REFERENCES citizens(id)
 );
+
+-- Voting records from citizens on selected proposals
+CREATE TABLE IF NOT EXISTS votes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  proposal_id INT NOT NULL,
+  citizen_id INT NOT NULL,
+  vote_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (proposal_id) REFERENCES proposals(id) ON DELETE CASCADE,
+  FOREIGN KEY (citizen_id) REFERENCES citizens(id) ON DELETE CASCADE
+);
