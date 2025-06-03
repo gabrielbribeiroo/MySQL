@@ -23,3 +23,14 @@ CREATE TABLE IF NOT EXISTS budget_cycles (
   end_date DATE NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Community members allowed to vote or submit proposals
+CREATE TABLE IF NOT EXISTS citizens (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  cpf VARCHAR(14) UNIQUE,
+  birth_date DATE,
+  district_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (district_id) REFERENCES districts(id)
+);
