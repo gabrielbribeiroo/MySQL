@@ -43,6 +43,8 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.
 - `online_polls`: Online survey and poll platform for collecting public or private opinions across various topics.
 - `city_feedback`: Urban feedback platform for registering citizen suggestions and complaints by neighborhood and theme.
+- `community_budget`: Participatory budgeting system to vote on and manage local projects and public investments.
+- `petition_platform`: Online petition platform with signature goals, authorship tracking, and public comments.
 
 ### 🏥 Healthcare
 - `medical_clinic`: Medical clinic system including patient records, doctors, specialties, appointments, and medical histories.
