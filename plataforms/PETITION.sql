@@ -25,3 +25,13 @@ CREATE TABLE IF NOT EXISTS petitions (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE CASCADE
 );
+
+-- Signatures from users supporting petitions
+CREATE TABLE IF NOT EXISTS signatures (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  petition_id INT NOT NULL,
+  user_id INT NOT NULL,
+  signed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (petition_id) REFERENCES petitions(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
