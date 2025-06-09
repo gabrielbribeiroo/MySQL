@@ -25,3 +25,16 @@ CREATE TABLE IF NOT EXISTS scholars (
   course VARCHAR(100),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Research projects
+CREATE TABLE IF NOT EXISTS projects (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  summary TEXT,
+  advisor_id INT NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE,
+  funding_source VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (advisor_id) REFERENCES advisors(id)
+);
