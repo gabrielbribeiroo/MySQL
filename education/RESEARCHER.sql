@@ -61,3 +61,14 @@ CREATE TABLE IF NOT EXISTS milestones (
   status ENUM('Pending', 'Completed', 'Delayed') DEFAULT 'Pending',
   FOREIGN KEY (project_id) REFERENCES projects(id)
 );
+
+-- Deliverables for each project (e.g., reports, papers, presentations)
+CREATE TABLE IF NOT EXISTS deliverables (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  project_id INT NOT NULL,
+  title VARCHAR(150) NOT NULL,
+  type ENUM('Report', 'Paper', 'Presentation', 'Prototype') NOT NULL,
+  submitted_on DATE,
+  file_link VARCHAR(255),
+  FOREIGN KEY (project_id) REFERENCES projects(id)
+);
