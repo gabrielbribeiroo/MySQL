@@ -15,3 +15,13 @@ CREATE TABLE IF NOT EXISTS advisors (
   department VARCHAR(100),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Scholarship students involved in projects
+CREATE TABLE IF NOT EXISTS scholars (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE,
+  enrollment_number VARCHAR(20) UNIQUE,
+  course VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
