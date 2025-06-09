@@ -38,3 +38,15 @@ CREATE TABLE IF NOT EXISTS projects (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (advisor_id) REFERENCES advisors(id)
 );
+
+-- Relationship between projects and scholars
+CREATE TABLE IF NOT EXISTS project_scholars (
+  project_id INT NOT NULL,
+  scholar_id INT NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE,
+  role ENUM('Researcher', 'Assistant', 'Collaborator') DEFAULT 'Researcher',
+  PRIMARY KEY (project_id, scholar_id),
+  FOREIGN KEY (project_id) REFERENCES projects(id),
+  FOREIGN KEY (scholar_id) REFERENCES scholars(id)
+);
