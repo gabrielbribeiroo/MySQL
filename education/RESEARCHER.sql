@@ -50,3 +50,14 @@ CREATE TABLE IF NOT EXISTS project_scholars (
   FOREIGN KEY (project_id) REFERENCES projects(id),
   FOREIGN KEY (scholar_id) REFERENCES scholars(id)
 );
+
+-- Project schedule milestones and tasks
+CREATE TABLE IF NOT EXISTS milestones (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  project_id INT NOT NULL,
+  title VARCHAR(150) NOT NULL,
+  description TEXT,
+  due_date DATE,
+  status ENUM('Pending', 'Completed', 'Delayed') DEFAULT 'Pending',
+  FOREIGN KEY (project_id) REFERENCES projects(id)
+);
