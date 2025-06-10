@@ -49,3 +49,20 @@ CREATE TABLE IF NOT EXISTS tournaments (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (game_id) REFERENCES games(id)
 );
+
+-- Individual matches within tournaments
+CREATE TABLE IF NOT EXISTS matches (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  tournament_id INT NOT NULL,
+  match_date DATETIME NOT NULL,
+  team1_id INT NOT NULL,
+  team2_id INT NOT NULL,
+  score_team1 INT DEFAULT 0,
+  score_team2 INT DEFAULT 0,
+  winner_team_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (tournament_id) REFERENCES tournaments(id),
+  FOREIGN KEY (team1_id) REFERENCES teams(id),
+  FOREIGN KEY (team2_id) REFERENCES teams(id),
+  FOREIGN KEY (winner_team_id) REFERENCES teams(id)
+);
