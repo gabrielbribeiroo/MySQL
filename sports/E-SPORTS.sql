@@ -6,3 +6,13 @@ DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
 
 USE e_sports;
+
+-- Games available in the tournament system
+CREATE TABLE IF NOT EXISTS games (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  genre VARCHAR(50),
+  developer VARCHAR(100),
+  release_year YEAR,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
