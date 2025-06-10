@@ -66,3 +66,15 @@ CREATE TABLE IF NOT EXISTS matches (
   FOREIGN KEY (team2_id) REFERENCES teams(id),
   FOREIGN KEY (winner_team_id) REFERENCES teams(id)
 );
+
+-- Prize distribution per tournament
+CREATE TABLE IF NOT EXISTS prizes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  tournament_id INT NOT NULL,
+  team_id INT NOT NULL,
+  amount DECIMAL(10,2) NOT NULL,
+  position INT NOT NULL,
+  awarded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (tournament_id) REFERENCES tournaments(id),
+  FOREIGN KEY (team_id) REFERENCES teams(id)
+);
