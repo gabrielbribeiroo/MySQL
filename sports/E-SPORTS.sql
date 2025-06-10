@@ -16,3 +16,12 @@ CREATE TABLE IF NOT EXISTS games (
   release_year YEAR,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Teams participating in competitions
+CREATE TABLE IF NOT EXISTS teams (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  country VARCHAR(50),
+  founded_year YEAR,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
