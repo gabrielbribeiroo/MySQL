@@ -36,3 +36,16 @@ CREATE TABLE IF NOT EXISTS players (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE SET NULL
 );
+
+-- E-sports tournaments or events
+CREATE TABLE IF NOT EXISTS tournaments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  game_id INT,
+  location VARCHAR(100),
+  start_date DATE,
+  end_date DATE,
+  total_prize DECIMAL(12,2),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (game_id) REFERENCES games(id)
+);
