@@ -25,3 +25,14 @@ CREATE TABLE IF NOT EXISTS teams (
   founded_year YEAR,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Players registered in the system
+CREATE TABLE IF NOT EXISTS players (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  nickname VARCHAR(50) NOT NULL,
+  birth_date DATE,
+  team_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE SET NULL
+);
