@@ -23,3 +23,12 @@ CREATE TABLE IF NOT EXISTS levels (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (language_id) REFERENCES languages(id)
 );
+
+-- Students enrolled in the language school
+CREATE TABLE IF NOT EXISTS students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE,
+  birth_date DATE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
