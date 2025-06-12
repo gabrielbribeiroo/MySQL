@@ -77,3 +77,15 @@ CREATE TABLE IF NOT EXISTS results (
   FOREIGN KEY (assessment_id) REFERENCES assessments(id),
   FOREIGN KEY (student_id) REFERENCES students(id)
 );
+
+-- Historical academic record per student
+CREATE TABLE IF NOT EXISTS student_history (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  student_id INT NOT NULL,
+  level_id INT NOT NULL,
+  completed_on DATE,
+  status ENUM('In Progress', 'Completed', 'Withdrawn') DEFAULT 'In Progress',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (student_id) REFERENCES students(id),
+  FOREIGN KEY (level_id) REFERENCES levels(id)
+);
