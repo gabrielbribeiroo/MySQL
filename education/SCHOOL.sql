@@ -55,3 +55,14 @@ CREATE TABLE IF NOT EXISTS enrollments (
   FOREIGN KEY (student_id) REFERENCES students(id),
   FOREIGN KEY (class_id) REFERENCES classes(id)
 );
+
+-- Assessments (tests or exams) for a given class
+CREATE TABLE IF NOT EXISTS assessments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  class_id INT NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  assessment_date DATE NOT NULL,
+  total_score DECIMAL(5,2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (class_id) REFERENCES classes(id)
+);
