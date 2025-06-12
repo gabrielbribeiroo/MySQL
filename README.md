@@ -26,21 +26,23 @@ Each project demonstrates practical structures for real-world scenarios, such as
 ### 📅 Scheduling & Productivity
 - `horary`: Weekly schedule management for organizing events, appointments, or classes by day and time slots.
 - `task_manager`: Task management system with projects, users, deadlines, priorities, and task statuses.
-- `productivity_tracker`: System to track personal or team productivity, including goals, habits, sessions, and reflections.
+- `productivity_tracker`: System to track personal or team productivity, including goals, habits, sessions, and reflections.  
 
 ### 🎓 Education & Courses
 - `teacher`: Educational system for managing student classes, subjects taught, class contents, and financial records for teaching services.
 - `online_courses`: Online course platform including courses, modules, lessons, student progress, grades, and certificates.
 - `library`: Library management system including books, authors, members, and loan tracking.
+- `research_projects`: Research project management system including advisors, scholarship holders, schedules, and deliverables.
 
 ### ⚽ Sports & Recreation
 - `soccer`: Sports database for teams, players, match results, championships, and historical tracking.
 - `gym`: Gym management system with training routines, memberships, attendance, and physical progress records.
 - `athlete_performance`: Performance tracking system for high-performance athletes, including physical tests, training logs, evaluations, and metrics.
 - `sports_club`: Multisport club management system with modality registration, class schedules, monitors, and member enrollments.
+- `e_sports`: E-sports competition platform for managing players, teams, games, matches, and prize distributions.
 
 ### 🗳️ Participatory Platforms
-- `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.
+- `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.  
 - `online_polls`: Online survey and poll platform for collecting public or private opinions across various topics.
 - `city_feedback`: Urban feedback platform for registering citizen suggestions and complaints by neighborhood and theme.
 - `community_budget`: Participatory budgeting system to vote on and manage local projects and public investments.
