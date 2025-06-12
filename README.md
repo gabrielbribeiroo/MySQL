@@ -33,6 +33,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `online_courses`: Online course platform including courses, modules, lessons, student progress, grades, and certificates.
 - `library`: Library management system including books, authors, members, and loan tracking.
 - `research_projects`: Research project management system including advisors, scholarship holders, schedules, and deliverables.
+- `language_school`: Language school database with support for course levels, student enrollment, class records, exams, and academic history.
 
 ### ⚽ Sports & Recreation
 - `soccer`: Sports database for teams, players, match results, championships, and historical tracking.
