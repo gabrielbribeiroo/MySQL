@@ -66,3 +66,14 @@ CREATE TABLE IF NOT EXISTS assessments (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (class_id) REFERENCES classes(id)
 );
+
+-- Results of student assessments
+CREATE TABLE IF NOT EXISTS results (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  assessment_id INT NOT NULL,
+  student_id INT NOT NULL,
+  score DECIMAL(5,2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (assessment_id) REFERENCES assessments(id),
+  FOREIGN KEY (student_id) REFERENCES students(id)
+);
