@@ -13,3 +13,13 @@ CREATE TABLE IF NOT EXISTS languages (
   name VARCHAR(50) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Course levels (e.g., Beginner, Intermediate, Advanced)
+CREATE TABLE IF NOT EXISTS levels (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  language_id INT NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (language_id) REFERENCES languages(id)
+);
