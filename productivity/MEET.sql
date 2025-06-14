@@ -24,3 +24,17 @@ CREATE TABLE IF NOT EXISTS meeting_rooms (
   capacity INT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Main meeting schedule including room, organizer, and time details
+CREATE TABLE IF NOT EXISTS meetings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(150) NOT NULL,
+  agenda TEXT,
+  room_id INT,
+  organizer_id INT,
+  start_time DATETIME NOT NULL,
+  end_time DATETIME NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (room_id) REFERENCES meeting_rooms(id),
+  FOREIGN KEY (organizer_id) REFERENCES users(id)
+);
