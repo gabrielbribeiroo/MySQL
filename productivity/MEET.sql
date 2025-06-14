@@ -38,3 +38,13 @@ CREATE TABLE IF NOT EXISTS meetings (
   FOREIGN KEY (room_id) REFERENCES meeting_rooms(id),
   FOREIGN KEY (organizer_id) REFERENCES users(id)
 );
+
+-- Participants linked to meetings (many-to-many)
+CREATE TABLE IF NOT EXISTS meeting_participants (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  meeting_id INT NOT NULL,
+  user_id INT NOT NULL,
+  status ENUM('Confirmed', 'Declined', 'Pending') DEFAULT 'Pending',
+  FOREIGN KEY (meeting_id) REFERENCES meetings(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
