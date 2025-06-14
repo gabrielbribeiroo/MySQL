@@ -15,3 +15,12 @@ CREATE TABLE IF NOT EXISTS users (
   role ENUM('Organizer', 'Participant') DEFAULT 'Participant',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Rooms or virtual spaces available for meetings
+CREATE TABLE IF NOT EXISTS meeting_rooms (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  location VARCHAR(255),
+  capacity INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
