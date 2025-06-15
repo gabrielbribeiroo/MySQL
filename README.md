@@ -27,6 +27,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `horary`: Weekly schedule management for organizing events, appointments, or classes by day and time slots.
 - `task_manager`: Task management system with projects, users, deadlines, priorities, and task statuses.
 - `productivity_tracker`: System to track personal or team productivity, including goals, habits, sessions, and reflections.  
+- `meeting_scheduler`: Meeting scheduler database with rooms, participants, agenda items, and feedback.
 
 ### 🎓 Education & Courses
 - `teacher`: Educational system for managing student classes, subjects taught, class contents, and financial records for teaching services.
