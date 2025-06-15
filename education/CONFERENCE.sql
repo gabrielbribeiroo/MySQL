@@ -26,3 +26,16 @@ CREATE TABLE IF NOT EXISTS users (
   institution VARCHAR(150),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Papers submitted to conferences
+CREATE TABLE IF NOT EXISTS papers (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  abstract TEXT NOT NULL,
+  submission_date DATE NOT NULL,
+  conference_id INT,
+  author_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (conference_id) REFERENCES conferences(id),
+  FOREIGN KEY (author_id) REFERENCES users(id)
+);
