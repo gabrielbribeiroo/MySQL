@@ -52,3 +52,12 @@ CREATE TABLE IF NOT EXISTS reviews (
   FOREIGN KEY (paper_id) REFERENCES papers(id),
   FOREIGN KEY (reviewer_id) REFERENCES users(id)
 );
+
+-- Accepted papers scheduled for presentations
+CREATE TABLE IF NOT EXISTS presentations (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  paper_id INT NOT NULL,
+  scheduled_date DATETIME NOT NULL,
+  room VARCHAR(50),
+  FOREIGN KEY (paper_id) REFERENCES papers(id)
+);
