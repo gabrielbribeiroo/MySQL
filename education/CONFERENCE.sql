@@ -39,3 +39,16 @@ CREATE TABLE IF NOT EXISTS papers (
   FOREIGN KEY (conference_id) REFERENCES conferences(id),
   FOREIGN KEY (author_id) REFERENCES users(id)
 );
+
+-- Reviews by assigned reviewers
+CREATE TABLE IF NOT EXISTS reviews (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  paper_id INT NOT NULL,
+  reviewer_id INT NOT NULL,
+  score INT CHECK (score BETWEEN 1 AND 10),
+  comments TEXT,
+  review_date DATE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (paper_id) REFERENCES papers(id),
+  FOREIGN KEY (reviewer_id) REFERENCES users(id)
+);
