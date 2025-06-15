@@ -16,3 +16,13 @@ CREATE TABLE IF NOT EXISTS conferences (
   end_date DATE NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Users of the system: authors, reviewers, and organizers
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  role ENUM('Author', 'Reviewer', 'Organizer') NOT NULL,
+  institution VARCHAR(150),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
