@@ -40,3 +40,14 @@ CREATE TABLE IF NOT EXISTS milestones (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (goal_id) REFERENCES goals(id) ON DELETE CASCADE
 );
+
+-- Notes or reflections logged by the user during the goal progress
+CREATE TABLE IF NOT EXISTS reflections (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  goal_id INT NOT NULL,
+  entry_date DATE DEFAULT CURRENT_DATE,
+  content TEXT NOT NULL,
+  mood ENUM('Very Bad', 'Bad', 'Neutral', 'Good', 'Excellent') DEFAULT 'Neutral',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (goal_id) REFERENCES goals(id) ON DELETE CASCADE
+);
