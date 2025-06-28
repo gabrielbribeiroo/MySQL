@@ -51,3 +51,14 @@ CREATE TABLE IF NOT EXISTS reflections (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (goal_id) REFERENCES goals(id) ON DELETE CASCADE
 );
+
+-- Daily progress tracking linked to specific goals
+CREATE TABLE IF NOT EXISTS daily_progress (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  goal_id INT NOT NULL,
+  progress_date DATE DEFAULT CURRENT_DATE,
+  progress_percentage DECIMAL(5,2) CHECK (progress_percentage >= 0 AND progress_percentage <= 100),
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (goal_id) REFERENCES goals(id) ON DELETE CASCADE
+);
