@@ -26,26 +26,24 @@ Each project demonstrates practical structures for real-world scenarios, such as
 ### 📅 Scheduling & Productivity
 - `horary`: Weekly schedule management for organizing events, appointments, or classes by day and time slots.
 - `task_manager`: Task management system with projects, users, deadlines, priorities, and task statuses.
-- `productivity_tracker`: System to track personal or team productivity, including goals, habits, sessions, and reflections.  
-- `meeting_scheduler`: Meeting scheduler database with rooms, participants, agenda items, and feedback.
-- `conference_system`: Academic conference system with users (authors/reviewers), paper submissions, reviews, and presentation sessions.
+- `productivity_tracker`: System to track personal or team productivity, including goals, habits, sessions, and reflections.
+- `goal_tracking`: Goal-oriented productivity platform with milestones, progress updates, reflections, and performance tracking.
 
 ### 🎓 Education & Courses
 - `teacher`: Educational system for managing student classes, subjects taught, class contents, and financial records for teaching services.
 - `online_courses`: Online course platform including courses, modules, lessons, student progress, grades, and certificates.
 - `library`: Library management system including books, authors, members, and loan tracking.
-- `research_projects`: Research project management system including advisors, scholarship holders, schedules, and deliverables.
-- `language_school`: Language school database with support for course levels, student enrollment, class records, exams, and academic history.
+- `language_school`: Language school structure with levels, classes, exams, and student academic records.
 
 ### ⚽ Sports & Recreation
 - `soccer`: Sports database for teams, players, match results, championships, and historical tracking.
 - `gym`: Gym management system with training routines, memberships, attendance, and physical progress records.
 - `athlete_performance`: Performance tracking system for high-performance athletes, including physical tests, training logs, evaluations, and metrics.
 - `sports_club`: Multisport club management system with modality registration, class schedules, monitors, and member enrollments.
-- `e_sports`: E-sports competition platform for managing players, teams, games, matches, and prize distributions.
+- `e_sports`: Database for esports tournaments including players, teams, matches, games, and prizes.
 
 ### 🗳️ Participatory Platforms
-- `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.  
+- `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.
 - `online_polls`: Online survey and poll platform for collecting public or private opinions across various topics.
 - `city_feedback`: Urban feedback platform for registering citizen suggestions and complaints by neighborhood and theme.
 - `community_budget`: Participatory budgeting system to vote on and manage local projects and public investments.
@@ -57,6 +55,10 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `pharmacy`: Pharmacy management system including medication inventory, prescriptions, batches, expiration dates, and sales.
 - `mental_health`: Mental health monitoring system with session tracking, mood logs, therapy types, and patient goals.
 - `vaccination_center`: Vaccination center database tracking vaccine applications, age-based schedules, manufacturers, and public health campaigns.
+
+### 🧑‍🤝‍🧑 Collaboration & Research
+- `meeting_scheduler`: Scheduling system for meetings with rooms, agendas, attendees, and feedback.
+- `research_projects`: Research project tracker including advisors, scholars, timeline, and deliverables.
 
 ---
 
