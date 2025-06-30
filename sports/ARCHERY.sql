@@ -27,3 +27,15 @@ CREATE TABLE IF NOT EXISTS coaches (
   email VARCHAR(100),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Archery sessions with date, time, and responsible coach
+CREATE TABLE IF NOT EXISTS training_sessions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  session_date DATE NOT NULL,
+  session_time TIME,
+  location VARCHAR(100),
+  coach_id INT,
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (coach_id) REFERENCES coaches(id)
+);
