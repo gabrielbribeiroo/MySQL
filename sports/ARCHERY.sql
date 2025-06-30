@@ -59,3 +59,15 @@ CREATE TABLE IF NOT EXISTS equipment (
   condition ENUM('New', 'Good', 'Used', 'Needs Repair') DEFAULT 'Good',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Log of equipment usage during training
+CREATE TABLE IF NOT EXISTS equipment_usage (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  session_id INT,
+  athlete_id INT,
+  equipment_id INT,
+  usage_notes TEXT,
+  FOREIGN KEY (session_id) REFERENCES training_sessions(id),
+  FOREIGN KEY (athlete_id) REFERENCES athletes(id),
+  FOREIGN KEY (equipment_id) REFERENCES equipment(id)
+);
