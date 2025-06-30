@@ -39,3 +39,13 @@ CREATE TABLE IF NOT EXISTS training_sessions (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (coach_id) REFERENCES coaches(id)
 );
+
+-- Association of athletes to training sessions (attendance)
+CREATE TABLE IF NOT EXISTS session_attendance (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  session_id INT,
+  athlete_id INT,
+  attended BOOLEAN DEFAULT FALSE,
+  FOREIGN KEY (session_id) REFERENCES training_sessions(id),
+  FOREIGN KEY (athlete_id) REFERENCES athletes(id)
+);
