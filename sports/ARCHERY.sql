@@ -49,3 +49,13 @@ CREATE TABLE IF NOT EXISTS session_attendance (
   FOREIGN KEY (session_id) REFERENCES training_sessions(id),
   FOREIGN KEY (athlete_id) REFERENCES athletes(id)
 );
+
+-- Equipment available for training use
+CREATE TABLE IF NOT EXISTS equipment (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  type VARCHAR(50),
+  serial_number VARCHAR(50) UNIQUE,
+  condition ENUM('New', 'Good', 'Used', 'Needs Repair') DEFAULT 'Good',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
