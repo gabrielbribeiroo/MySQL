@@ -71,3 +71,14 @@ CREATE TABLE IF NOT EXISTS equipment_usage (
   FOREIGN KEY (athlete_id) REFERENCES athletes(id),
   FOREIGN KEY (equipment_id) REFERENCES equipment(id)
 );
+
+-- Performance scores for each athlete in a session
+CREATE TABLE IF NOT EXISTS performance_log (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  athlete_id INT,
+  session_id INT,
+  score INT NOT NULL,
+  remarks TEXT,
+  FOREIGN KEY (athlete_id) REFERENCES athletes(id),
+  FOREIGN KEY (session_id) REFERENCES training_sessions(id)
+);
