@@ -17,3 +17,13 @@ CREATE TABLE IF NOT EXISTS athletes (
   registration_date DATE DEFAULT CURRENT_DATE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Coaches who conduct training sessions
+CREATE TABLE IF NOT EXISTS coaches (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  specialty VARCHAR(100),
+  phone VARCHAR(20),
+  email VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
