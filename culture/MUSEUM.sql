@@ -49,3 +49,12 @@ CREATE TABLE IF NOT EXISTS exhibitions (
   end_date DATE NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Linking artworks to exhibitions (many-to-many)
+CREATE TABLE IF NOT EXISTS exhibition_artworks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  exhibition_id INT NOT NULL,
+  artwork_id INT NOT NULL,
+  FOREIGN KEY (exhibition_id) REFERENCES exhibitions(id) ON DELETE CASCADE,
+  FOREIGN KEY (artwork_id) REFERENCES artworks(id) ON DELETE CASCADE
+);
