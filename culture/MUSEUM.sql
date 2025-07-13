@@ -58,3 +58,15 @@ CREATE TABLE IF NOT EXISTS exhibition_artworks (
   FOREIGN KEY (exhibition_id) REFERENCES exhibitions(id) ON DELETE CASCADE,
   FOREIGN KEY (artwork_id) REFERENCES artworks(id) ON DELETE CASCADE
 );
+
+-- Track the movement of artworks (loans, restoration, transfers, etc.)
+CREATE TABLE IF NOT EXISTS movement_history (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  artwork_id INT NOT NULL,
+  movement_type ENUM('Loan', 'Restoration', 'Transfer', 'Storage', 'On Display') NOT NULL,
+  location VARCHAR(100) NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE,
+  notes TEXT,
+  FOREIGN KEY (artwork_id) REFERENCES artworks(id)
+);
