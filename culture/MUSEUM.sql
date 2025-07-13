@@ -24,3 +24,18 @@ CREATE TABLE IF NOT EXISTS art_types (
   type_name VARCHAR(50) NOT NULL UNIQUE,
   description TEXT
 );
+
+-- Artworks registered in the museum
+CREATE TABLE IF NOT EXISTS artworks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(150) NOT NULL,
+  artist_id INT,
+  type_id INT,
+  year_created YEAR,
+  description TEXT,
+  dimensions VARCHAR(100), -- e.g., "60x90cm"
+  location VARCHAR(100), -- current location or room
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (artist_id) REFERENCES artists(id),
+  FOREIGN KEY (type_id) REFERENCES art_types(id)
+);
