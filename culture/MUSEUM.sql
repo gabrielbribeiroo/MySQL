@@ -39,3 +39,13 @@ CREATE TABLE IF NOT EXISTS artworks (
   FOREIGN KEY (artist_id) REFERENCES artists(id),
   FOREIGN KEY (type_id) REFERENCES art_types(id)
 );
+
+-- Exhibitions where artworks are displayed
+CREATE TABLE IF NOT EXISTS exhibitions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
