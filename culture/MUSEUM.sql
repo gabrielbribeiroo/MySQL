@@ -17,3 +17,10 @@ CREATE TABLE IF NOT EXISTS artists (
   biography TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Types or categories of artworks (e.g., Painting, Sculpture)
+CREATE TABLE IF NOT EXISTS art_types (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  type_name VARCHAR(50) NOT NULL UNIQUE,
+  description TEXT
+);
