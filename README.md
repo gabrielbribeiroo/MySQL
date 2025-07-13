@@ -60,6 +60,9 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `meeting_scheduler`: Scheduling system for meetings with rooms, agendas, attendees, and feedback.
 - `research_projects`: Research project tracker including advisors, scholars, timeline, and deliverables.
 
+### 🎨 Arts & Culture
+- `museum_catalog`: Museum catalog system for managing artworks, artists, art types, exhibitions, and movement history.
+
 ---
 
 ## 🛠️ Languages & Tools
