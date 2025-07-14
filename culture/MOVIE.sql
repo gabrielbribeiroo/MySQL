@@ -45,3 +45,13 @@ CREATE TABLE IF NOT EXISTS rentals (
   FOREIGN KEY (customer_id) REFERENCES customers(id),
   FOREIGN KEY (movie_id) REFERENCES movies(id)
 );
+
+-- Late fees associated with overdue rentals
+CREATE TABLE IF NOT EXISTS late_fees (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  rental_id INT NOT NULL,
+  amount DECIMAL(6,2) NOT NULL,
+  paid BOOLEAN DEFAULT FALSE,
+  charged_on DATE DEFAULT (CURRENT_DATE),
+  FOREIGN KEY (rental_id) REFERENCES rentals(id) ON DELETE CASCADE
+);
