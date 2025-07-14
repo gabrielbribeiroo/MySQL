@@ -12,3 +12,15 @@ CREATE TABLE IF NOT EXISTS genres (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(50) NOT NULL UNIQUE
 );
+
+-- Movies available for rental
+CREATE TABLE IF NOT EXISTS movies (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(150) NOT NULL,
+  release_year YEAR,
+  genre_id INT,
+  rating VARCHAR(10),
+  available_copies INT DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (genre_id) REFERENCES genres(id)
+);
