@@ -33,3 +33,15 @@ CREATE TABLE IF NOT EXISTS customers (
   phone VARCHAR(20),
   registration_date DATE DEFAULT (CURRENT_DATE)
 );
+
+-- Rental transactions with expected and return dates
+CREATE TABLE IF NOT EXISTS rentals (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  customer_id INT NOT NULL,
+  movie_id INT NOT NULL,
+  rental_date DATE DEFAULT (CURRENT_DATE),
+  due_date DATE NOT NULL,
+  return_date DATE,
+  FOREIGN KEY (customer_id) REFERENCES customers(id),
+  FOREIGN KEY (movie_id) REFERENCES movies(id)
+);
