@@ -6,3 +6,9 @@ DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
 
 USE movie_rentals;
+
+-- Genres like Action, Comedy, Drama, etc.
+CREATE TABLE IF NOT EXISTS genres (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL UNIQUE
+);
