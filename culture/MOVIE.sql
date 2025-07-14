@@ -24,3 +24,12 @@ CREATE TABLE IF NOT EXISTS movies (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (genre_id) REFERENCES genres(id)
 );
+
+-- Customers registered in the system
+CREATE TABLE IF NOT EXISTS customers (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE,
+  phone VARCHAR(20),
+  registration_date DATE DEFAULT (CURRENT_DATE)
+);
