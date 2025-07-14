@@ -62,6 +62,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 
 ### 🎨 Arts & Culture
 - `museum_catalog`: Museum catalog system for managing artworks, artists, art types, exhibitions, and movement history.
+- `movie_rentals`: Movie rental store system including movies, genres, customers, rental history, and late fees.
 
 ---
 
