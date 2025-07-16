@@ -37,3 +37,12 @@ CREATE TABLE IF NOT EXISTS events (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (venue_id) REFERENCES venues(id)
 );
+
+-- Many-to-many relationship between events and artists
+CREATE TABLE IF NOT EXISTS event_artists (
+  event_id INT,
+  artist_id INT,
+  PRIMARY KEY (event_id, artist_id),
+  FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,
+  FOREIGN KEY (artist_id) REFERENCES artists(id) ON DELETE CASCADE
+);
