@@ -25,3 +25,15 @@ CREATE TABLE IF NOT EXISTS artists (
   country VARCHAR(50),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Main table for events
+CREATE TABLE IF NOT EXISTS events (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(150) NOT NULL,
+  description TEXT,
+  start_datetime DATETIME NOT NULL,
+  end_datetime DATETIME NOT NULL,
+  venue_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (venue_id) REFERENCES venues(id)
+);
