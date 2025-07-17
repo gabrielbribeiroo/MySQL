@@ -66,3 +66,15 @@ CREATE TABLE IF NOT EXISTS participants (
   phone VARCHAR(20),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Ticket sales or registrations
+CREATE TABLE IF NOT EXISTS ticket_sales (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  ticket_id INT NOT NULL,
+  participant_id INT NOT NULL,
+  quantity INT NOT NULL DEFAULT 1,
+  total_paid DECIMAL(10,2) NOT NULL,
+  sale_datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (ticket_id) REFERENCES tickets(id),
+  FOREIGN KEY (participant_id) REFERENCES participants(id)
+);
