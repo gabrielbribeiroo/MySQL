@@ -46,3 +46,14 @@ CREATE TABLE IF NOT EXISTS event_artists (
   FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,
   FOREIGN KEY (artist_id) REFERENCES artists(id) ON DELETE CASCADE
 );
+
+-- Table for event tickets
+CREATE TABLE IF NOT EXISTS tickets (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  event_id INT NOT NULL,
+  type VARCHAR(50) NOT NULL, -- e.g., VIP, General Admission
+  price DECIMAL(10,2) NOT NULL,
+  quantity_available INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE
+);
