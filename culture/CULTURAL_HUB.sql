@@ -9,3 +9,13 @@ CREATE TABLE artists (
     bio TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE exhibitions (
+    exhibition_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    location VARCHAR(150),
+    start_date DATE,
+    end_date DATE,
+    theme TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
