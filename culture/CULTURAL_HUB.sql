@@ -28,3 +28,14 @@ CREATE TABLE exhibition_artworks (
     FOREIGN KEY (exhibition_id) REFERENCES exhibitions(exhibition_id),
     FOREIGN KEY (artwork_id) REFERENCES artworks(artwork_id)
 );
+
+CREATE TABLE cultural_events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    category VARCHAR(100), -- festival, oficina, sarau, etc.
+    description TEXT,
+    location VARCHAR(150),
+    event_date DATE,
+    organizer VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
