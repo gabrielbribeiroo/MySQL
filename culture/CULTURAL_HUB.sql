@@ -19,3 +19,12 @@ CREATE TABLE exhibitions (
     theme TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE exhibition_artworks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    exhibition_id INT,
+    artwork_id INT,
+    display_order INT,
+    FOREIGN KEY (exhibition_id) REFERENCES exhibitions(exhibition_id),
+    FOREIGN KEY (artwork_id) REFERENCES artworks(artwork_id)
+);
