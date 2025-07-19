@@ -59,3 +59,12 @@ CREATE TABLE cultural_spaces (
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE traditions (
+    tradition_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    region VARCHAR(100),
+    description TEXT,
+    recognition_status VARCHAR(100), -- ex: patrimônio imaterial
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
