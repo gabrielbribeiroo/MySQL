@@ -68,3 +68,13 @@ CREATE TABLE traditions (
     recognition_status VARCHAR(100), -- ex: patrimônio imaterial
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE community_feedback (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    event_id INT,
+    author_name VARCHAR(100),
+    feedback_text TEXT,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (event_id) REFERENCES cultural_events(event_id)
+);
