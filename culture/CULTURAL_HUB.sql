@@ -39,3 +39,13 @@ CREATE TABLE cultural_events (
     organizer VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE media_productions (
+    media_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    type VARCHAR(50), -- filme, podcast, etc.
+    release_year INT,
+    synopsis TEXT,
+    link VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
