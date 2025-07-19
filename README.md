@@ -64,6 +64,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `museum_catalog`: Museum catalog system for managing artworks, artists, art types, exhibitions, and movement history.
 - `movie_rentals`: Movie rental store system including movies, genres, customers, rental history, and late fees.
 - `event_management`: Event management system for organizing venues, artists, schedules, tickets, and participants.
+- `cultural_hub`: Platform for managing cultural centers, workshops, exhibitions, public activities, and community participation.
 
 ---
 
