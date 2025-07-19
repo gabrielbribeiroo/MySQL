@@ -49,3 +49,13 @@ CREATE TABLE media_productions (
     link VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE cultural_spaces (
+    space_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    address VARCHAR(255),
+    type VARCHAR(100), -- museu, centro cultural, teatro
+    capacity INT,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
