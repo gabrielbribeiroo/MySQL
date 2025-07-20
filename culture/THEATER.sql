@@ -29,3 +29,12 @@ CREATE TABLE actor (
   birth_date DATE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE cast (
+  cast_id INT AUTO_INCREMENT PRIMARY KEY,
+  play_id INT NOT NULL,
+  actor_id INT NOT NULL,
+  role_name VARCHAR(100),
+  FOREIGN KEY (play_id) REFERENCES play(play_id),
+  FOREIGN KEY (actor_id) REFERENCES actor(actor_id)
+);
