@@ -21,3 +21,11 @@ CREATE TABLE play (
   description TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE actor (
+  actor_id INT AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  bio TEXT,
+  birth_date DATE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
