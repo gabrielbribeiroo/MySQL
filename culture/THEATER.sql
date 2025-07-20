@@ -1,0 +1,14 @@
+
+CREATE DATABASE IF NOT EXISTS theater_management
+DEFAULT CHARACTER SET utf8mb4
+DEFAULT COLLATE utf8mb4_general_ci;
+
+USE theater_management;
+
+CREATE TABLE theater (
+  theater_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  location VARCHAR(150) NOT NULL,
+  capacity INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
