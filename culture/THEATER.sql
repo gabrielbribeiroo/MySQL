@@ -38,3 +38,13 @@ CREATE TABLE cast (
   FOREIGN KEY (play_id) REFERENCES play(play_id),
   FOREIGN KEY (actor_id) REFERENCES actor(actor_id)
 );
+
+CREATE TABLE session (
+  session_id INT AUTO_INCREMENT PRIMARY KEY,
+  play_id INT NOT NULL,
+  theater_id INT NOT NULL,
+  session_datetime DATETIME NOT NULL,
+  language VARCHAR(50),
+  FOREIGN KEY (play_id) REFERENCES play(play_id),
+  FOREIGN KEY (theater_id) REFERENCES theater(theater_id)
+);
