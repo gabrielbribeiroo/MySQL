@@ -48,3 +48,12 @@ CREATE TABLE session (
   FOREIGN KEY (play_id) REFERENCES play(play_id),
   FOREIGN KEY (theater_id) REFERENCES theater(theater_id)
 );
+
+CREATE TABLE ticket (
+  ticket_id INT AUTO_INCREMENT PRIMARY KEY,
+  session_id INT NOT NULL,
+  seat_number VARCHAR(10),
+  price DECIMAL(10, 2) NOT NULL,
+  is_reserved BOOLEAN DEFAULT FALSE,
+  FOREIGN KEY (session_id) REFERENCES session(session_id)
+);
