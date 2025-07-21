@@ -57,3 +57,12 @@ CREATE TABLE ticket (
   is_reserved BOOLEAN DEFAULT FALSE,
   FOREIGN KEY (session_id) REFERENCES session(session_id)
 );
+
+CREATE TABLE reservation (
+  reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+  ticket_id INT NOT NULL,
+  customer_name VARCHAR(100) NOT NULL,
+  customer_email VARCHAR(100),
+  reservation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (ticket_id) REFERENCES ticket(ticket_id)
+);
