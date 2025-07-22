@@ -1,4 +1,7 @@
-CREATE DATABASE cultural_hub;
+CREATE DATABASE cultural_hub
+DEFAULT CHARACTER SET utf8mb4
+DEFAULT COLLATE utf8mb4_general_ci;
+
 USE cultural_hub;
 
 CREATE TABLE artists (
