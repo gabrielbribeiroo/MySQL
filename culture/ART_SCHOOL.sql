@@ -19,3 +19,14 @@ CREATE TABLE art_school_teachers (
     email VARCHAR(100) UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE art_school_classes (
+    class_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    teacher_id INT NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE,
+    schedule VARCHAR(100),
+    FOREIGN KEY (course_id) REFERENCES art_school_courses(course_id),
+    FOREIGN KEY (teacher_id) REFERENCES art_school_teachers(teacher_id)
+);
