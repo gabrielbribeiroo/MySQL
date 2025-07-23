@@ -47,3 +47,13 @@ CREATE TABLE art_school_enrollments (
     FOREIGN KEY (student_id) REFERENCES art_school_students(student_id),
     FOREIGN KEY (class_id) REFERENCES art_school_classes(class_id)
 );
+
+CREATE TABLE art_school_portfolios (
+    portfolio_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    link VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_id) REFERENCES art_school_students(student_id)
+);
