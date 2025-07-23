@@ -30,3 +30,11 @@ CREATE TABLE art_school_classes (
     FOREIGN KEY (course_id) REFERENCES art_school_courses(course_id),
     FOREIGN KEY (teacher_id) REFERENCES art_school_teachers(teacher_id)
 );
+
+CREATE TABLE art_school_students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    enrollment_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
