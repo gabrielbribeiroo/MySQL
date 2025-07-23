@@ -38,3 +38,12 @@ CREATE TABLE art_school_students (
     enrollment_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE art_school_enrollments (
+    enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    class_id INT NOT NULL,
+    enrollment_date DATE NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES art_school_students(student_id),
+    FOREIGN KEY (class_id) REFERENCES art_school_classes(class_id)
+);
