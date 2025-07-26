@@ -4,3 +4,14 @@ DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
 
 USE urban_projects;
+
+CREATE TABLE projects (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    start_date DATE NOT NULL,
+    end_date DATE,
+    total_budget DECIMAL(15,2),
+    status ENUM('planned', 'in_progress', 'completed', 'canceled') DEFAULT 'planned',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
