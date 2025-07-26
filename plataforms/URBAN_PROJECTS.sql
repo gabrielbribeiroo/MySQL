@@ -26,3 +26,11 @@ CREATE TABLE phases (
     phase_budget DECIMAL(15,2),
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
+
+CREATE TABLE responsibles (
+    responsible_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    role VARCHAR(100),
+    email VARCHAR(100),
+    phone VARCHAR(20)
+);
