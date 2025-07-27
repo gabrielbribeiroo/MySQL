@@ -43,3 +43,13 @@ CREATE TABLE project_responsibles (
     FOREIGN KEY (project_id) REFERENCES projects(project_id),
     FOREIGN KEY (responsible_id) REFERENCES responsibles(responsible_id)
 );
+
+CREATE TABLE bids (
+    bid_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    company_name VARCHAR(100),
+    bid_amount DECIMAL(15,2),
+    bid_date DATE,
+    status ENUM('submitted', 'approved', 'rejected') DEFAULT 'submitted',
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
