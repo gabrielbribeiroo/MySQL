@@ -53,3 +53,12 @@ CREATE TABLE bids (
     status ENUM('submitted', 'approved', 'rejected') DEFAULT 'submitted',
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
+
+CREATE TABLE executions (
+    execution_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    execution_date DATE,
+    expense DECIMAL(15,2),
+    description TEXT,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
