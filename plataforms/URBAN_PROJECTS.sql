@@ -34,3 +34,12 @@ CREATE TABLE responsibles (
     email VARCHAR(100),
     phone VARCHAR(20)
 );
+
+CREATE TABLE project_responsibles (
+    project_id INT,
+    responsible_id INT,
+    assigned_role VARCHAR(100),
+    PRIMARY KEY (project_id, responsible_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (responsible_id) REFERENCES responsibles(responsible_id)
+);
