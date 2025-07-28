@@ -9,3 +9,10 @@ CREATE TABLE science_areas (
     name VARCHAR(100) NOT NULL,
     description TEXT
 );
+
+CREATE TABLE judges (
+    judge_id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    institution VARCHAR(100)
+);
