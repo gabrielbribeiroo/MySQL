@@ -27,3 +27,14 @@ CREATE TABLE projects (
     submission_date DATE,
     FOREIGN KEY (area_id) REFERENCES science_areas(area_id)
 );
+
+CREATE TABLE evaluations (
+    evaluation_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    judge_id INT,
+    score DECIMAL(4,2) CHECK (score >= 0 AND score <= 10),
+    feedback TEXT,
+    evaluation_date DATE,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (judge_id) REFERENCES judges(judge_id)
+);
