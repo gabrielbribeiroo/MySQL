@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS science_fair
+DEFAULT CHARACTER SET utf8mb4
+DEFAULT COLLATE utf8mb4_general_ci;
+
+USE science_fair;
