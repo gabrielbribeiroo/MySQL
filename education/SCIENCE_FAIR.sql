@@ -16,3 +16,14 @@ CREATE TABLE judges (
     email VARCHAR(100) UNIQUE,
     institution VARCHAR(100)
 );
+
+CREATE TABLE projects (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    area_id INT,
+    school_name VARCHAR(100),
+    student_names TEXT,
+    submission_date DATE,
+    FOREIGN KEY (area_id) REFERENCES science_areas(area_id)
+);
