@@ -29,3 +29,11 @@ CREATE TABLE law_proposals (
     author_id INT REFERENCES authors(author_id),
     topic_id INT REFERENCES topics(topic_id)
 );
+
+CREATE TABLE proposal_stages (
+    stage_id SERIAL PRIMARY KEY,
+    proposal_id INT REFERENCES law_proposals(proposal_id),
+    stage_name VARCHAR(255) NOT NULL, -- e.g., Committee Review, Plenary Vote
+    description TEXT,
+    stage_date DATE NOT NULL
+);
