@@ -5,3 +5,11 @@ DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
 
 USE law_proposals;
+
+CREATE TABLE authors (
+    author_id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    role VARCHAR(100), -- e.g., Senator, Representative
+    party VARCHAR(100),
+    state VARCHAR(100)
+);
