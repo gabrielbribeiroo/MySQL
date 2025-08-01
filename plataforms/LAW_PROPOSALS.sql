@@ -13,3 +13,9 @@ CREATE TABLE authors (
     party VARCHAR(100),
     state VARCHAR(100)
 );
+
+CREATE TABLE topics (
+    topic_id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT
+);
