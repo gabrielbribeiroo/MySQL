@@ -19,3 +19,13 @@ CREATE TABLE topics (
     name VARCHAR(255) NOT NULL,
     description TEXT
 );
+
+CREATE TABLE law_proposals (
+    proposal_id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    summary TEXT,
+    date_submitted DATE NOT NULL,
+    status VARCHAR(100) NOT NULL, -- e.g., In Progress, Approved, Rejected
+    author_id INT REFERENCES authors(author_id),
+    topic_id INT REFERENCES topics(topic_id)
+);
