@@ -37,3 +37,11 @@ CREATE TABLE proposal_stages (
     description TEXT,
     stage_date DATE NOT NULL
 );
+
+CREATE TABLE votes (
+    vote_id SERIAL PRIMARY KEY,
+    proposal_id INT REFERENCES law_proposals(proposal_id),
+    voter_name VARCHAR(255) NOT NULL,
+    vote_value VARCHAR(50) NOT NULL, -- e.g., Yes, No, Abstain
+    vote_date DATE NOT NULL
+);
