@@ -50,6 +50,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `petition_platform`: Online petition platform with signature goals, authorship tracking, and public comments.
 - `urban_projects`: Urban project management system with phases, responsibles, bidding, budgeting, and execution tracking.
 - `law_proposals`: Platform for tracking law proposals, their authors, topics, legislative progress, and voting outcomes.
+- `customer_support`: Customer support system for managing tickets, agents, statuses, feedback, and service categories.
 
 ### 🏥 Healthcare
 - `medical_clinic`: Medical clinic system including patient records, doctors, specialties, appointments, and medical histories.
