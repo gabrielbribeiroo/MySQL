@@ -24,3 +24,10 @@ CREATE TABLE tickets (
     category_id INTEGER REFERENCES categories(category_id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE ticket_assignments (
+    ticket_id INTEGER REFERENCES tickets(ticket_id) ON DELETE CASCADE,
+    agent_id INTEGER REFERENCES agents(agent_id),
+    assigned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (ticket_id, agent_id)
+);
