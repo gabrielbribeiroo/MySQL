@@ -36,3 +36,8 @@ CREATE TABLE votes (
     voted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(user_id, consultation_id)
 );
+
+CREATE TABLE consultation_tags (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL
+);
