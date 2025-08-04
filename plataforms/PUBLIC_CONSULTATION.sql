@@ -27,3 +27,12 @@ CREATE TABLE comments (
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE votes (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    consultation_id INTEGER REFERENCES consultation_topics(id),
+    vote BOOLEAN NOT NULL, -- true (yes), false (no)
+    voted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(user_id, consultation_id)
+);
