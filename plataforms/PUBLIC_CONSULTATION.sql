@@ -41,3 +41,9 @@ CREATE TABLE consultation_tags (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) UNIQUE NOT NULL
 );
+
+CREATE TABLE topic_tags (
+    topic_id INTEGER REFERENCES consultation_topics(id),
+    tag_id INTEGER REFERENCES consultation_tags(id),
+    PRIMARY KEY(topic_id, tag_id)
+);
