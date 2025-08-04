@@ -19,3 +19,11 @@ CREATE TABLE users (
     email TEXT UNIQUE NOT NULL,
     role VARCHAR(20) DEFAULT 'citizen' -- citizen, moderator, admin
 );
+
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    consultation_id INTEGER REFERENCES consultation_topics(id),
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
