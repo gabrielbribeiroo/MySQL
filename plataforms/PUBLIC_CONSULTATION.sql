@@ -12,3 +12,10 @@ CREATE TABLE consultation_topics (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL
 );
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    role VARCHAR(20) DEFAULT 'citizen' -- citizen, moderator, admin
+);
