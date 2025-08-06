@@ -72,6 +72,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `cultural_hub`: Platform for managing cultural centers, workshops, exhibitions, public activities, and community participation.
 - `theater_management`: Theater management system for controlling theaters, plays, casts, sessions, tickets, and reservations.
 - `art_school`: Art school administration system with courses, classes, teachers, and student portfolios.
+- `music_festival`: Music festival organization system with stages, artists, schedules, audience data, and sponsors.
 
 ---
 
