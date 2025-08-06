@@ -16,3 +16,10 @@ CREATE TABLE artists (
     genre VARCHAR(50),
     country VARCHAR(50)
 );
+
+CREATE TABLE sponsors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    industry VARCHAR(100),
+    contact_email VARCHAR(100)
+);
