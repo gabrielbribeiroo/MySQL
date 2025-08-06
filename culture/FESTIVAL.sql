@@ -44,3 +44,10 @@ CREATE TABLE festival_sponsors (
     sponsor_id INTEGER REFERENCES sponsors(id),
     PRIMARY KEY(festival_year, sponsor_id)
 );
+
+CREATE TABLE ticket_sales (
+    id SERIAL PRIMARY KEY,
+    attendee_id INTEGER REFERENCES attendees(id),
+    purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    price DECIMAL(10,2)
+);
