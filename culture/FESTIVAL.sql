@@ -38,3 +38,9 @@ CREATE TABLE attendees (
     email VARCHAR(100) UNIQUE,
     ticket_type VARCHAR(50) -- ex: VIP, Regular, Student
 );
+
+CREATE TABLE festival_sponsors (
+    festival_year INTEGER NOT NULL,
+    sponsor_id INTEGER REFERENCES sponsors(id),
+    PRIMARY KEY(festival_year, sponsor_id)
+);
