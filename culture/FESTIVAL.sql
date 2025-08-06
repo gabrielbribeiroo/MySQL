@@ -31,3 +31,10 @@ CREATE TABLE performances (
     performance_time TIMESTAMP NOT NULL,
     duration_minutes INTEGER
 );
+
+CREATE TABLE attendees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    ticket_type VARCHAR(50) -- ex: VIP, Regular, Student
+);
