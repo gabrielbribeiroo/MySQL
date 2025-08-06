@@ -23,3 +23,11 @@ CREATE TABLE sponsors (
     industry VARCHAR(100),
     contact_email VARCHAR(100)
 );
+
+CREATE TABLE performances (
+    id SERIAL PRIMARY KEY,
+    artist_id INTEGER REFERENCES artists(id),
+    stage_id INTEGER REFERENCES stages(id),
+    performance_time TIMESTAMP NOT NULL,
+    duration_minutes INTEGER
+);
