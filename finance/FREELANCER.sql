@@ -15,3 +15,14 @@ CREATE TABLE users (
     role VARCHAR(20) DEFAULT 'freelancer', -- freelancer, client, admin
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE projects (
+    id SERIAL PRIMARY KEY,
+    client_id INTEGER REFERENCES users(id),
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    category VARCHAR(100),
+    budget NUMERIC(12,2),
+    status VARCHAR(20) DEFAULT 'open', -- open, in_progress, completed, cancelled
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
