@@ -38,3 +38,11 @@ CREATE TABLE proposals (
     submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(project_id, freelancer_id)
 );
+
+CREATE TABLE deliveries (
+    id SERIAL PRIMARY KEY,
+    proposal_id INTEGER REFERENCES proposals(id),
+    delivery_link TEXT NOT NULL, -- link to files or repository
+    delivered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    approved BOOLEAN DEFAULT FALSE
+);
