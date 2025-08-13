@@ -22,6 +22,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `family_budget`: Family budgeting system with categories, monthly limits, planned vs. actual tracking, and spending analysis.
 - `erp`: Simplified ERP system for finance, clients, and services.
 - `credit_score`: Credit scoring system to evaluate individuals based on income, payment history, age, and credit records.
+- `freelancer_marketplace`: Freelance hiring platform with project listings, proposals, deliveries, and ratings.
 
 ### 📅 Scheduling & Productivity
 - `horary`: Weekly schedule management for organizing events, appointments, or classes by day and time slots.
