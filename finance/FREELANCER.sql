@@ -46,3 +46,13 @@ CREATE TABLE deliveries (
     delivered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     approved BOOLEAN DEFAULT FALSE
 );
+
+CREATE TABLE reviews (
+    id SERIAL PRIMARY KEY,
+    project_id INTEGER REFERENCES projects(id),
+    reviewer_id INTEGER REFERENCES users(id),
+    reviewee_id INTEGER REFERENCES users(id),
+    rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
