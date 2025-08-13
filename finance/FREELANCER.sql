@@ -26,3 +26,15 @@ CREATE TABLE projects (
     status VARCHAR(20) DEFAULT 'open', -- open, in_progress, completed, cancelled
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE proposals (
+    id SERIAL PRIMARY KEY,
+    project_id INTEGER REFERENCES projects(id),
+    freelancer_id INTEGER REFERENCES users(id),
+    proposal_text TEXT NOT NULL,
+    proposed_budget NUMERIC(12,2),
+    delivery_time_days INTEGER,
+    status VARCHAR(20) DEFAULT 'pending', -- pending, accepted, rejected
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(project_id, freelancer_id)
+);
