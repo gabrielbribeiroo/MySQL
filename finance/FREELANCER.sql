@@ -56,3 +56,6 @@ CREATE TABLE reviews (
     comment TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Index for quick search by category
+CREATE INDEX idx_projects_category ON projects(category);
