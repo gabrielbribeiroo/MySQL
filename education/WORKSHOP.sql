@@ -43,3 +43,10 @@ CREATE TABLE registrations (
     registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(participant_id, workshop_id)
 );
+
+CREATE TABLE certificates (
+    id SERIAL PRIMARY KEY,
+    registration_id INTEGER REFERENCES registrations(id) ON DELETE CASCADE,
+    issued_at DATE DEFAULT CURRENT_DATE,
+    certificate_code VARCHAR(50) UNIQUE NOT NULL
+);
