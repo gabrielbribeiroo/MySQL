@@ -23,3 +23,9 @@ CREATE TABLE instructors (
     bio TEXT,
     expertise_area VARCHAR(100)
 );
+
+CREATE TABLE workshop_instructors (
+    workshop_id INTEGER REFERENCES workshop_topics(id) ON DELETE CASCADE,
+    instructor_id INTEGER REFERENCES instructors(id) ON DELETE CASCADE,
+    PRIMARY KEY(workshop_id, instructor_id)
+);
