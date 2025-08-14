@@ -15,3 +15,11 @@ CREATE TABLE workshop_topics (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL
 );
+
+CREATE TABLE instructors (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    bio TEXT,
+    expertise_area VARCHAR(100)
+);
