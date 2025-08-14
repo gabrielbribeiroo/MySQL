@@ -29,3 +29,9 @@ CREATE TABLE workshop_instructors (
     instructor_id INTEGER REFERENCES instructors(id) ON DELETE CASCADE,
     PRIMARY KEY(workshop_id, instructor_id)
 );
+
+CREATE TABLE participants (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL
+);
