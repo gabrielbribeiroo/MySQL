@@ -35,3 +35,11 @@ CREATE TABLE participants (
     name TEXT NOT NULL,
     email TEXT UNIQUE NOT NULL
 );
+
+CREATE TABLE registrations (
+    id SERIAL PRIMARY KEY,
+    participant_id INTEGER REFERENCES participants(id) ON DELETE CASCADE,
+    workshop_id INTEGER REFERENCES workshop_topics(id) ON DELETE CASCADE,
+    registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(participant_id, workshop_id)
+);
