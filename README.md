@@ -43,6 +43,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `athlete_performance`: Performance tracking system for high-performance athletes, including physical tests, training logs, evaluations, and metrics.
 - `sports_club`: Multisport club management system with modality registration, class schedules, monitors, and member enrollments.
 - `archery_club`: Archery club management system with athlete profiles, coaching sessions, equipment tracking, attendance, and performance metrics.
+- `e-sports`: E-sports tournament and team management system with players, games, matches, rankings, sponsors, and streaming integrations.
 
 ### 🗳️ Participatory Platforms
 - `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.
