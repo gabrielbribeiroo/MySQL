@@ -48,3 +48,13 @@ CREATE TABLE deliveries (
     status ENUM('pending', 'in_transit', 'delivered') DEFAULT 'pending',
     FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
+
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    amount DECIMAL(10,2) NOT NULL,
+    method ENUM('credit_card', 'debit_card', 'pix', 'boleto', 'paypal') NOT NULL,
+    status ENUM('pending', 'completed', 'failed', 'refunded') DEFAULT 'pending',
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
