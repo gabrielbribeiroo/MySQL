@@ -39,3 +39,12 @@ CREATE TABLE orders (
     total_amount DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
+
+CREATE TABLE deliveries (
+    delivery_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    address TEXT NOT NULL,
+    delivery_date DATE,
+    status ENUM('pending', 'in_transit', 'delivered') DEFAULT 'pending',
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
