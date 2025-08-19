@@ -58,3 +58,14 @@ CREATE TABLE payments (
     status ENUM('pending', 'completed', 'failed', 'refunded') DEFAULT 'pending',
     FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
+
+CREATE TABLE reviews (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    customer_id INT,
+    rating INT CHECK(rating BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
