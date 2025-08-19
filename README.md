@@ -78,6 +78,9 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `art_school`: Art school administration system with courses, classes, teachers, and student portfolios.
 - `music_festival`: Music festival organization system with stages, artists, schedules, audience data, and sponsors.
 
+### 🛒 Commerce & Consumption
+- `ecommerce_platform`: E-commerce system with products, categories, customers, orders, deliveries, payments, and product reviews.
+
 ---
 
 ## 🛠️ Languages & Tools
