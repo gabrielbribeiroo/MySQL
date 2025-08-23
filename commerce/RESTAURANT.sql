@@ -18,3 +18,10 @@ CREATE TABLE menu_items (
     category_id INT,
     FOREIGN KEY (category_id) REFERENCES menu_categories(category_id)
 );
+
+CREATE TABLE tables (
+    table_id INT PRIMARY KEY AUTO_INCREMENT,
+    table_number INT NOT NULL UNIQUE,
+    capacity INT NOT NULL,
+    status ENUM('available','reserved','occupied') DEFAULT 'available'
+);
