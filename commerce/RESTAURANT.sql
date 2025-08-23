@@ -32,3 +32,14 @@ CREATE TABLE waiters (
     phone VARCHAR(20),
     shift ENUM('morning','afternoon','evening') NOT NULL
 );
+
+CREATE TABLE reservations (
+    reservation_id INT PRIMARY KEY AUTO_INCREMENT,
+    table_id INT NOT NULL,
+    customer_name VARCHAR(100) NOT NULL,
+    customer_phone VARCHAR(20),
+    reservation_time DATETIME NOT NULL,
+    num_people INT NOT NULL,
+    status ENUM('pending','confirmed','cancelled') DEFAULT 'pending',
+    FOREIGN KEY (table_id) REFERENCES tables(table_id)
+);
