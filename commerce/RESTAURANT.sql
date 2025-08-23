@@ -25,3 +25,10 @@ CREATE TABLE tables (
     capacity INT NOT NULL,
     status ENUM('available','reserved','occupied') DEFAULT 'available'
 );
+
+CREATE TABLE waiters (
+    waiter_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    shift ENUM('morning','afternoon','evening') NOT NULL
+);
