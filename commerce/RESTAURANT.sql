@@ -9,3 +9,12 @@ CREATE TABLE menu_categories (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL
 );
+
+CREATE TABLE menu_items (
+    item_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES menu_categories(category_id)
+);
