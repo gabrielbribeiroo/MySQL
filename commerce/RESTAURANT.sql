@@ -43,3 +43,13 @@ CREATE TABLE reservations (
     status ENUM('pending','confirmed','cancelled') DEFAULT 'pending',
     FOREIGN KEY (table_id) REFERENCES tables(table_id)
 );
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    table_id INT NOT NULL,
+    waiter_id INT NOT NULL,
+    order_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('open','served','paid','cancelled') DEFAULT 'open',
+    FOREIGN KEY (table_id) REFERENCES tables(table_id),
+    FOREIGN KEY (waiter_id) REFERENCES waiters(waiter_id)
+);
