@@ -79,7 +79,8 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `music_festival`: Music festival organization system with stages, artists, schedules, audience data, and sponsors.
 
 ### 🛒 Commerce & Consumption
-- `ecommerce_platform`: E-commerce system with products, categories, customers, orders, deliveries, payments, and product reviews.
+- `ecommerce_platform`: E-commerce system with products, categories, customers, orders, deliveries, payments, and reviews.
+- `restaurant_management`: Restaurant management system with menu, tables, reservations, orders, waiters, and payments.
 
 ---
 
