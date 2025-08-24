@@ -53,3 +53,13 @@ CREATE TABLE orders (
     FOREIGN KEY (table_id) REFERENCES tables(table_id),
     FOREIGN KEY (waiter_id) REFERENCES waiters(waiter_id)
 );
+
+CREATE TABLE order_items (
+    order_item_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    item_id INT NOT NULL,
+    quantity INT NOT NULL CHECK (quantity > 0),
+    price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
+);
