@@ -23,3 +23,10 @@ CREATE TABLE products (
     stock_quantity INTEGER DEFAULT 0,
     supplier_id INTEGER REFERENCES suppliers(id)
 );
+
+CREATE TABLE purchases (
+    id SERIAL PRIMARY KEY,
+    supplier_id INTEGER REFERENCES suppliers(id),
+    purchase_date DATE NOT NULL,
+    total_amount DECIMAL(10,2) NOT NULL
+);
