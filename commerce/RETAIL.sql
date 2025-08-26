@@ -45,3 +45,11 @@ CREATE TABLE sales (
     total_amount DECIMAL(10,2) NOT NULL,
     payment_method VARCHAR(20) -- dinheiro, cartão, pix, etc.
 );
+
+CREATE TABLE sale_items (
+    sale_id INTEGER REFERENCES sales(id),
+    product_id INTEGER REFERENCES products(id),
+    quantity INTEGER NOT NULL,
+    sale_price DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (sale_id, product_id)
+);
