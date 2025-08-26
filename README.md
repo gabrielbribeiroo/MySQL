@@ -81,6 +81,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 ### 🛒 Commerce & Consumption
 - `ecommerce_platform`: E-commerce system with products, categories, customers, orders, deliveries, payments, and reviews.
 - `restaurant_management`: Restaurant management system with menu, tables, reservations, orders, waiters, and payments.
+- `retail_inventory`: Inventory and sales control system for physical stores, with products, suppliers, purchases, and turnover reports.
 
 ---
 
