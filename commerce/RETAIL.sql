@@ -38,3 +38,10 @@ CREATE TABLE purchase_items (
     cost_price DECIMAL(10,2) NOT NULL,
     PRIMARY KEY (purchase_id, product_id)
 );
+
+CREATE TABLE sales (
+    id SERIAL PRIMARY KEY,
+    sale_date DATE NOT NULL,
+    total_amount DECIMAL(10,2) NOT NULL,
+    payment_method VARCHAR(20) -- dinheiro, cartão, pix, etc.
+);
