@@ -30,3 +30,11 @@ CREATE TABLE purchases (
     purchase_date DATE NOT NULL,
     total_amount DECIMAL(10,2) NOT NULL
 );
+
+CREATE TABLE purchase_items (
+    purchase_id INTEGER REFERENCES purchases(id),
+    product_id INTEGER REFERENCES products(id),
+    quantity INTEGER NOT NULL,
+    cost_price DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (purchase_id, product_id)
+);
