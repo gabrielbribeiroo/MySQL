@@ -24,3 +24,10 @@ CREATE TABLE projects (
     budget DECIMAL(12,2),
     funder_id INTEGER REFERENCES funders(id)
 );
+
+CREATE TABLE impact_indicators (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    unit VARCHAR(50),
+    description TEXT
+);
