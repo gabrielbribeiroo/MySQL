@@ -83,6 +83,9 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `restaurant_management`: Restaurant management system with menu, tables, reservations, orders, waiters, and payments.
 - `retail_inventory`: Inventory and sales control system for physical stores, with products, suppliers, purchases, and turnover reports.
 
+### 🌱 Sustainability & Environment
+- `green_projects`: Sustainable project management system with environmental impact indicators, funders, and execution tracking.
+
 ---
 
 ## 🛠️ Languages & Tools
