@@ -31,3 +31,11 @@ CREATE TABLE impact_indicators (
     unit VARCHAR(50),
     description TEXT
 );
+
+CREATE TABLE project_indicators (
+    project_id INTEGER REFERENCES projects(id),
+    indicator_id INTEGER REFERENCES impact_indicators(id),
+    target_value DECIMAL(12,2),
+    achieved_value DECIMAL(12,2),
+    PRIMARY KEY (project_id, indicator_id)
+);
