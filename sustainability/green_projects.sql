@@ -39,3 +39,12 @@ CREATE TABLE project_indicators (
     achieved_value DECIMAL(12,2),
     PRIMARY KEY (project_id, indicator_id)
 );
+
+CREATE TABLE executions (
+    id SERIAL PRIMARY KEY,
+    project_id INTEGER REFERENCES projects(id),
+    activity_name VARCHAR(150) NOT NULL,
+    description TEXT,
+    execution_date DATE NOT NULL,
+    cost DECIMAL(12,2)
+);
