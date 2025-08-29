@@ -19,3 +19,14 @@ CREATE TABLE emission_sources (
     name VARCHAR(100) NOT NULL,
     description TEXT
 );
+
+CREATE TABLE emission_records (
+    id SERIAL PRIMARY KEY,
+    entity_id INTEGER REFERENCES entities(id),
+    source_id INTEGER REFERENCES emission_sources(id),
+    record_date DATE NOT NULL,
+    activity_description TEXT,
+    amount DECIMAL(12,2) NOT NULL,
+    emission_factor DECIMAL(12,4) NOT NULL,
+    total_emission DECIMAL(12,2) GENERATED ALWAYS AS (amount * emission_factor) STORED
+);
