@@ -13,3 +13,9 @@ CREATE TABLE entities (
     country VARCHAR(100),
     sector VARCHAR(100)
 );
+
+CREATE TABLE emission_sources (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT
+);
