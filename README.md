@@ -85,6 +85,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 
 ### 🌱 Sustainability & Environment
 - `green_projects`: Sustainable project management system with environmental impact indicators, funders, and execution tracking.
+- `carbon_footprint`: System to measure and monitor carbon emissions for companies, sectors, or individuals.
 
 ---
 
