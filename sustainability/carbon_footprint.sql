@@ -41,3 +41,12 @@ CREATE TABLE reduction_actions (
     estimated_reduction DECIMAL(12,2), -- redução prevista em kg CO2e
     actual_reduction DECIMAL(12,2) -- redução efetiva
 );
+
+CREATE TABLE reports (
+    id SERIAL PRIMARY KEY,
+    entity_id INTEGER REFERENCES entities(id),
+    report_date DATE NOT NULL,
+    total_emissions DECIMAL(12,2),
+    total_reductions DECIMAL(12,2),
+    net_emissions DECIMAL(12,2)
+);
