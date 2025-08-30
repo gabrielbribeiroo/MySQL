@@ -30,3 +30,14 @@ CREATE TABLE emission_records (
     emission_factor DECIMAL(12,4) NOT NULL,
     total_emission DECIMAL(12,2) GENERATED ALWAYS AS (amount * emission_factor) STORED
 );
+
+CREATE TABLE reduction_actions (
+    id SERIAL PRIMARY KEY,
+    entity_id INTEGER REFERENCES entities(id),
+    action_name VARCHAR(150) NOT NULL,
+    description TEXT,
+    start_date DATE,
+    end_date DATE,
+    estimated_reduction DECIMAL(12,2), -- redução prevista em kg CO2e
+    actual_reduction DECIMAL(12,2) -- redução efetiva
+);
