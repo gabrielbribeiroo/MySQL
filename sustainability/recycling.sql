@@ -23,3 +23,11 @@ CREATE TABLE waste_types (
     description TEXT,
     recycling_process TEXT
 );
+
+CREATE TABLE collections (
+    id SERIAL PRIMARY KEY,
+    point_id INTEGER REFERENCES collection_points(id),
+    waste_type_id INTEGER REFERENCES waste_types(id),
+    collection_date DATE NOT NULL,
+    volume_kg DECIMAL(12,2) NOT NULL
+);
