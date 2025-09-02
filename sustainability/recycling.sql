@@ -16,3 +16,10 @@ CREATE TABLE collection_points (
     opening_hours VARCHAR(100),
     contact_info VARCHAR(100)
 );
+
+CREATE TABLE waste_types (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    recycling_process TEXT
+);
