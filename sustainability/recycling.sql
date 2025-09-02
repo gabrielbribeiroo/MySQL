@@ -5,3 +5,14 @@ CREATE DATABASE IF NOT EXISTS recycling_center
   DEFAULT COLLATE utf8mb4_general_ci;
 
 USE recycling_center;
+
+CREATE TABLE collection_points (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    address TEXT NOT NULL,
+    city VARCHAR(100),
+    state VARCHAR(50),
+    zip_code VARCHAR(20),
+    opening_hours VARCHAR(100),
+    contact_info VARCHAR(100)
+);
