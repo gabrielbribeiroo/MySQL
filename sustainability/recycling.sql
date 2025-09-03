@@ -48,3 +48,12 @@ CREATE TABLE partners (
     partner_type VARCHAR(50),
     contact_info VARCHAR(100)
 );
+
+CREATE TABLE awareness_campaigns (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    start_date DATE,
+    end_date DATE,
+    target_audience VARCHAR(100)
+);
