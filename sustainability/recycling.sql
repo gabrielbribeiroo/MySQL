@@ -41,3 +41,10 @@ CREATE TABLE reverse_logistics (
     received_date DATE,
     status VARCHAR(50) CHECK (status IN ('Shipped', 'Received', 'In Process'))
 );
+
+CREATE TABLE partners (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    partner_type VARCHAR(50),
+    contact_info VARCHAR(100)
+);
