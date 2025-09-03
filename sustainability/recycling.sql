@@ -31,3 +31,13 @@ CREATE TABLE collections (
     collection_date DATE NOT NULL,
     volume_kg DECIMAL(12,2) NOT NULL
 );
+
+CREATE TABLE reverse_logistics (
+    id SERIAL PRIMARY KEY,
+    collection_id INTEGER REFERENCES collections(id),
+    destination VARCHAR(150) NOT NULL,
+    transport_company VARCHAR(100),
+    shipped_date DATE,
+    received_date DATE,
+    status VARCHAR(50) CHECK (status IN ('Shipped', 'Received', 'In Process'))
+);
