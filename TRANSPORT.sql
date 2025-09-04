@@ -11,3 +11,12 @@ CREATE TABLE lines (
     route_description TEXT,
     operation_hours VARCHAR(100)
 );
+
+CREATE TABLE stops (
+    id SERIAL PRIMARY KEY,
+    line_id INTEGER REFERENCES lines(id) ON DELETE CASCADE,
+    name VARCHAR(100) NOT NULL,
+    latitude DECIMAL(10,6),
+    longitude DECIMAL(10,6),
+    order_in_route INTEGER NOT NULL
+);
