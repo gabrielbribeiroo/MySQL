@@ -29,3 +29,11 @@ CREATE TABLE vehicles (
     capacity INTEGER,
     status VARCHAR(50) CHECK (status IN ('Active', 'Maintenance', 'Inactive'))
 );
+
+CREATE TABLE schedules (
+    id SERIAL PRIMARY KEY,
+    line_id INTEGER REFERENCES lines(id) ON DELETE CASCADE,
+    stop_id INTEGER REFERENCES stops(id) ON DELETE CASCADE,
+    departure_time TIME NOT NULL,
+    arrival_time TIME
+);
