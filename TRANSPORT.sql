@@ -20,3 +20,12 @@ CREATE TABLE stops (
     longitude DECIMAL(10,6),
     order_in_route INTEGER NOT NULL
 );
+
+CREATE TABLE vehicles (
+    id SERIAL PRIMARY KEY,
+    line_id INTEGER REFERENCES lines(id) ON DELETE SET NULL,
+    plate_number VARCHAR(20) UNIQUE NOT NULL,
+    vehicle_type VARCHAR(50),
+    capacity INTEGER,
+    status VARCHAR(50) CHECK (status IN ('Active', 'Maintenance', 'Inactive'))
+);
