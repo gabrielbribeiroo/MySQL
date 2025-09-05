@@ -52,3 +52,11 @@ CREATE TABLE passengers (
     document VARCHAR(50),
     category VARCHAR(50)
 );
+
+CREATE TABLE validations (
+    id SERIAL PRIMARY KEY,
+    passenger_id INTEGER REFERENCES passengers(id) ON DELETE CASCADE,
+    ticket_id INTEGER REFERENCES tickets(id),
+    vehicle_id INTEGER REFERENCES vehicles(id),
+    validation_time TIMESTAMP NOT NULL DEFAULT NOW()
+);
