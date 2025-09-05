@@ -60,3 +60,13 @@ CREATE TABLE validations (
     vehicle_id INTEGER REFERENCES vehicles(id),
     validation_time TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+CREATE TABLE real_time_tracking (
+    id SERIAL PRIMARY KEY,
+    vehicle_id INTEGER REFERENCES vehicles(id) ON DELETE CASCADE,
+    latitude DECIMAL(10,6),
+    longitude DECIMAL(10,6),
+    speed DECIMAL(6,2),
+    status VARCHAR(50) CHECK (status IN ('On Route', 'Stopped', 'Delayed')),
+    timestamp TIMESTAMP DEFAULT NOW()
+);
