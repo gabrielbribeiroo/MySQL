@@ -45,3 +45,10 @@ CREATE TABLE tickets (
     valid_from DATE,
     valid_until DATE
 );
+
+CREATE TABLE passengers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    document VARCHAR(50),
+    category VARCHAR(50)
+);
