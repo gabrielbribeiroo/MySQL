@@ -37,3 +37,11 @@ CREATE TABLE schedules (
     departure_time TIME NOT NULL,
     arrival_time TIME
 );
+
+CREATE TABLE tickets (
+    id SERIAL PRIMARY KEY,
+    ticket_type VARCHAR(50) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    valid_from DATE,
+    valid_until DATE
+);
