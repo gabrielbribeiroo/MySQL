@@ -30,3 +30,12 @@ CREATE TABLE routes (
     distance_km DECIMAL(6,2),
     estimated_time INTERVAL
 );
+
+CREATE TABLE rides (
+    id SERIAL PRIMARY KEY,
+    driver_id INTEGER REFERENCES drivers(id) ON DELETE CASCADE,
+    route_id INTEGER REFERENCES routes(id) ON DELETE CASCADE,
+    departure_time TIMESTAMP NOT NULL,
+    available_seats INTEGER NOT NULL,
+    status VARCHAR(50) CHECK (status IN ('Scheduled', 'In Progress', 'Completed', 'Cancelled')) DEFAULT 'Scheduled'
+);
