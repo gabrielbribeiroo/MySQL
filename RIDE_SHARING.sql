@@ -14,3 +14,11 @@ CREATE TABLE drivers (
     rating DECIMAL(3,2) DEFAULT 5.0 CHECK (rating >= 0 AND rating <= 5),
     phone VARCHAR(20)
 );
+
+CREATE TABLE passengers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    document VARCHAR(50) UNIQUE,
+    phone VARCHAR(20),
+    rating DECIMAL(3,2) DEFAULT 5.0 CHECK (rating >= 0 AND rating <= 5)
+);
