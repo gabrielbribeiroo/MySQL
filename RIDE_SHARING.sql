@@ -1,4 +1,9 @@
 -- Database: ride_sharing
+CREATE DATABASE IF NOT EXISTS ride_sharing
+  DEFAULT CHARACTER SET utf8mb4
+  DEFAULT COLLATE utf8mb4_general_ci;
+
+USE ride_sharing;
 
 CREATE TABLE drivers (
     id SERIAL PRIMARY KEY,
