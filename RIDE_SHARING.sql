@@ -22,3 +22,11 @@ CREATE TABLE passengers (
     phone VARCHAR(20),
     rating DECIMAL(3,2) DEFAULT 5.0 CHECK (rating >= 0 AND rating <= 5)
 );
+
+CREATE TABLE routes (
+    id SERIAL PRIMARY KEY,
+    origin VARCHAR(200) NOT NULL,
+    destination VARCHAR(200) NOT NULL,
+    distance_km DECIMAL(6,2),
+    estimated_time INTERVAL
+);
