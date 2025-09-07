@@ -46,3 +46,12 @@ CREATE TABLE ride_passengers (
     seat_number INTEGER,
     PRIMARY KEY (ride_id, passenger_id)
 );
+
+CREATE TABLE payments (
+    id SERIAL PRIMARY KEY,
+    ride_id INTEGER REFERENCES rides(id) ON DELETE CASCADE,
+    passenger_id INTEGER REFERENCES passengers(id) ON DELETE CASCADE,
+    amount DECIMAL(10,2) NOT NULL,
+    method VARCHAR(50) CHECK (method IN ('Cash', 'Credit Card', 'Debit Card', 'Pix')),
+    status VARCHAR(50) CHECK (status IN ('Pending', 'Paid', 'Refunded')) DEFAULT 'Pending'
+);
