@@ -55,3 +55,13 @@ CREATE TABLE payments (
     method VARCHAR(50) CHECK (method IN ('Cash', 'Credit Card', 'Debit Card', 'Pix')),
     status VARCHAR(50) CHECK (status IN ('Pending', 'Paid', 'Refunded')) DEFAULT 'Pending'
 );
+
+CREATE TABLE reviews (
+    id SERIAL PRIMARY KEY,
+    ride_id INTEGER REFERENCES rides(id) ON DELETE CASCADE,
+    reviewer_type VARCHAR(20) CHECK (reviewer_type IN ('Driver', 'Passenger')),
+    reviewer_id INTEGER NOT NULL,
+    rating DECIMAL(3,2) CHECK (rating >= 0 AND rating <= 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT NOW()
+);
