@@ -39,3 +39,10 @@ CREATE TABLE rides (
     available_seats INTEGER NOT NULL,
     status VARCHAR(50) CHECK (status IN ('Scheduled', 'In Progress', 'Completed', 'Cancelled')) DEFAULT 'Scheduled'
 );
+
+CREATE TABLE ride_passengers (
+    ride_id INTEGER REFERENCES rides(id) ON DELETE CASCADE,
+    passenger_id INTEGER REFERENCES passengers(id) ON DELETE CASCADE,
+    seat_number INTEGER,
+    PRIMARY KEY (ride_id, passenger_id)
+);
