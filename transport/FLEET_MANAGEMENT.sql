@@ -40,3 +40,12 @@ CREATE TABLE assignments (
     end_date TIMESTAMP,
     status VARCHAR(50) CHECK (status IN ('Planned', 'Ongoing', 'Completed', 'Cancelled')) DEFAULT 'Planned'
 );
+
+CREATE TABLE maintenance (
+    id SERIAL PRIMARY KEY,
+    vehicle_id INTEGER REFERENCES vehicles(id) ON DELETE CASCADE,
+    description TEXT NOT NULL,
+    maintenance_date DATE NOT NULL,
+    cost DECIMAL(10,2) DEFAULT 0,
+    provider VARCHAR(100)
+);
