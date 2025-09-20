@@ -13,3 +13,12 @@ CREATE TABLE vehicles (
     type VARCHAR(50), -- carro, caminhão, van, ônibus etc.
     status VARCHAR(50) CHECK (status IN ('Active', 'Inactive', 'In Maintenance')) DEFAULT 'Active'
 );
+
+CREATE TABLE drivers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    license_number VARCHAR(50) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    hire_date DATE,
+    status VARCHAR(50) CHECK (status IN ('Active', 'Inactive')) DEFAULT 'Active'
+);
