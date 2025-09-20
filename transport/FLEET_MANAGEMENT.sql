@@ -30,3 +30,13 @@ CREATE TABLE routes (
     distance_km DECIMAL(8,2),
     estimated_time INTERVAL
 );
+
+CREATE TABLE assignments (
+    id SERIAL PRIMARY KEY,
+    vehicle_id INTEGER REFERENCES vehicles(id) ON DELETE CASCADE,
+    driver_id INTEGER REFERENCES drivers(id) ON DELETE CASCADE,
+    route_id INTEGER REFERENCES routes(id) ON DELETE CASCADE,
+    start_date TIMESTAMP NOT NULL,
+    end_date TIMESTAMP,
+    status VARCHAR(50) CHECK (status IN ('Planned', 'Ongoing', 'Completed', 'Cancelled')) DEFAULT 'Planned'
+);
