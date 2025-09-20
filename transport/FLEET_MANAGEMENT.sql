@@ -49,3 +49,12 @@ CREATE TABLE maintenance (
     cost DECIMAL(10,2) DEFAULT 0,
     provider VARCHAR(100)
 );
+
+CREATE TABLE costs (
+    id SERIAL PRIMARY KEY,
+    vehicle_id INTEGER REFERENCES vehicles(id) ON DELETE CASCADE,
+    assignment_id INTEGER REFERENCES assignments(id) ON DELETE CASCADE,
+    cost_type VARCHAR(50) CHECK (cost_type IN ('Fuel', 'Toll', 'Repair', 'Insurance', 'Other')),
+    amount DECIMAL(10,2) NOT NULL,
+    incurred_at DATE NOT NULL DEFAULT CURRENT_DATE
+);
