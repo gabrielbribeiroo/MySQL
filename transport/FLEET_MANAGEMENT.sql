@@ -22,3 +22,11 @@ CREATE TABLE drivers (
     hire_date DATE,
     status VARCHAR(50) CHECK (status IN ('Active', 'Inactive')) DEFAULT 'Active'
 );
+
+CREATE TABLE routes (
+    id SERIAL PRIMARY KEY,
+    origin VARCHAR(200) NOT NULL,
+    destination VARCHAR(200) NOT NULL,
+    distance_km DECIMAL(8,2),
+    estimated_time INTERVAL
+);
