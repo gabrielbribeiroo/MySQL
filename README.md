@@ -91,6 +91,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 ### 🚍 Transport & Mobility
 - `public_transport`: Public transport system with lines, schedules, vehicles, tickets, passengers, and real-time monitoring.
 - `ride_sharing`: Ride-sharing platform with drivers, passengers, routes, rides, reviews, and payments.
+- `fleet_management`: Corporate fleet management with vehicles, drivers, routes, maintenance, and operational costs.
 
 ---
 
