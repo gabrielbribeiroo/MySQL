@@ -10,3 +10,11 @@ CREATE TABLE categories (
     name VARCHAR(100) UNIQUE NOT NULL,
     description TEXT
 );
+
+CREATE TABLE journalists (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    bio TEXT,
+    joined_at DATE DEFAULT CURRENT_DATE
+);
