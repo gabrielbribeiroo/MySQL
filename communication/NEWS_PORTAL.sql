@@ -18,3 +18,10 @@ CREATE TABLE journalists (
     bio TEXT,
     joined_at DATE DEFAULT CURRENT_DATE
 );
+
+CREATE TABLE readers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
