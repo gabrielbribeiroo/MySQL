@@ -25,3 +25,13 @@ CREATE TABLE readers (
     email VARCHAR(150) UNIQUE NOT NULL,
     registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE articles (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    content TEXT NOT NULL,
+    category_id INTEGER REFERENCES categories(id),
+    journalist_id INTEGER REFERENCES journalists(id),
+    published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(20) CHECK (status IN ('Draft', 'Published', 'Archived')) DEFAULT 'Draft'
+);
