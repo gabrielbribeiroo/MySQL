@@ -93,6 +93,9 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `ride_sharing`: Ride-sharing platform with drivers, passengers, routes, rides, reviews, and payments.
 - `fleet_management`: Corporate fleet management with vehicles, drivers, routes, maintenance, and operational costs.
 
+### 🌐 Media & Communication
+- `news_portal`: News portal with articles, categories, journalists, readers, comments, and social media shares.
+
 ---
 
 ## 🛠️ Languages & Tools
