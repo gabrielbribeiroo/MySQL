@@ -35,3 +35,11 @@ CREATE TABLE articles (
     published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(20) CHECK (status IN ('Draft', 'Published', 'Archived')) DEFAULT 'Draft'
 );
+
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    article_id INTEGER REFERENCES articles(id) ON DELETE CASCADE,
+    reader_id INTEGER REFERENCES readers(id) ON DELETE CASCADE,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
