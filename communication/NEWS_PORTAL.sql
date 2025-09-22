@@ -43,3 +43,11 @@ CREATE TABLE comments (
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE shares (
+    id SERIAL PRIMARY KEY,
+    article_id INTEGER REFERENCES articles(id) ON DELETE CASCADE,
+    reader_id INTEGER REFERENCES readers(id) ON DELETE CASCADE,
+    platform VARCHAR(50),
+    shared_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
