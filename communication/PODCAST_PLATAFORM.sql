@@ -20,3 +20,13 @@ CREATE TABLE podcasts (
     host_id INTEGER REFERENCES hosts(id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE episodes (
+    id SERIAL PRIMARY KEY,
+    podcast_id INTEGER REFERENCES podcasts(id) ON DELETE CASCADE,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    duration INTERVAL, -- duração do episódio
+    published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    audio_url TEXT NOT NULL
+);
