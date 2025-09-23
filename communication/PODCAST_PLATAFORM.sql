@@ -12,3 +12,11 @@ CREATE TABLE hosts (
     bio TEXT,
     joined_at DATE DEFAULT CURRENT_DATE
 );
+
+CREATE TABLE podcasts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    host_id INTEGER REFERENCES hosts(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
