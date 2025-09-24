@@ -37,3 +37,11 @@ CREATE TABLE listeners (
     email VARCHAR(150) UNIQUE NOT NULL,
     registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE episode_stats (
+    id SERIAL PRIMARY KEY,
+    episode_id INTEGER REFERENCES episodes(id) ON DELETE CASCADE,
+    listener_id INTEGER REFERENCES listeners(id) ON DELETE CASCADE,
+    listened_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    progress DECIMAL(5,2) CHECK (progress >= 0 AND progress <= 100) -- % do episódio ouvido
+);
