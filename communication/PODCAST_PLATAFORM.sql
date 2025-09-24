@@ -45,3 +45,11 @@ CREATE TABLE episode_stats (
     listened_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     progress DECIMAL(5,2) CHECK (progress >= 0 AND progress <= 100) -- % do episódio ouvido
 );
+
+CREATE TABLE monetization (
+    id SERIAL PRIMARY KEY,
+    podcast_id INTEGER REFERENCES podcasts(id) ON DELETE CASCADE,
+    source VARCHAR(100) NOT NULL, -- ex: ads, sponsorship, subscription
+    amount DECIMAL(10,2) NOT NULL,
+    received_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
