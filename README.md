@@ -95,6 +95,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 
 ### 🌐 Media & Communication
 - `news_portal`: News portal with articles, categories, journalists, readers, comments, and social media shares.
+- `podcast_platform`: Podcast platform with episodes, hosts, listeners, statistics, and monetization tracking.
 
 ---
 
