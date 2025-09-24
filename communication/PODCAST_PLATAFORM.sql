@@ -30,3 +30,10 @@ CREATE TABLE episodes (
     published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     audio_url TEXT NOT NULL
 );
+
+CREATE TABLE listeners (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
