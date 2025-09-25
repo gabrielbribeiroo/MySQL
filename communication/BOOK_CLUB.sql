@@ -11,3 +11,12 @@ CREATE TABLE users (
     email VARCHAR(150) UNIQUE NOT NULL,
     joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE books (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    author VARCHAR(150) NOT NULL,
+    genre VARCHAR(100),
+    published_year INT,
+    description TEXT
+);
