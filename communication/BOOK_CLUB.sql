@@ -20,3 +20,12 @@ CREATE TABLE books (
     published_year INT,
     description TEXT
 );
+
+CREATE TABLE reviews (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    book_id INTEGER REFERENCES books(id) ON DELETE CASCADE,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
