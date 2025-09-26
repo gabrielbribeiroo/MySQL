@@ -43,3 +43,11 @@ CREATE TABLE group_members (
     joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (group_id, user_id)
 );
+
+CREATE TABLE meetings (
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER REFERENCES discussion_groups(id) ON DELETE CASCADE,
+    scheduled_date TIMESTAMP NOT NULL,
+    topic VARCHAR(200),
+    location VARCHAR(200)
+);
