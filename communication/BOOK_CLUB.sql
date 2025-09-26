@@ -51,3 +51,10 @@ CREATE TABLE meetings (
     topic VARCHAR(200),
     location VARCHAR(200)
 );
+
+CREATE TABLE recommendations (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    book_id INTEGER REFERENCES books(id) ON DELETE CASCADE,
+    recommended_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
