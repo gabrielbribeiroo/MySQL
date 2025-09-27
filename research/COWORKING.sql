@@ -21,3 +21,12 @@ CREATE TABLE plans (
     price NUMERIC(10,2) NOT NULL,
     duration_months INT NOT NULL
 );
+
+CREATE TABLE contracts (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    plan_id INTEGER REFERENCES plans(id),
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    status VARCHAR(50) DEFAULT 'active' -- active, expired, cancelled
+);
