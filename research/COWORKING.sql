@@ -13,3 +13,11 @@ CREATE TABLE users (
     phone VARCHAR(20),
     role VARCHAR(50) DEFAULT 'member' -- member, admin, staff
 );
+
+CREATE TABLE plans (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    price NUMERIC(10,2) NOT NULL,
+    duration_months INT NOT NULL
+);
