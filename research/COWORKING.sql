@@ -47,3 +47,12 @@ CREATE TABLE reservations (
     status VARCHAR(50) DEFAULT 'confirmed', -- confirmed, cancelled
     UNIQUE(room_id, start_time, end_time)
 );
+
+CREATE TABLE events (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    event_date TIMESTAMP NOT NULL,
+    organizer_id INTEGER REFERENCES users(id),
+    location VARCHAR(150)
+);
