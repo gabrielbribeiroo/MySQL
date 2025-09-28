@@ -37,3 +37,13 @@ CREATE TABLE rooms (
     capacity INT NOT NULL,
     room_type VARCHAR(50) -- meeting, conference, private_office, shared_desk
 );
+
+CREATE TABLE reservations (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    room_id INTEGER REFERENCES rooms(id) ON DELETE CASCADE,
+    start_time TIMESTAMP NOT NULL,
+    end_time TIMESTAMP NOT NULL,
+    status VARCHAR(50) DEFAULT 'confirmed', -- confirmed, cancelled
+    UNIQUE(room_id, start_time, end_time)
+);
