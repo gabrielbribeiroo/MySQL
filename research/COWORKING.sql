@@ -30,3 +30,10 @@ CREATE TABLE contracts (
     end_date DATE NOT NULL,
     status VARCHAR(50) DEFAULT 'active' -- active, expired, cancelled
 );
+
+CREATE TABLE rooms (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    capacity INT NOT NULL,
+    room_type VARCHAR(50) -- meeting, conference, private_office, shared_desk
+);
