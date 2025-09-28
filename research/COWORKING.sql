@@ -56,3 +56,9 @@ CREATE TABLE events (
     organizer_id INTEGER REFERENCES users(id),
     location VARCHAR(150)
 );
+
+CREATE TABLE event_participants (
+    event_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    PRIMARY KEY(event_id, user_id)
+);
