@@ -38,3 +38,11 @@ CREATE TABLE investment_rounds (
     investor_name VARCHAR(150),
     date DATE NOT NULL
 );
+
+CREATE TABLE metrics (
+    id SERIAL PRIMARY KEY,
+    startup_id INT REFERENCES startups(id),
+    metric_name VARCHAR(100) NOT NULL, -- ex: Revenue, Users, Growth
+    metric_value NUMERIC(15,2),
+    measured_at DATE NOT NULL
+);
