@@ -29,3 +29,12 @@ CREATE TABLE mentor_startup (
     role VARCHAR(100),
     PRIMARY KEY (mentor_id, startup_id)
 );
+
+CREATE TABLE investment_rounds (
+    id SERIAL PRIMARY KEY,
+    startup_id INT REFERENCES startups(id),
+    round_type VARCHAR(50) NOT NULL, -- Seed, Series A, B, etc.
+    amount NUMERIC(15,2) NOT NULL,
+    investor_name VARCHAR(150),
+    date DATE NOT NULL
+);
