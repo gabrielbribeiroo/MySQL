@@ -21,3 +21,11 @@ CREATE TABLE mentors (
     email VARCHAR(150) UNIQUE NOT NULL,
     phone VARCHAR(20)
 );
+
+CREATE TABLE mentor_startup (
+    mentor_id INT REFERENCES mentors(id),
+    startup_id INT REFERENCES startups(id),
+    start_date DATE,
+    role VARCHAR(100),
+    PRIMARY KEY (mentor_id, startup_id)
+);
