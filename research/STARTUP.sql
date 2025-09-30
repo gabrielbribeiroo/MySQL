@@ -13,3 +13,11 @@ CREATE TABLE startups (
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE mentors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    expertise VARCHAR(100),
+    email VARCHAR(150) UNIQUE NOT NULL,
+    phone VARCHAR(20)
+);
