@@ -22,3 +22,13 @@ CREATE TABLE employees (
     salary NUMERIC(12,2) NOT NULL,
     status VARCHAR(50) DEFAULT 'Ativo'
 );
+
+CREATE TABLE payroll (
+    id SERIAL PRIMARY KEY,
+    employee_id INT REFERENCES employees(id),
+    pay_date DATE NOT NULL,
+    base_salary NUMERIC(12,2) NOT NULL,
+    bonuses NUMERIC(12,2) DEFAULT 0,
+    deductions NUMERIC(12,2) DEFAULT 0,
+    net_salary NUMERIC(12,2) NOT NULL
+);
