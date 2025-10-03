@@ -24,6 +24,11 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `credit_score`: Credit scoring system to evaluate individuals based on income, payment history, age, and credit records.
 - `freelancer_marketplace`: Freelance hiring platform with project listings, proposals, deliveries, and ratings.
 
+### 🏢 Business & Management
+- `fleet_management`: Corporate fleet management with vehicles, drivers, maintenance, routes, and costs.
+- `startup_incubator`: Startup incubator system for tracking startups, mentors, investment rounds, and progress metrics.
+- `hr_management`: Human resources system with employees, positions, payroll, benefits, vacations, and performance evaluations.
+
 ### 📅 Scheduling & Productivity
 - `horary`: Weekly schedule management for organizing events, appointments, or classes by day and time slots.
 - `task_manager`: Task management system with projects, users, deadlines, priorities, and task statuses.
