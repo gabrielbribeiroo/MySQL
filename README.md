@@ -74,7 +74,6 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `science_fair`: Science fair management system with projects, fields, judges, and grading.
 - `coworking_space`: Coworking space management system with room reservations, contracts, plans, events, and users.
 - `conference_system`: Conference management platform with sessions, speakers, attendees, schedules, and feedback.
-- `startup_incubator`: Startup incubator system for tracking startups, mentors, investment rounds, and progress metrics.
 
 ### 🎨 Arts & Culture
 - `museum_catalog`: Museum catalog system for managing artworks, artists, art types, exhibitions, and movement history.
@@ -98,7 +97,6 @@ Each project demonstrates practical structures for real-world scenarios, such as
 ### 🚍 Transport & Mobility
 - `public_transport`: Public transport system with lines, schedules, vehicles, tickets, passengers, and real-time monitoring.
 - `ride_sharing`: Ride-sharing platform with drivers, passengers, routes, rides, reviews, and payments.
-- `fleet_management`: Corporate fleet management with vehicles, drivers, routes, maintenance, and operational costs.
 
 ### 🌐 Media & Communication
 - `news_portal`: News portal with articles, categories, journalists, readers, comments, and social media shares.
