@@ -11,3 +11,14 @@ CREATE TABLE positions (
     department VARCHAR(100),
     description TEXT
 );
+
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    hire_date DATE NOT NULL,
+    position_id INT REFERENCES positions(id),
+    salary NUMERIC(12,2) NOT NULL,
+    status VARCHAR(50) DEFAULT 'Ativo'
+);
