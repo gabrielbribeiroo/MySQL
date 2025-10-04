@@ -50,3 +50,12 @@ CREATE TABLE vacations (
     approved_by VARCHAR(150),
     status VARCHAR(50) DEFAULT 'Pendent'
 );
+
+CREATE TABLE performance_reviews (
+    id SERIAL PRIMARY KEY,
+    employee_id INT REFERENCES employees(id),
+    review_date DATE NOT NULL,
+    reviewer VARCHAR(150) NOT NULL,
+    score INT CHECK (score BETWEEN 1 AND 10),
+    comments TEXT
+);
