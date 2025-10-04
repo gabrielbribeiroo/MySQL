@@ -32,3 +32,12 @@ CREATE TABLE payroll (
     deductions NUMERIC(12,2) DEFAULT 0,
     net_salary NUMERIC(12,2) NOT NULL
 );
+
+CREATE TABLE benefits (
+    id SERIAL PRIMARY KEY,
+    employee_id INT REFERENCES employees(id),
+    benefit_type VARCHAR(100) NOT NULL,
+    description TEXT,
+    start_date DATE NOT NULL,
+    end_date DATE
+);
