@@ -41,3 +41,12 @@ CREATE TABLE benefits (
     start_date DATE NOT NULL,
     end_date DATE
 );
+
+CREATE TABLE vacations (
+    id SERIAL PRIMARY KEY,
+    employee_id INT REFERENCES employees(id),
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    approved_by VARCHAR(150),
+    status VARCHAR(50) DEFAULT 'Pendent'
+);
