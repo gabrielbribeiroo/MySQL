@@ -26,3 +26,15 @@ CREATE TABLE loans (
     status ENUM('active', 'paid', 'late', 'canceled') DEFAULT 'active',
     FOREIGN KEY (borrower_id) REFERENCES borrowers(borrower_id)
 );
+
+CREATE TABLE installments (
+    installment_id INT AUTO_INCREMENT PRIMARY KEY,
+    loan_id INT NOT NULL,
+    installment_number INT NOT NULL,
+    due_date DATE NOT NULL,
+    amount_due DECIMAL(12,2) NOT NULL,
+    amount_paid DECIMAL(12,2),
+    payment_date DATE,
+    status ENUM('pending', 'paid', 'late') DEFAULT 'pending',
+    FOREIGN KEY (loan_id) REFERENCES loans(loan_id)
+);
