@@ -14,3 +14,15 @@ CREATE TABLE borrowers (
     address VARCHAR(200),
     registration_date DATE DEFAULT (CURRENT_DATE)
 );
+
+CREATE TABLE loans (
+    loan_id INT AUTO_INCREMENT PRIMARY KEY,
+    borrower_id INT NOT NULL,
+    amount DECIMAL(12,2) NOT NULL,
+    interest_rate DECIMAL(5,2) NOT NULL,
+    start_date DATE NOT NULL,
+    due_date DATE NOT NULL,
+    total_installments INT NOT NULL,
+    status ENUM('active', 'paid', 'late', 'canceled') DEFAULT 'active',
+    FOREIGN KEY (borrower_id) REFERENCES borrowers(borrower_id)
+);
