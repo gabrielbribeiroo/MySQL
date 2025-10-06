@@ -47,3 +47,13 @@ CREATE TABLE payments (
     payment_method ENUM('pix', 'boleto', 'transfer', 'card') DEFAULT 'pix',
     FOREIGN KEY (installment_id) REFERENCES installments(installment_id)
 );
+
+CREATE TABLE overdue_accounts (
+    overdue_id INT AUTO_INCREMENT PRIMARY KEY,
+    loan_id INT NOT NULL,
+    days_overdue INT NOT NULL,
+    penalty_fee DECIMAL(10,2) DEFAULT 0.00,
+    last_update DATE DEFAULT (CURRENT_DATE),
+    resolved BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (loan_id) REFERENCES loans(loan_id)
+);
