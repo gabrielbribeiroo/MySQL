@@ -38,3 +38,12 @@ CREATE TABLE installments (
     status ENUM('pending', 'paid', 'late') DEFAULT 'pending',
     FOREIGN KEY (loan_id) REFERENCES loans(loan_id)
 );
+
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    installment_id INT NOT NULL,
+    payment_date DATE NOT NULL,
+    amount_paid DECIMAL(12,2) NOT NULL,
+    payment_method ENUM('pix', 'boleto', 'transfer', 'card') DEFAULT 'pix',
+    FOREIGN KEY (installment_id) REFERENCES installments(installment_id)
+);
