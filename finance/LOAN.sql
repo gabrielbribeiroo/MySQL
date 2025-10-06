@@ -57,3 +57,12 @@ CREATE TABLE overdue_accounts (
     resolved BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (loan_id) REFERENCES loans(loan_id)
 );
+
+CREATE TABLE interest_rate_history (
+    rate_id INT AUTO_INCREMENT PRIMARY KEY,
+    loan_id INT NOT NULL,
+    old_rate DECIMAL(5,2),
+    new_rate DECIMAL(5,2),
+    change_date DATE DEFAULT (CURRENT_DATE),
+    FOREIGN KEY (loan_id) REFERENCES loans(loan_id)
+);
