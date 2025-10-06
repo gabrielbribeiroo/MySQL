@@ -23,6 +23,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `erp`: Simplified ERP system for finance, clients, and services.
 - `credit_score`: Credit scoring system to evaluate individuals based on income, payment history, age, and credit records.
 - `freelancer_marketplace`: Freelance hiring platform with project listings, proposals, deliveries, and ratings.
+- `loan_management`: Loan management system for tracking borrowers, payments, interest rates, and overdue accounts.
 
 ### 🏢 Business & Management
 - `fleet_management`: Corporate fleet management with vehicles, drivers, maintenance, routes, and costs.
