@@ -15,3 +15,10 @@ CREATE TABLE taxpayers (
     address VARCHAR(200),
     registration_date DATE DEFAULT (CURRENT_DATE)
 );
+
+CREATE TABLE tax_years (
+    tax_year_id INT AUTO_INCREMENT PRIMARY KEY,
+    year INT NOT NULL UNIQUE,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL
+);
