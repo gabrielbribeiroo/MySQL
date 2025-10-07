@@ -33,3 +33,14 @@ CREATE TABLE income_records (
     FOREIGN KEY (taxpayer_id) REFERENCES taxpayers(taxpayer_id),
     FOREIGN KEY (tax_year_id) REFERENCES tax_years(tax_year_id)
 );
+
+CREATE TABLE deductions (
+    deduction_id INT AUTO_INCREMENT PRIMARY KEY,
+    taxpayer_id INT NOT NULL,
+    tax_year_id INT NOT NULL,
+    category ENUM('education', 'health', 'dependents', 'donations', 'retirement', 'other') DEFAULT 'other',
+    description VARCHAR(150),
+    amount DECIMAL(12,2) NOT NULL,
+    FOREIGN KEY (taxpayer_id) REFERENCES taxpayers(taxpayer_id),
+    FOREIGN KEY (tax_year_id) REFERENCES tax_years(tax_year_id)
+);
