@@ -22,3 +22,14 @@ CREATE TABLE tax_years (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL
 );
+
+CREATE TABLE income_records (
+    income_id INT AUTO_INCREMENT PRIMARY KEY,
+    taxpayer_id INT NOT NULL,
+    tax_year_id INT NOT NULL,
+    source VARCHAR(150) NOT NULL,
+    amount DECIMAL(12,2) NOT NULL,
+    type ENUM('salary', 'rental', 'investment', 'business', 'other') DEFAULT 'other',
+    FOREIGN KEY (taxpayer_id) REFERENCES taxpayers(taxpayer_id),
+    FOREIGN KEY (tax_year_id) REFERENCES tax_years(tax_year_id)
+);
