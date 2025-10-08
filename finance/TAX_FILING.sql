@@ -44,3 +44,16 @@ CREATE TABLE deductions (
     FOREIGN KEY (taxpayer_id) REFERENCES taxpayers(taxpayer_id),
     FOREIGN KEY (tax_year_id) REFERENCES tax_years(tax_year_id)
 );
+
+CREATE TABLE tax_filings (
+    filing_id INT AUTO_INCREMENT PRIMARY KEY,
+    taxpayer_id INT NOT NULL,
+    tax_year_id INT NOT NULL,
+    total_income DECIMAL(12,2) NOT NULL,
+    total_deductions DECIMAL(12,2) DEFAULT 0.00,
+    tax_due DECIMAL(12,2) DEFAULT 0.00,
+    submission_date DATE,
+    status ENUM('pending', 'submitted', 'approved', 'rejected') DEFAULT 'pending',
+    FOREIGN KEY (taxpayer_id) REFERENCES taxpayers(taxpayer_id),
+    FOREIGN KEY (tax_year_id) REFERENCES tax_years(tax_year_id)
+);
