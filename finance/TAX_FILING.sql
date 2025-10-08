@@ -57,3 +57,12 @@ CREATE TABLE tax_filings (
     FOREIGN KEY (taxpayer_id) REFERENCES taxpayers(taxpayer_id),
     FOREIGN KEY (tax_year_id) REFERENCES tax_years(tax_year_id)
 );
+
+CREATE TABLE submission_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    filing_id INT NOT NULL,
+    submission_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    method ENUM('online', 'manual', 'api') DEFAULT 'online',
+    message TEXT,
+    FOREIGN KEY (filing_id) REFERENCES tax_filings(filing_id)
+);
