@@ -66,3 +66,13 @@ CREATE TABLE submission_logs (
     message TEXT,
     FOREIGN KEY (filing_id) REFERENCES tax_filings(filing_id)
 );
+
+CREATE TABLE tax_payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    filing_id INT NOT NULL,
+    payment_date DATE,
+    amount_paid DECIMAL(12,2),
+    payment_method ENUM('pix', 'boleto', 'transfer', 'card') DEFAULT 'pix',
+    confirmed BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (filing_id) REFERENCES tax_filings(filing_id)
+);
