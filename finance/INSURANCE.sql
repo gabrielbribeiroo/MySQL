@@ -25,3 +25,16 @@ CREATE TABLE coverage_plans (
     coverage_limit DECIMAL(12,2),
     active BOOLEAN DEFAULT TRUE
 );
+
+CREATE TABLE policies (
+    policy_id INT AUTO_INCREMENT PRIMARY KEY,
+    policyholder_id INT NOT NULL,
+    plan_id INT NOT NULL,
+    policy_number VARCHAR(50) UNIQUE NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE,
+    status ENUM('active', 'expired', 'cancelled', 'pending') DEFAULT 'active',
+    total_premium DECIMAL(12,2),
+    FOREIGN KEY (policyholder_id) REFERENCES policyholders(policyholder_id),
+    FOREIGN KEY (plan_id) REFERENCES coverage_plans(plan_id)
+);
