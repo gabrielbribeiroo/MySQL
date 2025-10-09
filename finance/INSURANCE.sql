@@ -15,3 +15,13 @@ CREATE TABLE policyholders (
     address VARCHAR(200),
     registration_date DATE DEFAULT (CURRENT_DATE)
 );
+
+CREATE TABLE coverage_plans (
+    plan_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    coverage_type ENUM('life', 'health', 'vehicle', 'home', 'travel', 'other') DEFAULT 'other',
+    monthly_premium DECIMAL(10,2) NOT NULL,
+    coverage_limit DECIMAL(12,2),
+    active BOOLEAN DEFAULT TRUE
+);
