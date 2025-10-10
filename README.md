@@ -25,6 +25,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `freelancer_marketplace`: Freelance hiring platform with project listings, proposals, deliveries, and ratings.
 - `loan_management`: Loan management system for tracking borrowers, payments, interest rates, and overdue accounts.
 - `tax_filing`: Tax filing system for individuals and businesses with deductions, income records, and submission tracking.
+- `insurance_platform`: Insurance management system with policyholders, claims, coverage plans, and premium payments.
 
 ### 🏢 Business & Management
 - `fleet_management`: Corporate fleet management with vehicles, drivers, maintenance, routes, and costs.
