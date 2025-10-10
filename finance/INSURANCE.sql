@@ -58,3 +58,13 @@ CREATE TABLE claims (
     status ENUM('submitted', 'under_review', 'approved', 'rejected', 'paid') DEFAULT 'submitted',
     FOREIGN KEY (policy_id) REFERENCES policies(policy_id)
 );
+
+CREATE TABLE claim_reviews (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    claim_id INT NOT NULL,
+    reviewer_name VARCHAR(100),
+    review_date DATE DEFAULT (CURRENT_DATE),
+    notes TEXT,
+    decision ENUM('approved', 'rejected', 'request_more_info') DEFAULT 'request_more_info',
+    FOREIGN KEY (claim_id) REFERENCES claims(claim_id)
+);
