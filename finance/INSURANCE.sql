@@ -48,3 +48,13 @@ CREATE TABLE premium_payments (
     status ENUM('pending', 'paid', 'overdue') DEFAULT 'pending',
     FOREIGN KEY (policy_id) REFERENCES policies(policy_id)
 );
+
+CREATE TABLE claims (
+    claim_id INT AUTO_INCREMENT PRIMARY KEY,
+    policy_id INT NOT NULL,
+    claim_date DATE NOT NULL,
+    description TEXT,
+    claim_amount DECIMAL(12,2),
+    status ENUM('submitted', 'under_review', 'approved', 'rejected', 'paid') DEFAULT 'submitted',
+    FOREIGN KEY (policy_id) REFERENCES policies(policy_id)
+);
