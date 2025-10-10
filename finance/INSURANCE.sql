@@ -38,3 +38,13 @@ CREATE TABLE policies (
     FOREIGN KEY (policyholder_id) REFERENCES policyholders(policyholder_id),
     FOREIGN KEY (plan_id) REFERENCES coverage_plans(plan_id)
 );
+
+CREATE TABLE premium_payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    policy_id INT NOT NULL,
+    payment_date DATE,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_method ENUM('pix', 'boleto', 'card', 'transfer') DEFAULT 'pix',
+    status ENUM('pending', 'paid', 'overdue') DEFAULT 'pending',
+    FOREIGN KEY (policy_id) REFERENCES policies(policy_id)
+);
