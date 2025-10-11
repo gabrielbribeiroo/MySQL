@@ -17,3 +17,14 @@ CREATE TABLE clients (
     registration_date DATE DEFAULT (CURRENT_DATE),
     status ENUM('active', 'inactive', 'prospect') DEFAULT 'prospect'
 );
+
+CREATE TABLE leads (
+    lead_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(120) NOT NULL,
+    email VARCHAR(120),
+    phone VARCHAR(20),
+    source ENUM('website', 'social_media', 'referral', 'event', 'cold_call', 'other') DEFAULT 'other',
+    status ENUM('new', 'contacted', 'qualified', 'lost', 'converted') DEFAULT 'new',
+    notes TEXT,
+    creation_date DATE DEFAULT (CURRENT_DATE)
+);
