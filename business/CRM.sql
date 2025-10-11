@@ -1,6 +1,19 @@
 -- Database: crm_system
+-- Customer Relationship Management (CRM)
 CREATE DATABASE crm_system
   DEFAULT CHARACTER SET utf8mb4
   DEFAULT COLLATE utf8mb4_general_ci;
 
 USE crm_system;
+
+CREATE TABLE clients (
+    client_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(120) NOT NULL,
+    email VARCHAR(120) UNIQUE,
+    phone VARCHAR(20),
+    company VARCHAR(120),
+    industry VARCHAR(100),
+    country VARCHAR(100),
+    registration_date DATE DEFAULT (CURRENT_DATE),
+    status ENUM('active', 'inactive', 'prospect') DEFAULT 'prospect'
+);
