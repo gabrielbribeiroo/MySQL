@@ -37,3 +37,14 @@ CREATE TABLE lead_conversions (
     FOREIGN KEY (lead_id) REFERENCES leads(lead_id),
     FOREIGN KEY (client_id) REFERENCES clients(client_id)
 );
+
+CREATE TABLE communications (
+    communication_id INT AUTO_INCREMENT PRIMARY KEY,
+    related_type ENUM('client', 'lead') NOT NULL,
+    related_id INT NOT NULL,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    channel ENUM('email', 'phone', 'meeting', 'chat', 'social_media') DEFAULT 'email',
+    subject VARCHAR(150),
+    content TEXT,
+    follow_up_needed BOOLEAN DEFAULT FALSE
+);
