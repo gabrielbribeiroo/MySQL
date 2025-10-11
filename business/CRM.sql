@@ -28,3 +28,12 @@ CREATE TABLE leads (
     notes TEXT,
     creation_date DATE DEFAULT (CURRENT_DATE)
 );
+
+CREATE TABLE lead_conversions (
+    conversion_id INT AUTO_INCREMENT PRIMARY KEY,
+    lead_id INT NOT NULL,
+    client_id INT NOT NULL,
+    conversion_date DATE DEFAULT (CURRENT_DATE),
+    FOREIGN KEY (lead_id) REFERENCES leads(lead_id),
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
