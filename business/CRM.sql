@@ -48,3 +48,10 @@ CREATE TABLE communications (
     content TEXT,
     follow_up_needed BOOLEAN DEFAULT FALSE
 );
+
+CREATE TABLE sales_pipelines (
+    pipeline_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    created_at DATE DEFAULT (CURRENT_DATE)
+);
