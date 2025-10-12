@@ -78,3 +78,13 @@ CREATE TABLE deals (
     FOREIGN KEY (lead_id) REFERENCES leads(lead_id),
     FOREIGN KEY (stage_id) REFERENCES stages(stage_id)
 );
+
+CREATE TABLE deal_activities (
+    activity_id INT AUTO_INCREMENT PRIMARY KEY,
+    deal_id INT NOT NULL,
+    activity_type ENUM('call', 'email', 'meeting', 'proposal', 'follow_up') DEFAULT 'call',
+    description TEXT,
+    activity_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    completed BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (deal_id) REFERENCES deals(deal_id)
+);
