@@ -64,3 +64,17 @@ CREATE TABLE stages (
     probability DECIMAL(5,2) DEFAULT 0.0,
     FOREIGN KEY (pipeline_id) REFERENCES sales_pipelines(pipeline_id)
 );
+
+CREATE TABLE deals (
+    deal_id INT AUTO_INCREMENT PRIMARY KEY,
+    client_id INT,
+    lead_id INT,
+    stage_id INT NOT NULL,
+    title VARCHAR(150) NOT NULL,
+    value DECIMAL(12,2),
+    expected_close_date DATE,
+    status ENUM('open', 'won', 'lost') DEFAULT 'open',
+    FOREIGN KEY (client_id) REFERENCES clients(client_id),
+    FOREIGN KEY (lead_id) REFERENCES leads(lead_id),
+    FOREIGN KEY (stage_id) REFERENCES stages(stage_id)
+);
