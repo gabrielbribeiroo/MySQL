@@ -55,3 +55,12 @@ CREATE TABLE sales_pipelines (
     description TEXT,
     created_at DATE DEFAULT (CURRENT_DATE)
 );
+
+CREATE TABLE stages (
+    stage_id INT AUTO_INCREMENT PRIMARY KEY,
+    pipeline_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    position INT NOT NULL,
+    probability DECIMAL(5,2) DEFAULT 0.0,
+    FOREIGN KEY (pipeline_id) REFERENCES sales_pipelines(pipeline_id)
+);
