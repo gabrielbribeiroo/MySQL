@@ -6,3 +6,13 @@ CREATE DATABASE inventory_audit
   DEFAULT COLLATE utf8mb4_general_ci;
 
 USE inventory_audit;
+
+CREATE TABLE products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    sku VARCHAR(50) UNIQUE NOT NULL,
+    category VARCHAR(100),
+    unit_price DECIMAL(12,2) NOT NULL,
+    quantity_expected INT DEFAULT 0,
+    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
