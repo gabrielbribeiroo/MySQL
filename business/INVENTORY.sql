@@ -24,3 +24,11 @@ CREATE TABLE warehouses (
     manager VARCHAR(120),
     contact VARCHAR(50)
 );
+
+CREATE TABLE auditors (
+    auditor_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(120) NOT NULL,
+    email VARCHAR(120) UNIQUE,
+    phone VARCHAR(30),
+    role ENUM('internal', 'external') DEFAULT 'internal'
+);
