@@ -32,3 +32,16 @@ CREATE TABLE auditors (
     phone VARCHAR(30),
     role ENUM('internal', 'external') DEFAULT 'internal'
 );
+
+CREATE TABLE audits (
+    audit_id INT AUTO_INCREMENT PRIMARY KEY,
+    warehouse_id INT NOT NULL,
+    auditor_id INT NOT NULL,
+    start_date DATE,
+    end_date DATE,
+    status ENUM('scheduled', 'in_progress', 'completed') DEFAULT 'scheduled',
+    total_value DECIMAL(14,2),
+    notes TEXT,
+    FOREIGN KEY (warehouse_id) REFERENCES warehouses(warehouse_id),
+    FOREIGN KEY (auditor_id) REFERENCES auditors(auditor_id)
+);
