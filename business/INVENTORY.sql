@@ -16,3 +16,11 @@ CREATE TABLE products (
     quantity_expected INT DEFAULT 0,
     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+CREATE TABLE warehouses (
+    warehouse_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    location VARCHAR(200),
+    manager VARCHAR(120),
+    contact VARCHAR(50)
+);
