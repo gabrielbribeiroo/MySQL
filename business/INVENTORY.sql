@@ -69,3 +69,12 @@ CREATE TABLE discrepancy_reports (
     notes TEXT,
     FOREIGN KEY (audit_id) REFERENCES audits(audit_id)
 );
+
+CREATE TABLE audit_history (
+    history_id INT AUTO_INCREMENT PRIMARY KEY,
+    audit_id INT NOT NULL,
+    action VARCHAR(150),
+    action_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    performed_by VARCHAR(120),
+    FOREIGN KEY (audit_id) REFERENCES audits(audit_id)
+);
