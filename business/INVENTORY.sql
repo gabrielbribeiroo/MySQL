@@ -58,3 +58,14 @@ CREATE TABLE audit_items (
     FOREIGN KEY (audit_id) REFERENCES audits(audit_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+CREATE TABLE discrepancy_reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    audit_id INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    total_items INT,
+    total_discrepancy_value DECIMAL(14,2),
+    approved_by VARCHAR(120),
+    notes TEXT,
+    FOREIGN KEY (audit_id) REFERENCES audits(audit_id)
+);
