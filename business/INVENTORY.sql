@@ -45,3 +45,16 @@ CREATE TABLE audits (
     FOREIGN KEY (warehouse_id) REFERENCES warehouses(warehouse_id),
     FOREIGN KEY (auditor_id) REFERENCES auditors(auditor_id)
 );
+
+CREATE TABLE audit_items (
+    audit_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    audit_id INT NOT NULL,
+    product_id INT NOT NULL,
+    counted_quantity INT NOT NULL,
+    expected_quantity INT NOT NULL,
+    unit_price DECIMAL(12,2) NOT NULL,
+    discrepancy INT GENERATED ALWAYS AS (counted_quantity - expected_quantity) STORED,
+    discrepancy_value DECIMAL(14,2) GENERATED ALWAYS AS (discrepancy * unit_price) STORED,
+    FOREIGN KEY (audit_id) REFERENCES audits(audit_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
