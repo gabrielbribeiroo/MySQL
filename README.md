@@ -32,6 +32,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `startup_incubator`: Startup incubator system for tracking startups, mentors, investment rounds, and progress metrics.
 - `hr_management`: Human resources system with employees, positions, payroll, benefits, vacations, and performance evaluations.
 - `crm_system`: Customer Relationship Management system to manage clients, leads, communications, and sales pipelines.
+- `inventory_audit`: Inventory auditing and valuation platform with discrepancy reports and audit history.
 
 ### 📅 Scheduling & Productivity
 - `horary`: Weekly schedule management for organizing events, appointments, or classes by day and time slots.
