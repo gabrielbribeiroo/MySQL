@@ -14,3 +14,11 @@ CREATE TABLE departments (
     email VARCHAR(150),
     phone VARCHAR(40)
 );
+
+CREATE TABLE teams (
+    team_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    department_id INT,
+    leader VARCHAR(120),
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
