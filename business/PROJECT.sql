@@ -44,3 +44,13 @@ CREATE TABLE projects (
     project_manager VARCHAR(120),
     FOREIGN KEY (department_id) REFERENCES departments(department_id)
 );
+
+CREATE TABLE budgets (
+    budget_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    category VARCHAR(100),
+    allocated DECIMAL(15,2),
+    spent DECIMAL(15,2) DEFAULT 0,
+    remaining DECIMAL(15,2) GENERATED ALWAYS AS (allocated - spent) STORED,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
