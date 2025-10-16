@@ -74,3 +74,12 @@ CREATE TABLE deliverables (
     approved BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (milestone_id) REFERENCES milestones(milestone_id)
 );
+
+CREATE TABLE project_teams (
+    project_team_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    team_id INT NOT NULL,
+    role_in_project VARCHAR(120),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (team_id) REFERENCES teams(team_id)
+);
