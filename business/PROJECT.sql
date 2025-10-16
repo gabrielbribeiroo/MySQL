@@ -83,3 +83,13 @@ CREATE TABLE project_teams (
     FOREIGN KEY (project_id) REFERENCES projects(project_id),
     FOREIGN KEY (team_id) REFERENCES teams(team_id)
 );
+
+CREATE TABLE project_history (
+    history_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    event_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    event_type VARCHAR(100),
+    description TEXT,
+    performed_by VARCHAR(120),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
