@@ -54,3 +54,13 @@ CREATE TABLE budgets (
     remaining DECIMAL(15,2) GENERATED ALWAYS AS (allocated - spent) STORED,
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
+
+CREATE TABLE milestones (
+    milestone_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    title VARCHAR(150),
+    due_date DATE,
+    status ENUM('pending', 'completed', 'delayed') DEFAULT 'pending',
+    description TEXT,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
