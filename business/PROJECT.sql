@@ -64,3 +64,13 @@ CREATE TABLE milestones (
     description TEXT,
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
+
+CREATE TABLE deliverables (
+    deliverable_id INT AUTO_INCREMENT PRIMARY KEY,
+    milestone_id INT NOT NULL,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    delivery_date DATE,
+    approved BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (milestone_id) REFERENCES milestones(milestone_id)
+);
