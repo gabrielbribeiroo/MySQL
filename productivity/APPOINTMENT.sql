@@ -49,3 +49,12 @@ CREATE TABLE services (
     active BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (business_id) REFERENCES businesses(business_id)
 );
+
+CREATE TABLE time_slots (
+    slot_id INT AUTO_INCREMENT PRIMARY KEY,
+    professional_id INT NOT NULL,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
+    is_booked BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (professional_id) REFERENCES professionals(professional_id)
+);
