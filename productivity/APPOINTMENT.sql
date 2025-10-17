@@ -38,3 +38,14 @@ CREATE TABLE professionals (
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (business_id) REFERENCES businesses(business_id)
 );
+
+CREATE TABLE services (
+    service_id INT AUTO_INCREMENT PRIMARY KEY,
+    business_id INT NOT NULL,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    duration_minutes INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    active BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (business_id) REFERENCES businesses(business_id)
+);
