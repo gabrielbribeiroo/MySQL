@@ -16,3 +16,14 @@ CREATE TABLE users (
     user_type ENUM('client', 'professional', 'admin') DEFAULT 'client',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE businesses (
+    business_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    address VARCHAR(255),
+    phone VARCHAR(40),
+    email VARCHAR(150),
+    owner_id INT,
+    FOREIGN KEY (owner_id) REFERENCES users(user_id)
+);
