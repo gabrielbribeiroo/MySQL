@@ -82,3 +82,13 @@ CREATE TABLE reminders (
     method ENUM('email', 'sms', 'push') DEFAULT 'email',
     FOREIGN KEY (appointment_id) REFERENCES appointments(appointment_id)
 );
+
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    appointment_id INT NOT NULL,
+    amount DECIMAL(10,2),
+    method ENUM('cash', 'credit_card', 'pix', 'transfer') DEFAULT 'cash',
+    status ENUM('pending', 'paid', 'refunded') DEFAULT 'pending',
+    payment_date DATETIME,
+    FOREIGN KEY (appointment_id) REFERENCES appointments(appointment_id)
+);
