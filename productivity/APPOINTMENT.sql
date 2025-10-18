@@ -58,3 +58,18 @@ CREATE TABLE time_slots (
     is_booked BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (professional_id) REFERENCES professionals(professional_id)
 );
+
+CREATE TABLE appointments (
+    appointment_id INT AUTO_INCREMENT PRIMARY KEY,
+    client_id INT NOT NULL,
+    professional_id INT NOT NULL,
+    service_id INT NOT NULL,
+    slot_id INT,
+    status ENUM('scheduled', 'completed', 'cancelled', 'no_show') DEFAULT 'scheduled',
+    notes TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (client_id) REFERENCES users(user_id),
+    FOREIGN KEY (professional_id) REFERENCES professionals(professional_id),
+    FOREIGN KEY (service_id) REFERENCES services(service_id),
+    FOREIGN KEY (slot_id) REFERENCES time_slots(slot_id)
+);
