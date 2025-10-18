@@ -92,3 +92,12 @@ CREATE TABLE payments (
     payment_date DATETIME,
     FOREIGN KEY (appointment_id) REFERENCES appointments(appointment_id)
 );
+
+CREATE TABLE feedback (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    appointment_id INT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (appointment_id) REFERENCES appointments(appointment_id)
+);
