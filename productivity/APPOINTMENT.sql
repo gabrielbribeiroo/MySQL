@@ -73,3 +73,12 @@ CREATE TABLE appointments (
     FOREIGN KEY (service_id) REFERENCES services(service_id),
     FOREIGN KEY (slot_id) REFERENCES time_slots(slot_id)
 );
+
+CREATE TABLE reminders (
+    reminder_id INT AUTO_INCREMENT PRIMARY KEY,
+    appointment_id INT NOT NULL,
+    reminder_time DATETIME NOT NULL,
+    sent BOOLEAN DEFAULT FALSE,
+    method ENUM('email', 'sms', 'push') DEFAULT 'email',
+    FOREIGN KEY (appointment_id) REFERENCES appointments(appointment_id)
+);
