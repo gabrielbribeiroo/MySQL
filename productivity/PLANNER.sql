@@ -25,3 +25,11 @@ CREATE TABLE departments (
     manager_id INT,
     FOREIGN KEY (manager_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE teams (
+    team_id INT AUTO_INCREMENT PRIMARY KEY,
+    department_id INT,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
