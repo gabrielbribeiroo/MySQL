@@ -17,3 +17,11 @@ CREATE TABLE users (
     hired_at DATE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE departments (
+    department_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    manager_id INT,
+    FOREIGN KEY (manager_id) REFERENCES users(user_id)
+);
