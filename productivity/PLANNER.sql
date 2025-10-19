@@ -33,3 +33,13 @@ CREATE TABLE teams (
     description TEXT,
     FOREIGN KEY (department_id) REFERENCES departments(department_id)
 );
+
+CREATE TABLE team_members (
+    team_id INT NOT NULL,
+    user_id INT NOT NULL,
+    position VARCHAR(150),
+    assigned_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (team_id, user_id),
+    FOREIGN KEY (team_id) REFERENCES teams(team_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
