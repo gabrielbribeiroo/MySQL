@@ -51,3 +51,14 @@ CREATE TABLE shifts (
     end_time TIME NOT NULL,
     shift_type ENUM('morning', 'afternoon', 'night', 'custom') DEFAULT 'custom'
 );
+
+CREATE TABLE work_schedule (
+    schedule_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    shift_id INT NOT NULL,
+    work_date DATE NOT NULL,
+    workload_hours DECIMAL(4,2),
+    status ENUM('scheduled', 'completed', 'absent', 'cancelled') DEFAULT 'scheduled',
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (shift_id) REFERENCES shifts(shift_id)
+);
