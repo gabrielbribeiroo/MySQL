@@ -41,6 +41,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `productivity_tracker`: System to track personal or team productivity, including goals, habits, sessions, and reflections.
 - `goal_tracking`: Goal-oriented productivity platform with milestones, progress updates, reflections, and performance tracking.
 - `appointment_booking`: Appointment scheduling system for consultants, salons, and professionals with time slots and reminders.
+- `team_planner`: Team scheduling system to allocate resources, shifts, and workload balancing.
 
 ### 🎓 Education & Courses
 - `teacher`: Educational system for managing student classes, subjects taught, class contents, and financial records for teaching services.
