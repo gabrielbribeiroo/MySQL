@@ -43,3 +43,11 @@ CREATE TABLE team_members (
     FOREIGN KEY (team_id) REFERENCES teams(team_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE shifts (
+    shift_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    shift_type ENUM('morning', 'afternoon', 'night', 'custom') DEFAULT 'custom'
+);
