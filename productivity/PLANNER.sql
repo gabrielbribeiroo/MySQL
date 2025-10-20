@@ -62,3 +62,19 @@ CREATE TABLE work_schedule (
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (shift_id) REFERENCES shifts(shift_id)
 );
+
+CREATE TABLE workload_balancing (
+    balance_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    week_start DATE NOT NULL,
+    total_hours DECIMAL(5,2) DEFAULT 0,
+    ideal_hours DECIMAL(5,2) DEFAULT 40,
+    balance_status ENUM('underloaded', 'balanced', 'overloaded') GENERATED ALWAYS AS (
+        CASE
+            WHEN total_hours < ideal_hours * 0.9 THEN 'underloaded'
+            WHEN total_hours > ideal_hours * 1.1 THEN 'overloaded'
+            ELSE 'balanced'
+        END
+    ) STORED,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
