@@ -78,3 +78,14 @@ CREATE TABLE workload_balancing (
     ) STORED,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    team_id INT,
+    week_start DATE,
+    total_hours DECIMAL(6,2),
+    avg_workload DECIMAL(5,2),
+    absences INT DEFAULT 0,
+    generated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (team_id) REFERENCES teams(team_id)
+);
