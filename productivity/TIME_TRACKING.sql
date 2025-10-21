@@ -17,3 +17,15 @@ CREATE TABLE users (
     active BOOLEAN DEFAULT TRUE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE projects (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    client_name VARCHAR(150),
+    description TEXT,
+    start_date DATE,
+    end_date DATE,
+    budget DECIMAL(12,2),
+    status ENUM('active', 'paused', 'completed', 'cancelled') DEFAULT 'active',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
