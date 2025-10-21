@@ -39,3 +39,18 @@ CREATE TABLE assignments (
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
+
+CREATE TABLE work_sessions (
+    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    project_id INT,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME,
+    total_duration DECIMAL(6,2) GENERATED ALWAYS AS (
+        TIMESTAMPDIFF(MINUTE, start_time, end_time) / 60
+    ) STORED,
+    session_type ENUM('work', 'meeting', 'focus', 'review') DEFAULT 'work',
+    notes TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
