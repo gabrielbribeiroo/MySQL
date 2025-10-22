@@ -88,3 +88,16 @@ CREATE TABLE productivity_metrics (
     ) STORED,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE billing_reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    project_id INT,
+    period_start DATE,
+    period_end DATE,
+    total_hours DECIMAL(6,2),
+    total_amount DECIMAL(10,2) GENERATED ALWAYS AS (total_hours * (SELECT hourly_rate FROM users WHERE users.user_id = billing_reports.user_id)) STORED,
+    generated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
