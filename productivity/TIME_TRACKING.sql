@@ -66,3 +66,25 @@ CREATE TABLE breaks (
     break_type ENUM('coffee', 'lunch', 'personal', 'technical') DEFAULT 'personal',
     FOREIGN KEY (session_id) REFERENCES work_sessions(session_id)
 );
+
+CREATE TABLE productivity_metrics (
+    metric_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    work_date DATE NOT NULL,
+    total_hours DECIMAL(5,2) DEFAULT 0,
+    break_minutes INT DEFAULT 0,
+    efficiency_score DECIMAL(5,2) GENERATED ALWAYS AS (
+        CASE
+            WHEN total_hours = 0 THEN 0
+            ELSE ROUND((total_hours * 60) / (total_hours * 60 + break_minutes) * 100, 2)
+        END
+    ) STORED,
+    status ENUM('low', 'medium', 'high') GENERATED ALWAYS AS (
+        CASE
+            WHEN efficiency_score < 70 THEN 'low'
+            WHEN efficiency_score BETWEEN 70 AND 90 THEN 'medium'
+            ELSE 'high'
+        END
+    ) STORED,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
