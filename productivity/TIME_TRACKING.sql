@@ -54,3 +54,15 @@ CREATE TABLE work_sessions (
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
+
+CREATE TABLE breaks (
+    break_id INT AUTO_INCREMENT PRIMARY KEY,
+    session_id INT NOT NULL,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME,
+    duration_minutes INT GENERATED ALWAYS AS (
+        TIMESTAMPDIFF(MINUTE, start_time, end_time)
+    ) STORED,
+    break_type ENUM('coffee', 'lunch', 'personal', 'technical') DEFAULT 'personal',
+    FOREIGN KEY (session_id) REFERENCES work_sessions(session_id)
+);
