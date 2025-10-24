@@ -36,3 +36,11 @@ CREATE TABLE questions (
     FOREIGN KEY (subject_id) REFERENCES subjects(subject_id),
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE options (
+    option_id INT AUTO_INCREMENT PRIMARY KEY,
+    question_id INT NOT NULL,
+    option_text TEXT NOT NULL,
+    is_correct BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (question_id) REFERENCES questions(question_id)
+);
