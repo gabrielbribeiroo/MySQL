@@ -23,3 +23,16 @@ CREATE TABLE subjects (
     description TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE questions (
+    question_id INT AUTO_INCREMENT PRIMARY KEY,
+    subject_id INT NOT NULL,
+    question_text TEXT NOT NULL,
+    question_type ENUM('multiple_choice', 'true_false', 'short_answer', 'essay') DEFAULT 'multiple_choice',
+    difficulty ENUM('easy', 'medium', 'hard') DEFAULT 'medium',
+    points DECIMAL(5,2) DEFAULT 1.00,
+    created_by INT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (subject_id) REFERENCES subjects(subject_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id)
+);
