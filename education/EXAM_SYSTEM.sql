@@ -60,3 +60,12 @@ CREATE TABLE exams (
     FOREIGN KEY (subject_id) REFERENCES subjects(subject_id),
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE exam_questions (
+    exam_question_id INT AUTO_INCREMENT PRIMARY KEY,
+    exam_id INT NOT NULL,
+    question_id INT NOT NULL,
+    order_number INT,
+    FOREIGN KEY (exam_id) REFERENCES exams(exam_id),
+    FOREIGN KEY (question_id) REFERENCES questions(question_id)
+);
