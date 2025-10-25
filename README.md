@@ -50,6 +50,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `library`: Library management system including books, authors, members, and loan tracking.
 - `language_school`: Language school structure with levels, classes, exams, and student academic records.
 - `workshop_platform`: Platform for in-person or online workshops with topics, instructors, participants, registrations, and certificate issuance.
+- `exam_system`: Online exam platform with question banks, automatic grading, and student performance analytics.
 
 ### ⚽ Sports & Recreation
 - `soccer`: Sports database for teams, players, match results, championships, and historical tracking.
