@@ -44,3 +44,19 @@ CREATE TABLE options (
     is_correct BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (question_id) REFERENCES questions(question_id)
 );
+
+CREATE TABLE exams (
+    exam_id INT AUTO_INCREMENT PRIMARY KEY,
+    subject_id INT NOT NULL,
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    total_points DECIMAL(6,2),
+    duration_minutes INT NOT NULL,
+    start_time DATETIME,
+    end_time DATETIME,
+    created_by INT,
+    status ENUM('draft', 'published', 'closed') DEFAULT 'draft',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (subject_id) REFERENCES subjects(subject_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id)
+);
