@@ -81,3 +81,16 @@ CREATE TABLE exam_attempts (
     FOREIGN KEY (exam_id) REFERENCES exams(exam_id),
     FOREIGN KEY (student_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE answers (
+    answer_id INT AUTO_INCREMENT PRIMARY KEY,
+    attempt_id INT NOT NULL,
+    question_id INT NOT NULL,
+    selected_option_id INT,
+    text_answer TEXT,
+    score DECIMAL(5,2),
+    is_correct BOOLEAN,
+    FOREIGN KEY (attempt_id) REFERENCES exam_attempts(attempt_id),
+    FOREIGN KEY (question_id) REFERENCES questions(question_id),
+    FOREIGN KEY (selected_option_id) REFERENCES options(option_id)
+);
