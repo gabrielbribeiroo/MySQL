@@ -69,3 +69,15 @@ CREATE TABLE exam_questions (
     FOREIGN KEY (exam_id) REFERENCES exams(exam_id),
     FOREIGN KEY (question_id) REFERENCES questions(question_id)
 );
+
+CREATE TABLE exam_attempts (
+    attempt_id INT AUTO_INCREMENT PRIMARY KEY,
+    exam_id INT NOT NULL,
+    student_id INT NOT NULL,
+    start_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    end_time DATETIME,
+    total_score DECIMAL(6,2) DEFAULT 0,
+    status ENUM('in_progress', 'submitted', 'graded', 'cancelled') DEFAULT 'in_progress',
+    FOREIGN KEY (exam_id) REFERENCES exams(exam_id),
+    FOREIGN KEY (student_id) REFERENCES users(user_id)
+);
