@@ -50,3 +50,12 @@ CREATE TABLE enrollments (
     FOREIGN KEY (student_id) REFERENCES users(user_id),
     FOREIGN KEY (subject_id) REFERENCES subjects(subject_id)
 );
+
+CREATE TABLE attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    enrollment_id INT NOT NULL,
+    class_date DATE NOT NULL,
+    status ENUM('present', 'absent', 'late', 'justified') DEFAULT 'present',
+    notes VARCHAR(255),
+    FOREIGN KEY (enrollment_id) REFERENCES enrollments(enrollment_id)
+);
