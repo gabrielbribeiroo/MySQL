@@ -39,3 +39,14 @@ CREATE TABLE subjects (
     FOREIGN KEY (course_id) REFERENCES courses(course_id),
     FOREIGN KEY (teacher_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE enrollments (
+    enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    subject_id INT NOT NULL,
+    enrollment_date DATE DEFAULT (CURRENT_DATE),
+    status ENUM('enrolled', 'completed', 'dropped') DEFAULT 'enrolled',
+    UNIQUE(student_id, subject_id),
+    FOREIGN KEY (student_id) REFERENCES users(user_id),
+    FOREIGN KEY (subject_id) REFERENCES subjects(subject_id)
+);
