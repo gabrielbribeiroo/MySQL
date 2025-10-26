@@ -27,3 +27,15 @@ CREATE TABLE courses (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (coordinator_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE subjects (
+    subject_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    semester INT NOT NULL,
+    teacher_id INT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (teacher_id) REFERENCES users(user_id)
+);
