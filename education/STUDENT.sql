@@ -17,3 +17,13 @@ CREATE TABLE users (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     active BOOLEAN DEFAULT TRUE
 );
+
+CREATE TABLE courses (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    duration_semesters INT DEFAULT 8,
+    coordinator_id INT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (coordinator_id) REFERENCES users(user_id)
+);
