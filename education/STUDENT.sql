@@ -90,3 +90,15 @@ CREATE TABLE messages (
     FOREIGN KEY (sender_id) REFERENCES users(user_id),
     FOREIGN KEY (receiver_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE announcements (
+    announcement_id INT AUTO_INCREMENT PRIMARY KEY,
+    subject_id INT,
+    title VARCHAR(150) NOT NULL,
+    message TEXT NOT NULL,
+    posted_by INT,
+    posted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    visible_until DATE,
+    FOREIGN KEY (subject_id) REFERENCES subjects(subject_id),
+    FOREIGN KEY (posted_by) REFERENCES users(user_id)
+);
