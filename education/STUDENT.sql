@@ -102,3 +102,21 @@ CREATE TABLE announcements (
     FOREIGN KEY (subject_id) REFERENCES subjects(subject_id),
     FOREIGN KEY (posted_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE performance_reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    course_id INT NOT NULL,
+    total_subjects INT DEFAULT 0,
+    average_score DECIMAL(5,2) DEFAULT 0,
+    attendance_rate DECIMAL(5,2) DEFAULT 0,
+    performance_level ENUM('low', 'medium', 'high') GENERATED ALWAYS AS (
+        CASE
+            WHEN average_score < 50 THEN 'low'
+            WHEN average_score BETWEEN 50 AND 80 THEN 'medium'
+            ELSE 'high'
+        END
+    ) STORED,
+    FOREIGN KEY (student_id) REFERENCES users(user_id),
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
