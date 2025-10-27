@@ -69,3 +69,12 @@ CREATE TABLE grades (
     recorded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (enrollment_id) REFERENCES enrollments(enrollment_id)
 );
+
+CREATE TABLE grade_summary (
+    summary_id INT AUTO_INCREMENT PRIMARY KEY,
+    enrollment_id INT NOT NULL,
+    average_score DECIMAL(5,2),
+    final_status ENUM('approved', 'failed', 'incomplete') DEFAULT 'incomplete',
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (enrollment_id) REFERENCES enrollments(enrollment_id)
+);
