@@ -59,3 +59,13 @@ CREATE TABLE attendance (
     notes VARCHAR(255),
     FOREIGN KEY (enrollment_id) REFERENCES enrollments(enrollment_id)
 );
+
+CREATE TABLE grades (
+    grade_id INT AUTO_INCREMENT PRIMARY KEY,
+    enrollment_id INT NOT NULL,
+    evaluation_name VARCHAR(100),
+    score DECIMAL(5,2) CHECK (score >= 0 AND score <= 100),
+    weight DECIMAL(3,2) DEFAULT 1.0,
+    recorded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (enrollment_id) REFERENCES enrollments(enrollment_id)
+);
