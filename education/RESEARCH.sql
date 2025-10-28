@@ -40,3 +40,12 @@ CREATE TABLE publications (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (institution_id) REFERENCES institutions(institution_id)
 );
+
+CREATE TABLE publication_authors (
+    publication_id INT NOT NULL,
+    researcher_id INT NOT NULL,
+    author_order INT DEFAULT 1,
+    PRIMARY KEY (publication_id, researcher_id),
+    FOREIGN KEY (publication_id) REFERENCES publications(publication_id),
+    FOREIGN KEY (researcher_id) REFERENCES researchers(researcher_id)
+);
