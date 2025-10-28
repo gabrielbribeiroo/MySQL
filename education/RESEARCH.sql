@@ -49,3 +49,8 @@ CREATE TABLE publication_authors (
     FOREIGN KEY (publication_id) REFERENCES publications(publication_id),
     FOREIGN KEY (researcher_id) REFERENCES researchers(researcher_id)
 );
+
+CREATE TABLE keywords (
+    keyword_id INT AUTO_INCREMENT PRIMARY KEY,
+    keyword VARCHAR(100) UNIQUE NOT NULL
+);
