@@ -27,3 +27,16 @@ CREATE TABLE researchers (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (institution_id) REFERENCES institutions(institution_id)
 );
+
+CREATE TABLE publications (
+    publication_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    abstract TEXT,
+    publication_type ENUM('article', 'thesis', 'dissertation', 'report', 'dataset') DEFAULT 'article',
+    publication_date DATE,
+    doi VARCHAR(100) UNIQUE,
+    repository_link VARCHAR(255),
+    institution_id INT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (institution_id) REFERENCES institutions(institution_id)
+);
