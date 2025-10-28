@@ -16,3 +16,14 @@ CREATE TABLE institutions (
     website VARCHAR(150),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE researchers (
+    researcher_id INT AUTO_INCREMENT PRIMARY KEY,
+    institution_id INT,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) UNIQUE,
+    orcid VARCHAR(30),
+    research_area VARCHAR(150),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (institution_id) REFERENCES institutions(institution_id)
+);
