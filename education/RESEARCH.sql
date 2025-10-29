@@ -82,3 +82,14 @@ CREATE TABLE research_data (
     upload_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (publication_id) REFERENCES publications(publication_id)
 );
+
+CREATE TABLE peer_reviews (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    publication_id INT NOT NULL,
+    reviewer_id INT,
+    review_date DATE,
+    comments TEXT,
+    recommendation ENUM('accept', 'minor_revision', 'major_revision', 'reject'),
+    FOREIGN KEY (publication_id) REFERENCES publications(publication_id),
+    FOREIGN KEY (reviewer_id) REFERENCES researchers(researcher_id)
+);
