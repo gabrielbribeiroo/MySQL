@@ -62,3 +62,12 @@ CREATE TABLE publication_keywords (
     FOREIGN KEY (publication_id) REFERENCES publications(publication_id),
     FOREIGN KEY (keyword_id) REFERENCES keywords(keyword_id)
 );
+
+CREATE TABLE citations (
+    citation_id INT AUTO_INCREMENT PRIMARY KEY,
+    citing_publication_id INT NOT NULL,
+    cited_publication_id INT NOT NULL,
+    citation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (citing_publication_id) REFERENCES publications(publication_id),
+    FOREIGN KEY (cited_publication_id) REFERENCES publications(publication_id)
+);
