@@ -54,3 +54,11 @@ CREATE TABLE keywords (
     keyword_id INT AUTO_INCREMENT PRIMARY KEY,
     keyword VARCHAR(100) UNIQUE NOT NULL
 );
+
+CREATE TABLE publication_keywords (
+    publication_id INT NOT NULL,
+    keyword_id INT NOT NULL,
+    PRIMARY KEY (publication_id, keyword_id),
+    FOREIGN KEY (publication_id) REFERENCES publications(publication_id),
+    FOREIGN KEY (keyword_id) REFERENCES keywords(keyword_id)
+);
