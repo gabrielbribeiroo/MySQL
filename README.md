@@ -52,6 +52,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `workshop_platform`: Platform for in-person or online workshops with topics, instructors, participants, registrations, and certificate issuance.
 - `exam_system`: Online exam platform with question banks, automatic grading, and student performance analytics.
 - `student_portal`: Comprehensive student information system with profiles, attendance, grades, and communication.
+- `research_repository`: Repository for academic publications, theses, and research data sharing among institutions.
 
 ### ⚽ Sports & Recreation
 - `soccer`: Sports database for teams, players, match results, championships, and historical tracking.
