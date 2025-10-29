@@ -71,3 +71,14 @@ CREATE TABLE citations (
     FOREIGN KEY (citing_publication_id) REFERENCES publications(publication_id),
     FOREIGN KEY (cited_publication_id) REFERENCES publications(publication_id)
 );
+
+CREATE TABLE research_data (
+    dataset_id INT AUTO_INCREMENT PRIMARY KEY,
+    publication_id INT,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    data_link VARCHAR(255),
+    file_format VARCHAR(50),
+    upload_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (publication_id) REFERENCES publications(publication_id)
+);
