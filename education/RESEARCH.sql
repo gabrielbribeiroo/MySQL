@@ -93,3 +93,12 @@ CREATE TABLE peer_reviews (
     FOREIGN KEY (publication_id) REFERENCES publications(publication_id),
     FOREIGN KEY (reviewer_id) REFERENCES researchers(researcher_id)
 );
+
+CREATE TABLE access_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    publication_id INT NOT NULL,
+    ip_address VARCHAR(45),
+    access_type ENUM('view', 'download') DEFAULT 'view',
+    access_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (publication_id) REFERENCES publications(publication_id)
+);
