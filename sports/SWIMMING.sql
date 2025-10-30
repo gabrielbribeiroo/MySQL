@@ -35,3 +35,14 @@ CREATE TABLE pool_lanes (
     status ENUM('available', 'occupied', 'maintenance') DEFAULT 'available',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE training_sessions (
+    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    coach_id INT,
+    session_date DATE NOT NULL,
+    start_time TIME,
+    end_time TIME,
+    focus ENUM('Endurance', 'Speed', 'Technique', 'Recovery') DEFAULT 'Endurance',
+    notes TEXT,
+    FOREIGN KEY (coach_id) REFERENCES coaches(coach_id)
+);
