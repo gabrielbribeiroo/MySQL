@@ -27,3 +27,11 @@ CREATE TABLE athletes (
     registration_date DATE DEFAULT (CURRENT_DATE),
     FOREIGN KEY (coach_id) REFERENCES coaches(coach_id)
 );
+
+CREATE TABLE pool_lanes (
+    lane_id INT AUTO_INCREMENT PRIMARY KEY,
+    lane_number INT UNIQUE NOT NULL,
+    length_meters INT DEFAULT 25,
+    status ENUM('available', 'occupied', 'maintenance') DEFAULT 'available',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
