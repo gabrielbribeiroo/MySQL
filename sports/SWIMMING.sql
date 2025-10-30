@@ -16,3 +16,14 @@ CREATE TABLE coaches (
     hire_date DATE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE athletes (
+    athlete_id INT AUTO_INCREMENT PRIMARY KEY,
+    coach_id INT,
+    name VARCHAR(150) NOT NULL,
+    gender ENUM('M', 'F', 'Other'),
+    birth_date DATE,
+    category ENUM('Junior', 'Senior', 'Master') DEFAULT 'Junior',
+    registration_date DATE DEFAULT (CURRENT_DATE),
+    FOREIGN KEY (coach_id) REFERENCES coaches(coach_id)
+);
