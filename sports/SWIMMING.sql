@@ -6,3 +6,13 @@ CREATE DATABASE swimming_club
     COLLATE utf8mb4_general_ci;
 
 USE swimming_club;
+
+CREATE TABLE coaches (
+    coach_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) UNIQUE,
+    phone VARCHAR(20),
+    certification_level ENUM('Level 1', 'Level 2', 'Level 3', 'Elite') DEFAULT 'Level 1',
+    hire_date DATE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
