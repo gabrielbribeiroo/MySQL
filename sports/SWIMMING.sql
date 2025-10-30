@@ -46,3 +46,17 @@ CREATE TABLE training_sessions (
     notes TEXT,
     FOREIGN KEY (coach_id) REFERENCES coaches(coach_id)
 );
+
+CREATE TABLE training_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    session_id INT NOT NULL,
+    athlete_id INT NOT NULL,
+    lane_id INT,
+    distance_meters INT,
+    time_seconds DECIMAL(6,2),
+    stroke ENUM('Freestyle', 'Backstroke', 'Breaststroke', 'Butterfly', 'Medley'),
+    comments TEXT,
+    FOREIGN KEY (session_id) REFERENCES training_sessions(session_id),
+    FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id),
+    FOREIGN KEY (lane_id) REFERENCES pool_lanes(lane_id)
+);
