@@ -79,3 +79,14 @@ CREATE TABLE competition_events (
     gender_category ENUM('M', 'F', 'Mixed'),
     FOREIGN KEY (competition_id) REFERENCES competitions(competition_id)
 );
+
+CREATE TABLE competition_results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    event_id INT NOT NULL,
+    athlete_id INT NOT NULL,
+    position INT,
+    time_seconds DECIMAL(6,2),
+    points INT,
+    FOREIGN KEY (event_id) REFERENCES competition_events(event_id),
+    FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
+);
