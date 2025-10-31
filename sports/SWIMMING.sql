@@ -69,3 +69,13 @@ CREATE TABLE competitions (
     end_date DATE,
     level ENUM('Local', 'Regional', 'National', 'International') DEFAULT 'Local'
 );
+
+CREATE TABLE competition_events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    competition_id INT NOT NULL,
+    event_name VARCHAR(150) NOT NULL,
+    distance_meters INT,
+    stroke ENUM('Freestyle', 'Backstroke', 'Breaststroke', 'Butterfly', 'Medley'),
+    gender_category ENUM('M', 'F', 'Mixed'),
+    FOREIGN KEY (competition_id) REFERENCES competitions(competition_id)
+);
