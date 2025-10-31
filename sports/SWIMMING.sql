@@ -60,3 +60,12 @@ CREATE TABLE training_logs (
     FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id),
     FOREIGN KEY (lane_id) REFERENCES pool_lanes(lane_id)
 );
+
+CREATE TABLE competitions (
+    competition_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    location VARCHAR(150),
+    start_date DATE,
+    end_date DATE,
+    level ENUM('Local', 'Regional', 'National', 'International') DEFAULT 'Local'
+);
