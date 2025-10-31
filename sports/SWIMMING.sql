@@ -99,3 +99,13 @@ CREATE TABLE attendance (
     FOREIGN KEY (session_id) REFERENCES training_sessions(session_id),
     FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
 );
+
+CREATE TABLE performance_summary (
+    summary_id INT AUTO_INCREMENT PRIMARY KEY,
+    athlete_id INT NOT NULL,
+    total_sessions INT DEFAULT 0,
+    avg_time_seconds DECIMAL(6,2),
+    best_event VARCHAR(100),
+    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
+);
