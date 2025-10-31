@@ -90,3 +90,12 @@ CREATE TABLE competition_results (
     FOREIGN KEY (event_id) REFERENCES competition_events(event_id),
     FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
 );
+
+CREATE TABLE attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    session_id INT NOT NULL,
+    athlete_id INT NOT NULL,
+    status ENUM('Present', 'Absent', 'Justified') DEFAULT 'Present',
+    FOREIGN KEY (session_id) REFERENCES training_sessions(session_id),
+    FOREIGN KEY (athlete_id) REFERENCES athletes(athlete_id)
+);
