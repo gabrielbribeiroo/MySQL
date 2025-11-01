@@ -18,3 +18,11 @@ CREATE TABLE players (
     registration_date DATE DEFAULT (CURRENT_DATE),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE seasons (
+    season_id INT AUTO_INCREMENT PRIMARY KEY,
+    year INT NOT NULL,
+    start_date DATE,
+    end_date DATE,
+    status ENUM('Upcoming', 'Ongoing', 'Completed') DEFAULT 'Upcoming'
+);
