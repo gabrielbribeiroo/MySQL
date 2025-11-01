@@ -38,3 +38,19 @@ CREATE TABLE tournaments (
     level ENUM('Local', 'Regional', 'National', 'International') DEFAULT 'Local',
     FOREIGN KEY (season_id) REFERENCES seasons(season_id)
 );
+
+CREATE TABLE matches (
+    match_id INT AUTO_INCREMENT PRIMARY KEY,
+    tournament_id INT NOT NULL,
+    round ENUM('Round of 32', 'Round of 16', 'Quarterfinal', 'Semifinal', 'Final'),
+    match_date DATE,
+    player1_id INT NOT NULL,
+    player2_id INT NOT NULL,
+    winner_id INT,
+    score VARCHAR(50),  -- Exemplo: "6-4, 3-6, 7-6"
+    duration_minutes INT,
+    FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id),
+    FOREIGN KEY (player1_id) REFERENCES players(player_id),
+    FOREIGN KEY (player2_id) REFERENCES players(player_id),
+    FOREIGN KEY (winner_id) REFERENCES players(player_id)
+);
