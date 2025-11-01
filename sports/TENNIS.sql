@@ -26,3 +26,15 @@ CREATE TABLE seasons (
     end_date DATE,
     status ENUM('Upcoming', 'Ongoing', 'Completed') DEFAULT 'Upcoming'
 );
+
+CREATE TABLE tournaments (
+    tournament_id INT AUTO_INCREMENT PRIMARY KEY,
+    season_id INT NOT NULL,
+    name VARCHAR(150) NOT NULL,
+    location VARCHAR(150),
+    surface ENUM('Clay', 'Grass', 'Hard', 'Carpet') DEFAULT 'Hard',
+    start_date DATE,
+    end_date DATE,
+    level ENUM('Local', 'Regional', 'National', 'International') DEFAULT 'Local',
+    FOREIGN KEY (season_id) REFERENCES seasons(season_id)
+);
