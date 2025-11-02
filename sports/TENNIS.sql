@@ -68,3 +68,14 @@ CREATE TABLE match_stats (
     FOREIGN KEY (match_id) REFERENCES matches(match_id),
     FOREIGN KEY (player_id) REFERENCES players(player_id)
 );
+
+CREATE TABLE rankings (
+    ranking_id INT AUTO_INCREMENT PRIMARY KEY,
+    season_id INT NOT NULL,
+    player_id INT NOT NULL,
+    position INT,
+    points INT DEFAULT 0,
+    last_update DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (season_id) REFERENCES seasons(season_id),
+    FOREIGN KEY (player_id) REFERENCES players(player_id)
+);
