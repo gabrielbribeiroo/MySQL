@@ -62,6 +62,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `archery_club`: Archery club management system with athlete profiles, coaching sessions, equipment tracking, attendance, and performance metrics.
 - `e-sports`: E-sports tournament and team management system with players, games, matches, rankings, sponsors, and streaming integrations.
 - `swimming_club`: Swimming club management system with athletes, coaches, pool lanes, training logs, and competition results.
+- `tennis_league`: Tennis league organizer with players, matches, rankings, and seasonal statistics.
 
 ### 🗳️ Participatory Platforms
 - `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.
