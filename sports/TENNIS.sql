@@ -94,3 +94,12 @@ CREATE TABLE seasonal_statistics (
     FOREIGN KEY (season_id) REFERENCES seasons(season_id),
     FOREIGN KEY (player_id) REFERENCES players(player_id)
 );
+
+CREATE TABLE attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    tournament_id INT NOT NULL,
+    player_id INT NOT NULL,
+    status ENUM('Registered', 'Withdrawn', 'Disqualified', 'Completed') DEFAULT 'Registered',
+    FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id),
+    FOREIGN KEY (player_id) REFERENCES players(player_id)
+);
