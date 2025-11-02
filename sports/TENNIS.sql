@@ -54,3 +54,17 @@ CREATE TABLE matches (
     FOREIGN KEY (player2_id) REFERENCES players(player_id),
     FOREIGN KEY (winner_id) REFERENCES players(player_id)
 );
+
+CREATE TABLE match_stats (
+    stats_id INT AUTO_INCREMENT PRIMARY KEY,
+    match_id INT NOT NULL,
+    player_id INT NOT NULL,
+    aces INT DEFAULT 0,
+    double_faults INT DEFAULT 0,
+    first_serve_percent DECIMAL(5,2),
+    winners INT DEFAULT 0,
+    unforced_errors INT DEFAULT 0,
+    break_points_converted DECIMAL(5,2),
+    FOREIGN KEY (match_id) REFERENCES matches(match_id),
+    FOREIGN KEY (player_id) REFERENCES players(player_id)
+);
