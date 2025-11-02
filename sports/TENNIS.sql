@@ -79,3 +79,18 @@ CREATE TABLE rankings (
     FOREIGN KEY (season_id) REFERENCES seasons(season_id),
     FOREIGN KEY (player_id) REFERENCES players(player_id)
 );
+
+CREATE TABLE seasonal_statistics (
+    stats_id INT AUTO_INCREMENT PRIMARY KEY,
+    season_id INT NOT NULL,
+    player_id INT NOT NULL,
+    matches_played INT DEFAULT 0,
+    wins INT DEFAULT 0,
+    losses INT DEFAULT 0,
+    aces_total INT DEFAULT 0,
+    double_faults_total INT DEFAULT 0,
+    total_points_won INT DEFAULT 0,
+    win_rate DECIMAL(5,2),
+    FOREIGN KEY (season_id) REFERENCES seasons(season_id),
+    FOREIGN KEY (player_id) REFERENCES players(player_id)
+);
