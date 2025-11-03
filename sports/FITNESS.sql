@@ -49,3 +49,16 @@ CREATE TABLE workout_exercises (
     FOREIGN KEY (workout_id) REFERENCES workouts(workout_id),
     FOREIGN KEY (exercise_id) REFERENCES exercises(exercise_id)
 );
+
+CREATE TABLE nutrition_plans (
+    plan_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    name VARCHAR(150),
+    calories_target INT,
+    protein_target_g DECIMAL(6,2),
+    carbs_target_g DECIMAL(6,2),
+    fat_target_g DECIMAL(6,2),
+    start_date DATE,
+    end_date DATE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
