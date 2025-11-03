@@ -18,3 +18,12 @@ CREATE TABLE users (
     weight_kg DECIMAL(5,2),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE exercises (
+    exercise_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    category ENUM('Strength', 'Cardio', 'Flexibility', 'Balance', 'Other') DEFAULT 'Other',
+    muscle_group VARCHAR(100),
+    equipment_needed VARCHAR(150),
+    description TEXT
+);
