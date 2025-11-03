@@ -27,3 +27,13 @@ CREATE TABLE exercises (
     equipment_needed VARCHAR(150),
     description TEXT
 );
+
+CREATE TABLE workouts (
+    workout_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    name VARCHAR(150) NOT NULL,
+    date DATE DEFAULT (CURRENT_DATE),
+    duration_minutes INT,
+    notes TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
