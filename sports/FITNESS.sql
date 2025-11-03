@@ -37,3 +37,15 @@ CREATE TABLE workouts (
     notes TEXT,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE workout_exercises (
+    workout_exercise_id INT AUTO_INCREMENT PRIMARY KEY,
+    workout_id INT NOT NULL,
+    exercise_id INT NOT NULL,
+    sets INT DEFAULT 3,
+    reps INT DEFAULT 10,
+    weight_kg DECIMAL(5,2),
+    rest_seconds INT,
+    FOREIGN KEY (workout_id) REFERENCES workouts(workout_id),
+    FOREIGN KEY (exercise_id) REFERENCES exercises(exercise_id)
+);
