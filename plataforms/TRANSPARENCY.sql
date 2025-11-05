@@ -47,3 +47,16 @@ CREATE TABLE expenditures (
     FOREIGN KEY (category_id) REFERENCES budget_categories(category_id),
     FOREIGN KEY (budget_id) REFERENCES budgets(budget_id)
 );
+
+CREATE TABLE contracts (
+    contract_id INT AUTO_INCREMENT PRIMARY KEY,
+    entity_id INT NOT NULL,
+    contract_number VARCHAR(100) UNIQUE NOT NULL,
+    supplier_name VARCHAR(255) NOT NULL,
+    contract_value DECIMAL(15,2) NOT NULL,
+    start_date DATE,
+    end_date DATE,
+    status ENUM('Active', 'Completed', 'Cancelled', 'Suspended') DEFAULT 'Active',
+    description TEXT,
+    FOREIGN KEY (entity_id) REFERENCES government_entities(entity_id)
+);
