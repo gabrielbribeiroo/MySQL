@@ -62,3 +62,15 @@ CREATE TABLE nutrition_plans (
     end_date DATE,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE meals (
+    meal_id INT AUTO_INCREMENT PRIMARY KEY,
+    plan_id INT NOT NULL,
+    name VARCHAR(100),
+    meal_time ENUM('Breakfast', 'Lunch', 'Dinner', 'Snack'),
+    calories INT,
+    protein_g DECIMAL(6,2),
+    carbs_g DECIMAL(6,2),
+    fat_g DECIMAL(6,2),
+    FOREIGN KEY (plan_id) REFERENCES nutrition_plans(plan_id)
+);
