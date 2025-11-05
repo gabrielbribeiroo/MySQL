@@ -86,3 +86,14 @@ CREATE TABLE goals (
     status ENUM('Active', 'Completed', 'Abandoned') DEFAULT 'Active',
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE progress_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    log_date DATE DEFAULT (CURRENT_DATE),
+    weight_kg DECIMAL(5,2),
+    body_fat_percent DECIMAL(5,2),
+    muscle_mass_kg DECIMAL(5,2),
+    notes TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
