@@ -74,3 +74,15 @@ CREATE TABLE meals (
     fat_g DECIMAL(6,2),
     FOREIGN KEY (plan_id) REFERENCES nutrition_plans(plan_id)
 );
+
+CREATE TABLE goals (
+    goal_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    goal_type ENUM('Weight Loss', 'Muscle Gain', 'Maintenance', 'Performance') DEFAULT 'Maintenance',
+    start_weight DECIMAL(5,2),
+    target_weight DECIMAL(5,2),
+    start_date DATE,
+    target_date DATE,
+    status ENUM('Active', 'Completed', 'Abandoned') DEFAULT 'Active',
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
