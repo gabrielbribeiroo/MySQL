@@ -63,6 +63,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `e-sports`: E-sports tournament and team management system with players, games, matches, rankings, sponsors, and streaming integrations.
 - `swimming_club`: Swimming club management system with athletes, coaches, pool lanes, training logs, and competition results.
 - `tennis_league`: Tennis league organizer with players, matches, rankings, and seasonal statistics.
+- `fitness_app`: Personal fitness tracking system with exercises, nutrition plans, goals, and progress monitoring.
 
 ### 🗳️ Participatory Platforms
 - `online_voting`: Online voting platform for managing voters, candidates, sessions, votes, and real-time result tracking.
