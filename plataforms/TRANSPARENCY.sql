@@ -32,3 +32,18 @@ CREATE TABLE budget_categories (
     name VARCHAR(150) NOT NULL,
     description TEXT
 );
+
+CREATE TABLE expenditures (
+    expenditure_id INT AUTO_INCREMENT PRIMARY KEY,
+    entity_id INT NOT NULL,
+    category_id INT NOT NULL,
+    budget_id INT NOT NULL,
+    description TEXT,
+    supplier_name VARCHAR(255),
+    amount DECIMAL(15,2) NOT NULL,
+    payment_date DATE,
+    document_number VARCHAR(100),
+    FOREIGN KEY (entity_id) REFERENCES government_entities(entity_id),
+    FOREIGN KEY (category_id) REFERENCES budget_categories(category_id),
+    FOREIGN KEY (budget_id) REFERENCES budgets(budget_id)
+);
