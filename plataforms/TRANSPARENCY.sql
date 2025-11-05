@@ -17,3 +17,12 @@ CREATE TABLE government_entities (
     website VARCHAR(255),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE budgets (
+    budget_id INT AUTO_INCREMENT PRIMARY KEY,
+    entity_id INT NOT NULL,
+    fiscal_year YEAR NOT NULL,
+    total_budget DECIMAL(15,2) NOT NULL,
+    approved_date DATE,
+    FOREIGN KEY (entity_id) REFERENCES government_entities(entity_id)
+);
