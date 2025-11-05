@@ -97,3 +97,14 @@ CREATE TABLE progress_logs (
     notes TEXT,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE daily_activity (
+    activity_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    date DATE DEFAULT (CURRENT_DATE),
+    steps INT,
+    calories_burned INT,
+    sleep_hours DECIMAL(4,2),
+    water_intake_liters DECIMAL(4,2),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
