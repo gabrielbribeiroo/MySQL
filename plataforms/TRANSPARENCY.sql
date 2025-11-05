@@ -26,3 +26,9 @@ CREATE TABLE budgets (
     approved_date DATE,
     FOREIGN KEY (entity_id) REFERENCES government_entities(entity_id)
 );
+
+CREATE TABLE budget_categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT
+);
