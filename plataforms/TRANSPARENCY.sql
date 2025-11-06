@@ -72,3 +72,11 @@ CREATE TABLE suppliers (
     state VARCHAR(50),
     country VARCHAR(100) DEFAULT 'Brazil'
 );
+
+CREATE TABLE contract_suppliers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    contract_id INT NOT NULL,
+    supplier_id INT NOT NULL,
+    FOREIGN KEY (contract_id) REFERENCES contracts(contract_id),
+    FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id)
+);
