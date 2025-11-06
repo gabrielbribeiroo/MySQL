@@ -80,3 +80,13 @@ CREATE TABLE contract_suppliers (
     FOREIGN KEY (contract_id) REFERENCES contracts(contract_id),
     FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id)
 );
+
+CREATE TABLE revenues (
+    revenue_id INT AUTO_INCREMENT PRIMARY KEY,
+    entity_id INT NOT NULL,
+    source ENUM('Taxes', 'Transfers', 'Donations', 'Other') DEFAULT 'Other',
+    description TEXT,
+    amount DECIMAL(15,2) NOT NULL,
+    received_date DATE,
+    FOREIGN KEY (entity_id) REFERENCES government_entities(entity_id)
+);
