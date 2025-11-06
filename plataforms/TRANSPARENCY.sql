@@ -90,3 +90,15 @@ CREATE TABLE revenues (
     received_date DATE,
     FOREIGN KEY (entity_id) REFERENCES government_entities(entity_id)
 );
+
+CREATE TABLE transparency_reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    entity_id INT NOT NULL,
+    period_start DATE,
+    period_end DATE,
+    total_revenue DECIMAL(15,2),
+    total_expenditure DECIMAL(15,2),
+    balance DECIMAL(15,2),
+    publication_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (entity_id) REFERENCES government_entities(entity_id)
+);
