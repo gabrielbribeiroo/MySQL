@@ -60,3 +60,15 @@ CREATE TABLE contracts (
     description TEXT,
     FOREIGN KEY (entity_id) REFERENCES government_entities(entity_id)
 );
+
+CREATE TABLE suppliers (
+    supplier_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    tax_id VARCHAR(50) UNIQUE,
+    contact_email VARCHAR(150),
+    phone_number VARCHAR(50),
+    address VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(50),
+    country VARCHAR(100) DEFAULT 'Brazil'
+);
