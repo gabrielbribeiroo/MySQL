@@ -75,6 +75,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `law_proposals`: Platform for tracking law proposals, their authors, topics, legislative progress, and voting outcomes.
 - `customer_support`: Customer support system for managing tickets, agents, statuses, feedback, and service categories.
 - `public_consultation`: Public consultation system for laws, construction projects, mobility, etc., with comments and voting features.
+- `transparency_portal`: Public transparency system showing government budgets, expenditures, and contracts.
 
 ### 🏥 Healthcare
 - `medical_clinic`: Medical clinic system including patient records, doctors, specialties, appointments, and medical histories.
