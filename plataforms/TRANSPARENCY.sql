@@ -102,3 +102,13 @@ CREATE TABLE transparency_reports (
     publication_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (entity_id) REFERENCES government_entities(entity_id)
 );
+
+CREATE TABLE public_feedback (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    entity_id INT NOT NULL,
+    citizen_name VARCHAR(150),
+    email VARCHAR(150),
+    comment TEXT,
+    submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (entity_id) REFERENCES government_entities(entity_id)
+);
