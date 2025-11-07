@@ -40,3 +40,13 @@ CREATE TABLE discussions (
     FOREIGN KEY (community_id) REFERENCES communities(community_id),
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE comments (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    discussion_id INT NOT NULL,
+    user_id INT NOT NULL,
+    content TEXT NOT NULL,
+    posted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (discussion_id) REFERENCES discussions(discussion_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
