@@ -50,3 +50,16 @@ CREATE TABLE comments (
     FOREIGN KEY (discussion_id) REFERENCES discussions(discussion_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE polls (
+    poll_id INT AUTO_INCREMENT PRIMARY KEY,
+    community_id INT NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    created_by INT NOT NULL,
+    start_date DATETIME,
+    end_date DATETIME,
+    status ENUM('Draft', 'Open', 'Closed') DEFAULT 'Draft',
+    FOREIGN KEY (community_id) REFERENCES communities(community_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id)
+);
