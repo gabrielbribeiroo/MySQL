@@ -28,3 +28,15 @@ CREATE TABLE communities (
     created_by INT,
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE discussions (
+    discussion_id INT AUTO_INCREMENT PRIMARY KEY,
+    community_id INT NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    created_by INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('Open', 'Closed', 'Archived') DEFAULT 'Open',
+    FOREIGN KEY (community_id) REFERENCES communities(community_id),
+    FOREIGN KEY (created_by) REFERENCES users(user_id)
+);
