@@ -18,3 +18,13 @@ CREATE TABLE users (
     role ENUM('Citizen', 'Moderator', 'Administrator') DEFAULT 'Citizen',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE communities (
+    community_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    location VARCHAR(150),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    created_by INT,
+    FOREIGN KEY (created_by) REFERENCES users(user_id)
+);
