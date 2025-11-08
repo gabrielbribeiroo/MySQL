@@ -70,3 +70,15 @@ CREATE TABLE poll_options (
     option_text VARCHAR(200) NOT NULL,
     FOREIGN KEY (poll_id) REFERENCES polls(poll_id)
 );
+
+CREATE TABLE votes (
+    vote_id INT AUTO_INCREMENT PRIMARY KEY,
+    poll_id INT NOT NULL,
+    option_id INT NOT NULL,
+    user_id INT NOT NULL,
+    voted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (poll_id, user_id),
+    FOREIGN KEY (poll_id) REFERENCES polls(poll_id),
+    FOREIGN KEY (option_id) REFERENCES poll_options(option_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
