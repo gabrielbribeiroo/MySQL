@@ -82,3 +82,15 @@ CREATE TABLE votes (
     FOREIGN KEY (option_id) REFERENCES poll_options(option_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE decisions (
+    decision_id INT AUTO_INCREMENT PRIMARY KEY,
+    community_id INT NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    proposed_by INT NOT NULL,
+    status ENUM('Proposed', 'Approved', 'Rejected', 'In Review') DEFAULT 'Proposed',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (community_id) REFERENCES communities(community_id),
+    FOREIGN KEY (proposed_by) REFERENCES users(user_id)
+);
