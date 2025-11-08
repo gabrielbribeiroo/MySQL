@@ -94,3 +94,14 @@ CREATE TABLE decisions (
     FOREIGN KEY (community_id) REFERENCES communities(community_id),
     FOREIGN KEY (proposed_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE decision_votes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    decision_id INT NOT NULL,
+    user_id INT NOT NULL,
+    vote ENUM('Yes', 'No', 'Abstain') NOT NULL,
+    voted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (decision_id, user_id),
+    FOREIGN KEY (decision_id) REFERENCES decisions(decision_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
