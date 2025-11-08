@@ -105,3 +105,14 @@ CREATE TABLE decision_votes (
     FOREIGN KEY (decision_id) REFERENCES decisions(decision_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE announcements (
+    announcement_id INT AUTO_INCREMENT PRIMARY KEY,
+    community_id INT NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    message TEXT NOT NULL,
+    posted_by INT NOT NULL,
+    posted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (community_id) REFERENCES communities(community_id),
+    FOREIGN KEY (posted_by) REFERENCES users(user_id)
+);
