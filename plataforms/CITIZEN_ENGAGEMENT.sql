@@ -63,3 +63,10 @@ CREATE TABLE polls (
     FOREIGN KEY (community_id) REFERENCES communities(community_id),
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE poll_options (
+    option_id INT AUTO_INCREMENT PRIMARY KEY,
+    poll_id INT NOT NULL,
+    option_text VARCHAR(200) NOT NULL,
+    FOREIGN KEY (poll_id) REFERENCES polls(poll_id)
+);
