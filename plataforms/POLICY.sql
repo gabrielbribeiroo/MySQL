@@ -26,3 +26,11 @@ CREATE TABLE policies (
     budget DECIMAL(15,2),
     status ENUM('Planning', 'Implementation', 'Completed', 'Paused', 'Cancelled') DEFAULT 'Planning'
 );
+
+CREATE TABLE policy_region (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    policy_id INT NOT NULL,
+    region_id INT NOT NULL,
+    FOREIGN KEY (policy_id) REFERENCES policies(policy_id),
+    FOREIGN KEY (region_id) REFERENCES regions(region_id)
+);
