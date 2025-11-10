@@ -34,3 +34,11 @@ CREATE TABLE policy_region (
     FOREIGN KEY (policy_id) REFERENCES policies(policy_id),
     FOREIGN KEY (region_id) REFERENCES regions(region_id)
 );
+
+CREATE TABLE stakeholders (
+    stakeholder_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    type ENUM('Government', 'NGO', 'Private Sector', 'Community', 'International Organization') NOT NULL,
+    contact_email VARCHAR(150),
+    phone VARCHAR(50)
+);
