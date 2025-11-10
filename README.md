@@ -76,6 +76,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `customer_support`: Customer support system for managing tickets, agents, statuses, feedback, and service categories.
 - `public_consultation`: Public consultation system for laws, construction projects, mobility, etc., with comments and voting features.
 - `transparency_portal`: Public transparency system showing government budgets, expenditures, and contracts.
+- `citizen_engagement`: Platform for community engagement with discussions, polls, and collaborative decision-making.
 
 ### 🏥 Healthcare
 - `medical_clinic`: Medical clinic system including patient records, doctors, specialties, appointments, and medical histories.
