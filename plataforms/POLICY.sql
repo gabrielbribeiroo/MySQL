@@ -51,3 +51,14 @@ CREATE TABLE policy_stakeholder (
     FOREIGN KEY (policy_id) REFERENCES policies(policy_id),
     FOREIGN KEY (stakeholder_id) REFERENCES stakeholders(stakeholder_id)
 );
+
+CREATE TABLE indicators (
+    indicator_id INT AUTO_INCREMENT PRIMARY KEY,
+    policy_id INT NOT NULL,
+    name VARCHAR(200) NOT NULL,
+    description TEXT,
+    unit VARCHAR(50),
+    baseline_value DECIMAL(15,2),
+    target_value DECIMAL(15,2),
+    FOREIGN KEY (policy_id) REFERENCES policies(policy_id)
+);
