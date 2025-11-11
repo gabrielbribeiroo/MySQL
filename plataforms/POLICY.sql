@@ -72,3 +72,14 @@ CREATE TABLE indicator_results (
     FOREIGN KEY (indicator_id) REFERENCES indicators(indicator_id),
     FOREIGN KEY (region_id) REFERENCES regions(region_id)
 );
+
+CREATE TABLE reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    policy_id INT NOT NULL,
+    report_title VARCHAR(200) NOT NULL,
+    summary TEXT,
+    progress_percentage DECIMAL(5,2),
+    report_date DATE NOT NULL,
+    prepared_by VARCHAR(150),
+    FOREIGN KEY (policy_id) REFERENCES policies(policy_id)
+);
