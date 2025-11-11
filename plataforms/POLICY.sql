@@ -62,3 +62,13 @@ CREATE TABLE indicators (
     target_value DECIMAL(15,2),
     FOREIGN KEY (policy_id) REFERENCES policies(policy_id)
 );
+
+CREATE TABLE indicator_results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    indicator_id INT NOT NULL,
+    region_id INT,
+    measurement_date DATE NOT NULL,
+    measured_value DECIMAL(15,2),
+    FOREIGN KEY (indicator_id) REFERENCES indicators(indicator_id),
+    FOREIGN KEY (region_id) REFERENCES regions(region_id)
+);
