@@ -42,3 +42,12 @@ CREATE TABLE stakeholders (
     contact_email VARCHAR(150),
     phone VARCHAR(50)
 );
+
+CREATE TABLE policy_stakeholder (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    policy_id INT NOT NULL,
+    stakeholder_id INT NOT NULL,
+    role ENUM('Coordinator', 'Partner', 'Funder', 'Evaluator', 'Participant') DEFAULT 'Partner',
+    FOREIGN KEY (policy_id) REFERENCES policies(policy_id),
+    FOREIGN KEY (stakeholder_id) REFERENCES stakeholders(stakeholder_id)
+);
