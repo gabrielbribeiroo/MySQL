@@ -83,3 +83,13 @@ CREATE TABLE reports (
     prepared_by VARCHAR(150),
     FOREIGN KEY (policy_id) REFERENCES policies(policy_id)
 );
+
+CREATE TABLE documents (
+    document_id INT AUTO_INCREMENT PRIMARY KEY,
+    policy_id INT NOT NULL,
+    file_name VARCHAR(255) NOT NULL,
+    file_url VARCHAR(500),
+    uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    uploaded_by VARCHAR(150),
+    FOREIGN KEY (policy_id) REFERENCES policies(policy_id)
+);
