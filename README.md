@@ -77,6 +77,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `public_consultation`: Public consultation system for laws, construction projects, mobility, etc., with comments and voting features.
 - `transparency_portal`: Public transparency system showing government budgets, expenditures, and contracts.
 - `citizen_engagement`: Platform for community engagement with discussions, polls, and collaborative decision-making.
+- `policy_tracker`: Tracker for monitoring implementation and results of public policies across regions.
 
 ### 🏥 Healthcare
 - `medical_clinic`: Medical clinic system including patient records, doctors, specialties, appointments, and medical histories.
