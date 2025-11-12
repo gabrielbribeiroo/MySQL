@@ -39,3 +39,11 @@ CREATE TABLE dental_records (
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
     FOREIGN KEY (dentist_id) REFERENCES dentists(dentist_id)
 );
+
+CREATE TABLE procedures (
+    procedure_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    cost DECIMAL(10,2),
+    duration_minutes INT
+);
