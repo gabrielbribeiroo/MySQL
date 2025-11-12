@@ -16,3 +16,15 @@ CREATE TABLE dentists (
     email VARCHAR(150),
     hire_date DATE
 );
+
+CREATE TABLE patients (
+    patient_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    date_of_birth DATE,
+    gender ENUM('Male', 'Female', 'Other'),
+    phone VARCHAR(50),
+    email VARCHAR(150),
+    address VARCHAR(255),
+    emergency_contact VARCHAR(150),
+    registration_date DATE DEFAULT (CURRENT_DATE)
+);
