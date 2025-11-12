@@ -28,3 +28,14 @@ CREATE TABLE patients (
     emergency_contact VARCHAR(150),
     registration_date DATE DEFAULT (CURRENT_DATE)
 );
+
+CREATE TABLE dental_records (
+    record_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    dentist_id INT NOT NULL,
+    visit_date DATE NOT NULL,
+    notes TEXT,
+    diagnosis TEXT,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (dentist_id) REFERENCES dentists(dentist_id)
+);
