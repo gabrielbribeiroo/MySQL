@@ -57,3 +57,14 @@ CREATE TABLE record_procedures (
     FOREIGN KEY (record_id) REFERENCES dental_records(record_id),
     FOREIGN KEY (procedure_id) REFERENCES procedures(procedure_id)
 );
+
+CREATE TABLE appointments (
+    appointment_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    dentist_id INT NOT NULL,
+    appointment_date DATETIME NOT NULL,
+    status ENUM('Scheduled', 'Completed', 'Cancelled', 'No-show') DEFAULT 'Scheduled',
+    notes TEXT,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (dentist_id) REFERENCES dentists(dentist_id)
+);
