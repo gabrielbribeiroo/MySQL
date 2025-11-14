@@ -47,3 +47,13 @@ CREATE TABLE procedures (
     cost DECIMAL(10,2),
     duration_minutes INT
 );
+
+CREATE TABLE record_procedures (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    record_id INT NOT NULL,
+    procedure_id INT NOT NULL,
+    quantity INT DEFAULT 1,
+    total_cost DECIMAL(10,2),
+    FOREIGN KEY (record_id) REFERENCES dental_records(record_id),
+    FOREIGN KEY (procedure_id) REFERENCES procedures(procedure_id)
+);
