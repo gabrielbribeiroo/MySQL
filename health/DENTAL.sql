@@ -81,3 +81,14 @@ CREATE TABLE treatment_plans (
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
     FOREIGN KEY (dentist_id) REFERENCES dentists(dentist_id)
 );
+
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    record_id INT,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_date DATE DEFAULT (CURRENT_DATE),
+    method ENUM('Cash', 'Credit Card', 'Debit Card', 'Pix', 'Insurance') DEFAULT 'Cash',
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (record_id) REFERENCES dental_records(record_id)
+);
