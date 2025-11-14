@@ -68,3 +68,16 @@ CREATE TABLE appointments (
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
     FOREIGN KEY (dentist_id) REFERENCES dentists(dentist_id)
 );
+
+CREATE TABLE treatment_plans (
+    plan_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    dentist_id INT NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE,
+    total_estimated_cost DECIMAL(10,2),
+    status ENUM('Planned', 'In Progress', 'Completed', 'Cancelled') DEFAULT 'Planned',
+    notes TEXT,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (dentist_id) REFERENCES dentists(dentist_id)
+);
