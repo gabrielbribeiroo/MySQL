@@ -24,3 +24,13 @@ CREATE TABLE nutritionists (
     phone VARCHAR(30),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE appointments (
+    appointment_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    nutritionist_id INT NOT NULL,
+    appointment_date DATETIME NOT NULL,
+    notes TEXT,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (nutritionist_id) REFERENCES nutritionists(nutritionist_id)
+);
