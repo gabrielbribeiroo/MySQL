@@ -15,3 +15,12 @@ CREATE TABLE patients (
     phone VARCHAR(30),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE nutritionists (
+    nutritionist_id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(120) NOT NULL,
+    certification_number VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(120) UNIQUE,
+    phone VARCHAR(30),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
