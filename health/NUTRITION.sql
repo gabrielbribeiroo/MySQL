@@ -34,3 +34,15 @@ CREATE TABLE appointments (
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
     FOREIGN KEY (nutritionist_id) REFERENCES nutritionists(nutritionist_id)
 );
+
+CREATE TABLE meal_plans (
+    meal_plan_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    nutritionist_id INT NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE,
+    goal VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (nutritionist_id) REFERENCES nutritionists(nutritionist_id)
+);
