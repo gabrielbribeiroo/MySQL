@@ -83,3 +83,15 @@ CREATE TABLE nutrition_goals (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
 );
+
+CREATE TABLE progress_records (
+    record_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    record_date DATE NOT NULL,
+    weight DECIMAL(5,2),
+    body_fat DECIMAL(5,2),
+    waist_circumference DECIMAL(5,2),
+    calories_consumed INT,
+    notes TEXT,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
+);
