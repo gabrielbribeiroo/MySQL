@@ -86,6 +86,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `mental_health`: Mental health monitoring system with session tracking, mood logs, therapy types, and patient goals.
 - `vaccination_center`: Vaccination center database tracking vaccine applications, age-based schedules, manufacturers, and public health campaigns.
 - `dental_clinic`: Dental clinic management system with patient dental records, procedures, and treatment plans.
+- `nutrition_center`: Nutrition clinic platform for diet tracking, consultations, and personalized plans.
 
 ### 🧑‍🤝‍🧑 Collaboration & Research
 - `meeting_scheduler`: Scheduling system for meetings with rooms, agendas, attendees, and feedback.
