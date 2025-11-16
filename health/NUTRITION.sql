@@ -58,3 +58,17 @@ CREATE TABLE meal_plan_items (
     fats DECIMAL(5,2),
     FOREIGN KEY (meal_plan_id) REFERENCES meal_plans(meal_plan_id)
 );
+
+CREATE TABLE food_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    log_date DATE NOT NULL,
+    meal_time ENUM('breakfast', 'lunch', 'dinner', 'snack') NOT NULL,
+    food_description VARCHAR(255) NOT NULL,
+    calories INT,
+    proteins DECIMAL(5,2),
+    carbs DECIMAL(5,2),
+    fats DECIMAL(5,2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
+);
