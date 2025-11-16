@@ -72,3 +72,14 @@ CREATE TABLE food_logs (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
 );
+
+CREATE TABLE nutrition_goals (
+    goal_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    target_value DECIMAL(8,2),
+    metric ENUM('weight', 'body_fat', 'calories', 'proteins', 'carbs', 'fats') NOT NULL,
+    deadline DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
+);
