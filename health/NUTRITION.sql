@@ -46,3 +46,15 @@ CREATE TABLE meal_plans (
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
     FOREIGN KEY (nutritionist_id) REFERENCES nutritionists(nutritionist_id)
 );
+
+CREATE TABLE meal_plan_items (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    meal_plan_id INT NOT NULL,
+    meal_time ENUM('breakfast', 'lunch', 'dinner', 'snack') NOT NULL,
+    food_description VARCHAR(255) NOT NULL,
+    calories INT,
+    proteins DECIMAL(5,2),
+    carbs DECIMAL(5,2),
+    fats DECIMAL(5,2),
+    FOREIGN KEY (meal_plan_id) REFERENCES meal_plans(meal_plan_id)
+);
