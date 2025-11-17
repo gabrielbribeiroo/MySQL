@@ -41,3 +41,13 @@ CREATE TABLE patients (
     emergency_contact VARCHAR(150),
     FOREIGN KEY (patient_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE doctors (
+    doctor_id INT PRIMARY KEY,
+    specialty_id INT NOT NULL,
+    license_number VARCHAR(80) NOT NULL UNIQUE,
+    years_experience INT DEFAULT 0,
+    bio TEXT,
+    FOREIGN KEY (doctor_id) REFERENCES users(user_id),
+    FOREIGN KEY (specialty_id) REFERENCES specialties(specialty_id)
+);
