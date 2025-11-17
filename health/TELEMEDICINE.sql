@@ -32,3 +32,12 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+CREATE TABLE patients (
+    patient_id INT PRIMARY KEY,
+    birth_date DATE,
+    gender ENUM('male','female','other'),
+    address TEXT,
+    emergency_contact VARCHAR(150),
+    FOREIGN KEY (patient_id) REFERENCES users(user_id)
+);
