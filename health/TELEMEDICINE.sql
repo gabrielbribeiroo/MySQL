@@ -96,3 +96,14 @@ CREATE TABLE attachments (
     FOREIGN KEY (consultation_id) REFERENCES consultations(consultation_id),
     FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    consultation_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    method_id INT NOT NULL,
+    status ENUM('pending','paid','failed','refunded') DEFAULT 'pending',
+    paid_at DATETIME,
+    FOREIGN KEY (consultation_id) REFERENCES consultations(consultation_id),
+    FOREIGN KEY (method_id) REFERENCES payment_methods(method_id)
+);
