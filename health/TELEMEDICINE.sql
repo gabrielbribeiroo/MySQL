@@ -84,3 +84,15 @@ CREATE TABLE chat_messages (
     FOREIGN KEY (consultation_id) REFERENCES consultations(consultation_id),
     FOREIGN KEY (sender_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE attachments (
+    attachment_id INT AUTO_INCREMENT PRIMARY KEY,
+    consultation_id INT NOT NULL,
+    uploaded_by INT NOT NULL,
+    file_name VARCHAR(200),
+    file_type VARCHAR(50),
+    file_url VARCHAR(300),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (consultation_id) REFERENCES consultations(consultation_id),
+    FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
+);
