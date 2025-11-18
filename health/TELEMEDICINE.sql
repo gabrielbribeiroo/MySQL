@@ -74,3 +74,13 @@ CREATE TABLE consultations (
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
     FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
 );
+
+CREATE TABLE chat_messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    consultation_id INT NOT NULL,
+    sender_id INT NOT NULL,
+    message TEXT,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (consultation_id) REFERENCES consultations(consultation_id),
+    FOREIGN KEY (sender_id) REFERENCES users(user_id)
+);
