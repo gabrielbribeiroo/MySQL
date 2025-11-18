@@ -60,3 +60,17 @@ CREATE TABLE doctor_availability (
     end_time TIME NOT NULL,
     FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
 );
+
+CREATE TABLE consultations (
+    consultation_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    scheduled_at DATETIME NOT NULL,
+    timezone VARCHAR(60) DEFAULT 'UTC',
+    status ENUM('scheduled','in_progress','completed','canceled','no_show') DEFAULT 'scheduled',
+    video_call_link VARCHAR(300),
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
+);
