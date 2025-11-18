@@ -51,3 +51,12 @@ CREATE TABLE doctors (
     FOREIGN KEY (doctor_id) REFERENCES users(user_id),
     FOREIGN KEY (specialty_id) REFERENCES specialties(specialty_id)
 );
+
+CREATE TABLE doctor_availability (
+    availability_id INT AUTO_INCREMENT PRIMARY KEY,
+    doctor_id INT NOT NULL,
+    weekday ENUM('mon','tue','wed','thu','fri','sat','sun'),
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
+);
