@@ -107,3 +107,15 @@ CREATE TABLE payments (
     FOREIGN KEY (consultation_id) REFERENCES consultations(consultation_id),
     FOREIGN KEY (method_id) REFERENCES payment_methods(method_id)
 );
+
+CREATE TABLE prescriptions (
+    prescription_id INT AUTO_INCREMENT PRIMARY KEY,
+    consultation_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    patient_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    notes TEXT,
+    FOREIGN KEY (consultation_id) REFERENCES consultations(consultation_id),
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id),
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
+);
