@@ -87,6 +87,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `vaccination_center`: Vaccination center database tracking vaccine applications, age-based schedules, manufacturers, and public health campaigns.
 - `dental_clinic`: Dental clinic management system with patient dental records, procedures, and treatment plans.
 - `nutrition_center`: Nutrition clinic platform for diet tracking, consultations, and personalized plans.
+- `telemedicine`: Telemedicine system for virtual consultations, prescriptions, and medical records.
 
 ### 🧑‍🤝‍🧑 Collaboration & Research
 - `meeting_scheduler`: Scheduling system for meetings with rooms, agendas, attendees, and feedback.
