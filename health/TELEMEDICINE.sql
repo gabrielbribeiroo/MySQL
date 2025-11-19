@@ -119,3 +119,14 @@ CREATE TABLE prescriptions (
     FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id),
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
 );
+
+CREATE TABLE prescription_items (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    prescription_id INT NOT NULL,
+    medication VARCHAR(150) NOT NULL,
+    dosage VARCHAR(100),
+    frequency VARCHAR(100),
+    duration VARCHAR(100),
+    notes TEXT,
+    FOREIGN KEY (prescription_id) REFERENCES prescriptions(prescription_id)
+);
