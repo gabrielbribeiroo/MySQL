@@ -130,3 +130,17 @@ CREATE TABLE prescription_items (
     notes TEXT,
     FOREIGN KEY (prescription_id) REFERENCES prescriptions(prescription_id)
 );
+
+CREATE TABLE medical_records (
+    record_id INT AUTO_INCREMENT PRIMARY KEY,
+    patient_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    consultation_id INT,
+    record_date DATE NOT NULL,
+    diagnosis TEXT,
+    treatment TEXT,
+    notes TEXT,
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id),
+    FOREIGN KEY (consultation_id) REFERENCES consultations(consultation_id)
+);
