@@ -39,3 +39,17 @@ CREATE TABLE funding_sources (
     amount DECIMAL(12,2),
     description TEXT
 );
+
+CREATE TABLE projects (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    team_id INT,
+    funding_id INT,
+    start_date DATE,
+    end_date DATE,
+    status ENUM('planning','in_progress','prototype','testing','completed','canceled') DEFAULT 'planning',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (team_id) REFERENCES teams(team_id),
+    FOREIGN KEY (funding_id) REFERENCES funding_sources(funding_id)
+);
