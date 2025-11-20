@@ -31,3 +31,11 @@ CREATE TABLE team_members (
     FOREIGN KEY (team_id) REFERENCES teams(team_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE funding_sources (
+    funding_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    type ENUM('grant','internal','corporate','government','angel','other') DEFAULT 'other',
+    amount DECIMAL(12,2),
+    description TEXT
+);
