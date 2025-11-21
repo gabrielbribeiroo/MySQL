@@ -53,3 +53,23 @@ CREATE TABLE projects (
     FOREIGN KEY (team_id) REFERENCES teams(team_id),
     FOREIGN KEY (funding_id) REFERENCES funding_sources(funding_id)
 );
+
+CREATE TABLE prototypes (
+    prototype_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    version VARCHAR(50) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
+
+CREATE TABLE prototype_tests (
+    test_id INT AUTO_INCREMENT PRIMARY KEY,
+    prototype_id INT NOT NULL,
+    tested_by INT NOT NULL,
+    result ENUM('success','partial','failure') NOT NULL,
+    observations TEXT,
+    tested_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (prototype_id) REFERENCES prototypes(prototype_id),
+    FOREIGN KEY (tested_by) REFERENCES users(user_id)
+);
