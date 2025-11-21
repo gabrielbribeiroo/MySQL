@@ -73,3 +73,23 @@ CREATE TABLE prototype_tests (
     FOREIGN KEY (prototype_id) REFERENCES prototypes(prototype_id),
     FOREIGN KEY (tested_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE lab_meetings (
+    meeting_id INT AUTO_INCREMENT PRIMARY KEY,
+    team_id INT NOT NULL,
+    topic VARCHAR(200) NOT NULL,
+    meeting_date DATETIME NOT NULL,
+    location VARCHAR(200),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (team_id) REFERENCES teams(team_id)
+);
+
+CREATE TABLE meeting_minutes (
+    minute_id INT AUTO_INCREMENT PRIMARY KEY,
+    meeting_id INT NOT NULL,
+    author_id INT NOT NULL,
+    notes TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (meeting_id) REFERENCES lab_meetings(meeting_id),
+    FOREIGN KEY (author_id) REFERENCES users(user_id)
+);
