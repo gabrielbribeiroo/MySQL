@@ -107,3 +107,15 @@ CREATE TABLE attachments (
     FOREIGN KEY (prototype_id) REFERENCES prototypes(prototype_id),
     FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
 );
+
+
+CREATE TABLE audit_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    action VARCHAR(200),
+    entity VARCHAR(100),
+    entity_id INT,
+    details TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
