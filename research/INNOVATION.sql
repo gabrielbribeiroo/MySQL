@@ -93,3 +93,17 @@ CREATE TABLE meeting_minutes (
     FOREIGN KEY (meeting_id) REFERENCES lab_meetings(meeting_id),
     FOREIGN KEY (author_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE attachments (
+    attachment_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    prototype_id INT,
+    uploaded_by INT NOT NULL,
+    file_name VARCHAR(200),
+    file_type VARCHAR(80),
+    file_url VARCHAR(300),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (prototype_id) REFERENCES prototypes(prototype_id),
+    FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
+);
