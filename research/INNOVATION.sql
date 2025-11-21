@@ -108,7 +108,6 @@ CREATE TABLE attachments (
     FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
 );
 
-
 CREATE TABLE audit_logs (
     log_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
