@@ -38,3 +38,11 @@ CREATE TABLE articles (
     FOREIGN KEY (author_id) REFERENCES users(user_id),
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
+
+CREATE TABLE article_tags (
+    article_id INT NOT NULL,
+    tag_id INT NOT NULL,
+    PRIMARY KEY(article_id, tag_id),
+    FOREIGN KEY (article_id) REFERENCES articles(article_id),
+    FOREIGN KEY (tag_id) REFERENCES tags(tag_id)
+);
