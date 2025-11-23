@@ -20,3 +20,8 @@ CREATE TABLE categories (
     name VARCHAR(150) NOT NULL UNIQUE,
     description TEXT
 );
+
+CREATE TABLE tags (
+    tag_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
