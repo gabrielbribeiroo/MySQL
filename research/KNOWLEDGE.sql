@@ -46,3 +46,14 @@ CREATE TABLE article_tags (
     FOREIGN KEY (article_id) REFERENCES articles(article_id),
     FOREIGN KEY (tag_id) REFERENCES tags(tag_id)
 );
+
+CREATE TABLE article_versions (
+    version_id INT AUTO_INCREMENT PRIMARY KEY,
+    article_id INT NOT NULL,
+    version_number INT NOT NULL,
+    content LONGTEXT NOT NULL,
+    updated_by INT NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (article_id) REFERENCES articles(article_id),
+    FOREIGN KEY (updated_by) REFERENCES users(user_id)
+);
