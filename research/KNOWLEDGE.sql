@@ -14,3 +14,9 @@ CREATE TABLE users (
     role ENUM('writer','reviewer','admin') DEFAULT 'writer',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL UNIQUE,
+    description TEXT
+);
