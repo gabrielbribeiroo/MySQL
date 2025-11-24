@@ -78,3 +78,15 @@ CREATE TABLE ratings (
     FOREIGN KEY (article_id) REFERENCES articles(article_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE attachments (
+    attachment_id INT AUTO_INCREMENT PRIMARY KEY,
+    article_id INT NOT NULL,
+    uploaded_by INT NOT NULL,
+    file_name VARCHAR(200),
+    file_type VARCHAR(80),
+    file_url VARCHAR(300),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (article_id) REFERENCES articles(article_id),
+    FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
+);
