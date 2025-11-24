@@ -67,3 +67,14 @@ CREATE TABLE comments (
     FOREIGN KEY (article_id) REFERENCES articles(article_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE ratings (
+    rating_id INT AUTO_INCREMENT PRIMARY KEY,
+    article_id INT NOT NULL,
+    user_id INT NOT NULL,
+    rating ENUM('up','down') NOT NULL,
+    rated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(article_id, user_id),
+    FOREIGN KEY (article_id) REFERENCES articles(article_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
