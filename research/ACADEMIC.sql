@@ -17,3 +17,15 @@ CREATE TABLE academics (
     website VARCHAR(200),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE institutions (
+    institution_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    country VARCHAR(100),
+    city VARCHAR(100),
+    type ENUM('University', 'Institute', 'Research Center', 'Laboratory', 'Other') DEFAULT 'University',
+    founded_year INT
+);
+
+ALTER TABLE academics
+    ADD FOREIGN KEY (institution_id) REFERENCES institutions(institution_id);
