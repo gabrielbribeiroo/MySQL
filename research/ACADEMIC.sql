@@ -6,3 +6,14 @@ DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
 
 USE academic_network;
+
+CREATE TABLE academics (
+    academic_id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(200) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    institution_id INT,
+    bio TEXT,
+    research_interests TEXT,
+    website VARCHAR(200),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
