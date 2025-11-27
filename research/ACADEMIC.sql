@@ -43,3 +43,24 @@ CREATE TABLE academic_research_areas (
     FOREIGN KEY (academic_id) REFERENCES academics(academic_id),
     FOREIGN KEY (area_id) REFERENCES research_areas(area_id)
 );
+
+CREATE TABLE publications (
+    publication_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(300) NOT NULL,
+    abstract TEXT,
+    publication_year INT,
+    publication_type ENUM('Article','Conference Paper','Book','Thesis','Report'),
+    doi VARCHAR(200),
+    url VARCHAR(300),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Many-to-Many (authors of each publication)
+CREATE TABLE publication_authors (
+    publication_id INT,
+    academic_id INT,
+    author_order INT,
+    PRIMARY KEY(publication_id, academic_id),
+    FOREIGN KEY (publication_id) REFERENCES publications(publication_id),
+    FOREIGN KEY (academic_id) REFERENCES academics(academic_id)
+);
