@@ -29,3 +29,17 @@ CREATE TABLE institutions (
 
 ALTER TABLE academics
     ADD FOREIGN KEY (institution_id) REFERENCES institutions(institution_id);
+
+CREATE TABLE research_areas (
+    area_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) UNIQUE NOT NULL
+);
+
+-- Many-to-Many between academics and research areas
+CREATE TABLE academic_research_areas (
+    academic_id INT,
+    area_id INT,
+    PRIMARY KEY(academic_id, area_id),
+    FOREIGN KEY (academic_id) REFERENCES academics(academic_id),
+    FOREIGN KEY (area_id) REFERENCES research_areas(area_id)
+);
