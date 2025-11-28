@@ -64,3 +64,25 @@ CREATE TABLE publication_authors (
     FOREIGN KEY (publication_id) REFERENCES publications(publication_id),
     FOREIGN KEY (academic_id) REFERENCES academics(academic_id)
 );
+
+CREATE TABLE projects (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    description TEXT,
+    start_date DATE,
+    end_date DATE,
+    status ENUM('ongoing','paused','completed') DEFAULT 'ongoing',
+    funding_source VARCHAR(200),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Many-to-Many (project participants)
+CREATE TABLE project_members (
+    project_id INT,
+    academic_id INT,
+    role VARCHAR(150),
+    joined_at DATE,
+    PRIMARY KEY(project_id, academic_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (academic_id) REFERENCES academics(academic_id)
+);
