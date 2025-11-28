@@ -86,3 +86,14 @@ CREATE TABLE project_members (
     FOREIGN KEY (project_id) REFERENCES projects(project_id),
     FOREIGN KEY (academic_id) REFERENCES academics(academic_id)
 );
+
+CREATE TABLE collaboration_requests (
+    request_id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    status ENUM('pending','accepted','declined') DEFAULT 'pending',
+    message TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sender_id) REFERENCES academics(academic_id),
+    FOREIGN KEY (receiver_id) REFERENCES academics(academic_id)
+);
