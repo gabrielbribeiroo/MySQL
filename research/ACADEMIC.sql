@@ -123,3 +123,13 @@ CREATE TABLE event_participants (
     FOREIGN KEY (event_id) REFERENCES academic_events(event_id),
     FOREIGN KEY (academic_id) REFERENCES academics(academic_id)
 );
+
+CREATE TABLE audit_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    academic_id INT,
+    action VARCHAR(200),
+    entity VARCHAR(100),
+    entity_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (academic_id) REFERENCES academics(academic_id)
+);
