@@ -107,3 +107,19 @@ CREATE TABLE messages (
     FOREIGN KEY (sender_id) REFERENCES academics(academic_id),
     FOREIGN KEY (receiver_id) REFERENCES academics(academic_id)
 );
+
+CREATE TABLE academic_events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    event_date DATE,
+    location VARCHAR(200)
+);
+
+CREATE TABLE event_participants (
+    event_id INT,
+    academic_id INT,
+    PRIMARY KEY(event_id, academic_id),
+    FOREIGN KEY (event_id) REFERENCES academic_events(event_id),
+    FOREIGN KEY (academic_id) REFERENCES academics(academic_id)
+);
