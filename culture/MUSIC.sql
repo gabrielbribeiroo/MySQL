@@ -23,3 +23,10 @@ CREATE TABLE students (
     address TEXT,
     FOREIGN KEY (student_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE instruments (
+    instrument_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    type VARCHAR(100),
+    difficulty ENUM('beginner','intermediate','advanced') DEFAULT 'beginner'
+);
