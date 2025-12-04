@@ -15,3 +15,11 @@ CREATE TABLE users (
     phone VARCHAR(40),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    birth_date DATE,
+    guardian_name VARCHAR(150),
+    address TEXT,
+    FOREIGN KEY (student_id) REFERENCES users(user_id)
+);
