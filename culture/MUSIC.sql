@@ -30,3 +30,19 @@ CREATE TABLE instruments (
     type VARCHAR(100),
     difficulty ENUM('beginner','intermediate','advanced') DEFAULT 'beginner'
 );
+
+CREATE TABLE teachers (
+    teacher_id INT PRIMARY KEY,
+    biography TEXT,
+    years_experience INT DEFAULT 0,
+    FOREIGN KEY (teacher_id) REFERENCES users(user_id)
+);
+
+-- Teacher specialization (many-to-many)
+CREATE TABLE teacher_instruments (
+    teacher_id INT NOT NULL,
+    instrument_id INT NOT NULL,
+    PRIMARY KEY(teacher_id, instrument_id),
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
+    FOREIGN KEY (instrument_id) REFERENCES instruments(instrument_id)
+);
