@@ -46,3 +46,26 @@ CREATE TABLE teacher_instruments (
     FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
     FOREIGN KEY (instrument_id) REFERENCES instruments(instrument_id)
 );
+
+CREATE TABLE classes (
+    class_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    instrument_id INT NOT NULL,
+    teacher_id INT NOT NULL,
+    level ENUM('beginner','intermediate','advanced') DEFAULT 'beginner',
+    schedule VARCHAR(100),   -- e.g., Mondays 18:00
+    capacity INT DEFAULT 10,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (instrument_id) REFERENCES instruments(instrument_id),
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id)
+);
+
+-- Students enrolled (many-to-many)
+CREATE TABLE class_students (
+    class_id INT NOT NULL,
+    student_id INT NOT NULL,
+    enrolled_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(class_id, student_id),
+    FOREIGN KEY (class_id) REFERENCES classes(class_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
