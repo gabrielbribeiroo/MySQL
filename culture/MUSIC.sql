@@ -69,3 +69,16 @@ CREATE TABLE class_students (
     FOREIGN KEY (class_id) REFERENCES classes(class_id),
     FOREIGN KEY (student_id) REFERENCES students(student_id)
 );
+
+CREATE TABLE evaluations (
+    evaluation_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    class_id INT NOT NULL,
+    teacher_id INT NOT NULL,
+    evaluation_date DATE NOT NULL,
+    score DECIMAL(4,2),      -- numeric score
+    comments TEXT,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (class_id) REFERENCES classes(class_id),
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id)
+);
