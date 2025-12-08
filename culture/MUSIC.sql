@@ -101,3 +101,17 @@ CREATE TABLE performance_participants (
     FOREIGN KEY (performance_id) REFERENCES performances(performance_id),
     FOREIGN KEY (student_id) REFERENCES students(student_id)
 );
+
+
+CREATE TABLE lessons (
+    lesson_id INT AUTO_INCREMENT PRIMARY KEY,
+    teacher_id INT NOT NULL,
+    student_id INT NOT NULL,
+    instrument_id INT NOT NULL,
+    lesson_date DATETIME NOT NULL,
+    duration_minutes INT DEFAULT 60,
+    notes TEXT,
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (instrument_id) REFERENCES instruments(instrument_id)
+);
