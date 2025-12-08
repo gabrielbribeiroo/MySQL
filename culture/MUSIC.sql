@@ -82,3 +82,22 @@ CREATE TABLE evaluations (
     FOREIGN KEY (class_id) REFERENCES classes(class_id),
     FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id)
 );
+
+CREATE TABLE performances (
+    performance_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    event_date DATE NOT NULL,
+    location VARCHAR(200),
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Students participating in performances
+CREATE TABLE performance_participants (
+    performance_id INT NOT NULL,
+    student_id INT NOT NULL,
+    role VARCHAR(150),     -- soloist, accompanist, etc.
+    PRIMARY KEY(performance_id, student_id),
+    FOREIGN KEY (performance_id) REFERENCES performances(performance_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
