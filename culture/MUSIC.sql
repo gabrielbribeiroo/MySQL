@@ -115,3 +115,17 @@ CREATE TABLE lessons (
     FOREIGN KEY (student_id) REFERENCES students(student_id),
     FOREIGN KEY (instrument_id) REFERENCES instruments(instrument_id)
 );
+
+CREATE TABLE attachments (
+    attachment_id INT AUTO_INCREMENT PRIMARY KEY,
+    class_id INT,
+    student_id INT,
+    teacher_id INT,
+    file_name VARCHAR(200),
+    file_type VARCHAR(50),
+    file_url VARCHAR(300),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (class_id) REFERENCES classes(class_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (teacher_id) REFERENCES teachers(teacher_id)
+);
