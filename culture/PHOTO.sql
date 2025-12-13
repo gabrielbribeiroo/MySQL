@@ -6,3 +6,18 @@ DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
 
 USE photo_gallery;
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    role ENUM('photographer','customer','admin') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE photographers (
+    photographer_id INT PRIMARY KEY,
+    biography TEXT,
+    website VARCHAR(200),
+    FOREIGN KEY (photographer_id) REFERENCES users(user_id)
+);
