@@ -21,3 +21,29 @@ CREATE TABLE photographers (
     website VARCHAR(200),
     FOREIGN KEY (photographer_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE albums (
+    album_id INT AUTO_INCREMENT PRIMARY KEY,
+    photographer_id INT NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    is_public BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (photographer_id) REFERENCES photographers(photographer_id)
+);
+
+
+CREATE TABLE photos (
+    photo_id INT AUTO_INCREMENT PRIMARY KEY,
+    album_id INT NOT NULL,
+    title VARCHAR(200),
+    description TEXT,
+    file_url VARCHAR(300) NOT NULL,
+    thumbnail_url VARCHAR(300),
+    width INT,
+    height INT,
+    camera_model VARCHAR(150),
+    taken_date DATE,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (album_id) REFERENCES albums(album_id)
+);
