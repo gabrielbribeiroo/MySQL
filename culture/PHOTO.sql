@@ -47,3 +47,20 @@ CREATE TABLE photos (
     uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (album_id) REFERENCES albums(album_id)
 );
+
+CREATE TABLE licenses (
+    license_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    usage_type ENUM('personal','editorial','commercial') NOT NULL
+);
+
+
+CREATE TABLE photo_licenses (
+    photo_id INT NOT NULL,
+    license_id INT NOT NULL,
+    PRIMARY KEY(photo_id, license_id),
+    FOREIGN KEY (photo_id) REFERENCES photos(photo_id),
+    FOREIGN KEY (license_id) REFERENCES licenses(license_id)
+);
