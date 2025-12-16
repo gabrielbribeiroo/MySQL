@@ -64,3 +64,23 @@ CREATE TABLE photo_licenses (
     FOREIGN KEY (photo_id) REFERENCES photos(photo_id),
     FOREIGN KEY (license_id) REFERENCES licenses(license_id)
 );
+
+
+CREATE TABLE purchases (
+    purchase_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_amount DECIMAL(12,2),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE purchase_items (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    purchase_id INT NOT NULL,
+    photo_id INT NOT NULL,
+    license_id INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (purchase_id) REFERENCES purchases(purchase_id),
+    FOREIGN KEY (photo_id) REFERENCES photos(photo_id),
+    FOREIGN KEY (license_id) REFERENCES licenses(license_id)
+);
