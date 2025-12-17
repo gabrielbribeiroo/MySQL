@@ -84,3 +84,12 @@ CREATE TABLE purchase_items (
     FOREIGN KEY (photo_id) REFERENCES photos(photo_id),
     FOREIGN KEY (license_id) REFERENCES licenses(license_id)
 );
+
+CREATE TABLE favorites (
+    user_id INT NOT NULL,
+    photo_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(user_id, photo_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
+);
