@@ -93,3 +93,14 @@ CREATE TABLE favorites (
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
 );
+
+
+CREATE TABLE comments (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    photo_id INT NOT NULL,
+    user_id INT NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (photo_id) REFERENCES photos(photo_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
