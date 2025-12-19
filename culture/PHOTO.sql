@@ -94,7 +94,6 @@ CREATE TABLE favorites (
     FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
 );
 
-
 CREATE TABLE comments (
     comment_id INT AUTO_INCREMENT PRIMARY KEY,
     photo_id INT NOT NULL,
@@ -103,4 +102,13 @@ CREATE TABLE comments (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (photo_id) REFERENCES photos(photo_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    purchase_id INT NOT NULL,
+    method ENUM('credit_card','pix','paypal') NOT NULL,
+    status ENUM('pending','paid','failed','refunded') DEFAULT 'pending',
+    paid_at TIMESTAMP,
+    FOREIGN KEY (purchase_id) REFERENCES purchases(purchase_id)
 );
