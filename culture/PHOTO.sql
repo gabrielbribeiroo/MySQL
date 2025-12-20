@@ -112,3 +112,14 @@ CREATE TABLE payments (
     paid_at TIMESTAMP,
     FOREIGN KEY (purchase_id) REFERENCES purchases(purchase_id)
 );
+
+
+CREATE TABLE audit_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    action VARCHAR(200),
+    entity VARCHAR(100),
+    entity_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
