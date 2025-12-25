@@ -37,3 +37,35 @@ CREATE TABLE screens (
     FOREIGN KEY (venue_id) REFERENCES venues(venue_id),
     UNIQUE (venue_id, name)
 );
+
+CREATE TABLE people (
+    person_id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(200) NOT NULL,
+    email VARCHAR(150) UNIQUE,
+    nationality VARCHAR(120),
+    bio TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE films (
+    film_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(250) NOT NULL,
+    synopsis TEXT,
+    duration_minutes INT,
+    release_year YEAR,
+    country VARCHAR(120),
+    language VARCHAR(120),
+    premiere_status ENUM('world','international','national','none') DEFAULT 'none',
+    film_url VARCHAR(300),                -- private screener link (if used)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Film credits (many-to-many)
+CREATE TABLE film_credits (
+    film_id INT NOT NULL,
+    person_id INT NOT NULL,
+    role ENUM('director','producer','writer','cinematographer','editor','composer','cast','other') DEFAULT 'other',
+    PRIMARY KEY (film_id, person_id, role),
+    FOREIGN KEY (film_id) REFERENCES films(film_id),
+    FOREIGN KEY (person_id) REFERENCES people(person_id)
+);
