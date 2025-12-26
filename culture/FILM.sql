@@ -69,3 +69,30 @@ CREATE TABLE film_credits (
     FOREIGN KEY (film_id) REFERENCES films(film_id),
     FOREIGN KEY (person_id) REFERENCES people(person_id)
 );
+
+CREATE TABLE categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    festival_id INT NOT NULL,
+    name VARCHAR(150) NOT NULL,           -- e.g., "Short Films", "Feature Films", "Documentary"
+    description TEXT,
+    competition_type ENUM('competition','non_competition') DEFAULT 'competition',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (festival_id) REFERENCES festivals(festival_id),
+    UNIQUE (festival_id, name)
+);
+
+CREATE TABLE submissions (
+    submission_id INT AUTO_INCREMENT PRIMARY KEY,
+    festival_id INT NOT NULL,
+    category_id INT NOT NULL,
+    film_id INT NOT NULL,
+    submitted_by INT,                     -- person (usually producer/director)
+    submission_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('submitted','in_review','selected','rejected','withdrawn') DEFAULT 'submitted',
+    notes TEXT,
+    FOREIGN KEY (festival_id) REFERENCES festivals(festival_id),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    FOREIGN KEY (film_id) REFERENCES films(film_id),
+    FOREIGN KEY (submitted_by) REFERENCES people(person_id),
+    UNIQUE (festival_id, category_id, film_id)
+);
