@@ -96,3 +96,31 @@ CREATE TABLE submissions (
     FOREIGN KEY (submitted_by) REFERENCES people(person_id),
     UNIQUE (festival_id, category_id, film_id)
 );
+
+-- Optional: submission materials (posters, stills, subtitles, etc.)
+CREATE TABLE submission_assets (
+    asset_id INT AUTO_INCREMENT PRIMARY KEY,
+    submission_id INT NOT NULL,
+    asset_type ENUM('poster','stills','subtitle','presskit','trailer','other') DEFAULT 'other',
+    file_name VARCHAR(200),
+    file_url VARCHAR(300),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (submission_id) REFERENCES submissions(submission_id)
+);
+
+CREATE TABLE screenings (
+    screening_id INT AUTO_INCREMENT PRIMARY KEY,
+    festival_id INT NOT NULL,
+    film_id INT NOT NULL,
+    category_id INT,
+    screen_id INT NOT NULL,
+    start_datetime DATETIME NOT NULL,
+    end_datetime DATETIME,
+    screening_type ENUM('regular','premiere','press','industry','online') DEFAULT 'regular',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (festival_id) REFERENCES festivals(festival_id),
+    FOREIGN KEY (film_id) REFERENCES films(film_id),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    FOREIGN KEY (screen_id) REFERENCES screens(screen_id),
+    UNIQUE (screen_id, start_datetime)
+);
