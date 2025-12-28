@@ -124,3 +124,24 @@ CREATE TABLE screenings (
     FOREIGN KEY (screen_id) REFERENCES screens(screen_id),
     UNIQUE (screen_id, start_datetime)
 );
+
+CREATE TABLE juries (
+    jury_id INT AUTO_INCREMENT PRIMARY KEY,
+    festival_id INT NOT NULL,
+    category_id INT,                      -- jury can be category-specific; NULL = general jury
+    name VARCHAR(150) NOT NULL,           -- e.g., "Feature Films Jury"
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (festival_id) REFERENCES festivals(festival_id),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    UNIQUE (festival_id, name)
+);
+
+CREATE TABLE jury_members (
+    jury_id INT NOT NULL,
+    person_id INT NOT NULL,
+    role ENUM('member','chair') DEFAULT 'member',
+    joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (jury_id, person_id),
+    FOREIGN KEY (jury_id) REFERENCES juries(jury_id),
+    FOREIGN KEY (person_id) REFERENCES people(person_id)
+);
