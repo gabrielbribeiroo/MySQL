@@ -145,3 +145,17 @@ CREATE TABLE jury_members (
     FOREIGN KEY (jury_id) REFERENCES juries(jury_id),
     FOREIGN KEY (person_id) REFERENCES people(person_id)
 );
+
+CREATE TABLE jury_scores (
+    score_id INT AUTO_INCREMENT PRIMARY KEY,
+    submission_id INT NOT NULL,
+    jury_id INT NOT NULL,
+    juror_id INT NOT NULL,                -- person_id of jury member
+    score DECIMAL(5,2) NOT NULL,          -- e.g., 0.00 - 10.00
+    comments TEXT,
+    scored_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (submission_id, juror_id),
+    FOREIGN KEY (submission_id) REFERENCES submissions(submission_id),
+    FOREIGN KEY (jury_id) REFERENCES juries(jury_id),
+    FOREIGN KEY (juror_id) REFERENCES people(person_id)
+);
