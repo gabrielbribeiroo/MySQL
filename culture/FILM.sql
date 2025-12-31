@@ -159,3 +159,27 @@ CREATE TABLE jury_scores (
     FOREIGN KEY (jury_id) REFERENCES juries(jury_id),
     FOREIGN KEY (juror_id) REFERENCES people(person_id)
 );
+
+CREATE TABLE awards (
+    award_id INT AUTO_INCREMENT PRIMARY KEY,
+    festival_id INT NOT NULL,
+    category_id INT,
+    name VARCHAR(150) NOT NULL,           -- e.g., "Best Film", "Best Director"
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (festival_id) REFERENCES festivals(festival_id),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    UNIQUE (festival_id, name)
+);
+
+CREATE TABLE award_winners (
+    winner_id INT AUTO_INCREMENT PRIMARY KEY,
+    award_id INT NOT NULL,
+    film_id INT,
+    person_id INT,                        -- optional: award may go to a person (director, actor)
+    notes TEXT,
+    decided_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (award_id) REFERENCES awards(award_id),
+    FOREIGN KEY (film_id) REFERENCES films(film_id),
+    FOREIGN KEY (person_id) REFERENCES people(person_id)
+);
