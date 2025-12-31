@@ -183,3 +183,22 @@ CREATE TABLE award_winners (
     FOREIGN KEY (film_id) REFERENCES films(film_id),
     FOREIGN KEY (person_id) REFERENCES people(person_id)
 );
+
+CREATE TABLE attendees (
+    attendee_id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(200) NOT NULL,
+    email VARCHAR(150),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tickets (
+    ticket_id INT AUTO_INCREMENT PRIMARY KEY,
+    screening_id INT NOT NULL,
+    attendee_id INT NOT NULL,
+    status ENUM('reserved','paid','checked_in','canceled') DEFAULT 'reserved',
+    price DECIMAL(10,2) DEFAULT 0.00,
+    purchased_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (screening_id) REFERENCES screenings(screening_id),
+    FOREIGN KEY (attendee_id) REFERENCES attendees(attendee_id),
+    UNIQUE (screening_id, attendee_id)
+);
