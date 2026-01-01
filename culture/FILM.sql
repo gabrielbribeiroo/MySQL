@@ -202,3 +202,13 @@ CREATE TABLE tickets (
     FOREIGN KEY (attendee_id) REFERENCES attendees(attendee_id),
     UNIQUE (screening_id, attendee_id)
 );
+
+CREATE TABLE audit_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    actor_email VARCHAR(150),             -- lightweight (no FK required)
+    action VARCHAR(200) NOT NULL,
+    entity VARCHAR(120),
+    entity_id INT,
+    details TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
