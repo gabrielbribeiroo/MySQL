@@ -109,6 +109,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `music_festival`: Music festival organization system with stages, artists, schedules, audience data, and sponsors.
 - `music_school`: Music school management with instruments, teachers, classes, performances, and student evaluations.
 - `photo_gallery`: Digital photo gallery system with photographers, albums, licensing, and purchase options.
+- `film_festival`: Film festival management with submissions, screenings, juries, and awards.
 
 ### 🛒 Commerce & Consumption
 - `ecommerce_platform`: E-commerce system with products, categories, customers, orders, deliveries, payments, and reviews.
