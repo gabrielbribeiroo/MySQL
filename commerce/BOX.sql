@@ -16,3 +16,20 @@ CREATE TABLE customers (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+CREATE TABLE addresses (
+    address_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    label VARCHAR(60) DEFAULT 'home',     -- e.g., home, work
+    street VARCHAR(200) NOT NULL,
+    number VARCHAR(30),
+    complement VARCHAR(100),
+    neighborhood VARCHAR(120),
+    city VARCHAR(120) NOT NULL,
+    state VARCHAR(80),
+    postal_code VARCHAR(30),
+    country VARCHAR(80) DEFAULT 'Brazil',
+    is_default BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
