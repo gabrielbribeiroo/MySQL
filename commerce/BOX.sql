@@ -51,3 +51,24 @@ CREATE TABLE products (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (category_id) REFERENCES product_categories(category_id)
 );
+
+CREATE TABLE subscription_plans (
+    plan_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(160) NOT NULL UNIQUE,    -- e.g., "Monthly Beauty Box"
+    description TEXT,
+    billing_cycle ENUM('weekly','monthly','quarterly','yearly') NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    shipping_fee DECIMAL(10,2) DEFAULT 0.00,
+    trial_days INT DEFAULT 0,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE plan_products (
+    plan_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT DEFAULT 1,
+    PRIMARY KEY (plan_id, product_id),
+    FOREIGN KEY (plan_id) REFERENCES subscription_plans(plan_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
