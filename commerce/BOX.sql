@@ -72,3 +72,20 @@ CREATE TABLE plan_products (
     FOREIGN KEY (plan_id) REFERENCES subscription_plans(plan_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+CREATE TABLE subscriptions (
+    subscription_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    plan_id INT NOT NULL,
+    address_id INT NOT NULL,
+    start_date DATE NOT NULL,
+    next_billing_date DATE,
+    status ENUM('trial','active','paused','canceled','expired') DEFAULT 'active',
+    cancel_reason VARCHAR(200),
+    canceled_at DATETIME,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (plan_id) REFERENCES subscription_plans(plan_id),
+    FOREIGN KEY (address_id) REFERENCES addresses(address_id)
+);
