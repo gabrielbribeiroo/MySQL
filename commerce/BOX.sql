@@ -89,3 +89,23 @@ CREATE TABLE subscriptions (
     FOREIGN KEY (plan_id) REFERENCES subscription_plans(plan_id),
     FOREIGN KEY (address_id) REFERENCES addresses(address_id)
 );
+
+CREATE TABLE payment_methods (
+    method_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(80) NOT NULL UNIQUE      -- e.g., credit_card, pix, boleto, paypal
+);
+
+CREATE TABLE invoices (
+    invoice_id INT AUTO_INCREMENT PRIMARY KEY,
+    subscription_id INT NOT NULL,
+    invoice_date DATE NOT NULL,
+    period_start DATE,
+    period_end DATE,
+    subtotal DECIMAL(10,2) NOT NULL,
+    shipping_fee DECIMAL(10,2) DEFAULT 0.00,
+    discount DECIMAL(10,2) DEFAULT 0.00,
+    total DECIMAL(10,2) NOT NULL,
+    status ENUM('pending','paid','failed','refunded') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (subscription_id) REFERENCES subscriptions(subscription_id)
+);
