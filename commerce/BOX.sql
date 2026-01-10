@@ -122,3 +122,28 @@ CREATE TABLE payments (
     FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id),
     FOREIGN KEY (method_id) REFERENCES payment_methods(method_id)
 );
+
+CREATE TABLE boxes (
+    box_id INT AUTO_INCREMENT PRIMARY KEY,
+    subscription_id INT NOT NULL,
+    cycle_reference VARCHAR(40) NOT NULL,         -- e.g., "2026-01" or "week-05-2026"
+    planned_ship_date DATE,
+    shipped_at DATETIME,
+    delivered_at DATETIME,
+    status ENUM('planned','packed','shipped','delivered','returned','lost') DEFAULT 'planned',
+    tracking_code VARCHAR(120),
+    carrier VARCHAR(120),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (subscription_id) REFERENCES subscriptions(subscription_id),
+    UNIQUE (subscription_id, cycle_reference)
+);
+
+CREATE TABLE box_items (
+    box_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    box_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT DEFAULT 1,
+    unit_price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (box_id) REFERENCES boxes(box_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
