@@ -147,3 +147,16 @@ CREATE TABLE box_items (
     FOREIGN KEY (box_id) REFERENCES boxes(box_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+CREATE TABLE feedback (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    subscription_id INT,
+    box_id INT,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (subscription_id) REFERENCES subscriptions(subscription_id),
+    FOREIGN KEY (box_id) REFERENCES boxes(box_id)
+);
