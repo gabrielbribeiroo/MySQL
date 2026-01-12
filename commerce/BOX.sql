@@ -160,3 +160,18 @@ CREATE TABLE feedback (
     FOREIGN KEY (subscription_id) REFERENCES subscriptions(subscription_id),
     FOREIGN KEY (box_id) REFERENCES boxes(box_id)
 );
+
+CREATE TABLE retention_events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    subscription_id INT,
+    event_type ENUM(
+        'signup','trial_start','trial_end','payment_success','payment_failed',
+        'box_shipped','box_delivered','pause','resume','cancel','reactivate',
+        'refund','support_ticket'
+    ) NOT NULL,
+    event_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    metadata JSON,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (subscription_id) REFERENCES subscriptions(subscription_id)
+);
