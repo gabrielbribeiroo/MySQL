@@ -175,3 +175,13 @@ CREATE TABLE retention_events (
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     FOREIGN KEY (subscription_id) REFERENCES subscriptions(subscription_id)
 );
+
+CREATE TABLE cohort_snapshots (
+    snapshot_id INT AUTO_INCREMENT PRIMARY KEY,
+    cohort_month CHAR(7) NOT NULL,               -- format: YYYY-MM
+    active_subscriptions INT DEFAULT 0,
+    canceled_subscriptions INT DEFAULT 0,
+    churn_rate DECIMAL(6,3) DEFAULT 0.000,       -- e.g., 0.125 = 12.5%
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (cohort_month)
+);
