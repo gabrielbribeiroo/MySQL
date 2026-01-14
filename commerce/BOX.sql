@@ -185,3 +185,13 @@ CREATE TABLE cohort_snapshots (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (cohort_month)
 );
+
+CREATE TABLE audit_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    actor_email VARCHAR(150),
+    action VARCHAR(200) NOT NULL,
+    entity VARCHAR(120),
+    entity_id INT,
+    details TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
