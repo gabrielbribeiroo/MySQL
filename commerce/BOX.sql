@@ -195,3 +195,28 @@ CREATE TABLE audit_logs (
     details TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- TRIGGERS (analytics: auto-log key events)
+
+DELIMITER $$
+
+-- Log subscription status changes (pause/cancel/reactivate)
+CREATE TRIGGER trg_subscription_status_log
+AFTER UPDATE ON subscriptions
+FOR EACH ROW
+BEGIN
+    IF NEW.status <> OLD.status THEN
+        INSERT INTO retention_events (customer_id, subscription_id, event_type, metadata)
+        VALUES (
+            NEW.customer_id,
+            NEW.subscription_id,
+            CASE
+                WHEN NEW.status = 'paused' THEN 'pause'
+                WHEN NEW.status = 'active' AND OLD.status IN ('paused','canceled','expired') THEN 'reactivate'
+                WHEN NEW.status = 'canceled' THEN 'cancel'
+                ELSE 'support_ticket'
+            END,
+            JSON_OBJECT('old_status', OLD.status, 'new_status', NEW.status, 'reason', NEW.cancel_reason)
+        );
+    END IF;
+END$$
