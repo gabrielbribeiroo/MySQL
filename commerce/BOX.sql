@@ -220,3 +220,25 @@ BEGIN
         );
     END IF;
 END$$
+
+-- Log payment success/failure
+CREATE TRIGGER trg_payment_status_log
+AFTER UPDATE ON payments
+FOR EACH ROW
+BEGIN
+    IF NEW.status <> OLD.status THEN
+        INSERT INTO retention_events (customer_id, subscription_id, event_type, metadata)
+        SELECT
+            s.customer_id,
+            s.subscription_id,
+            CASE
+                WHEN NEW.status = 'paid' THEN 'payment_success'
+                WHEN NEW.status = 'failed' THEN 'payment_failed'
+                ELSE 'refund'
+            END,
+            JSON_OBJECT('invoice_id', i.invoice_id, 'amount', NEW.amount, 'method_id', NEW.method_id, 'tx', NEW.transaction_ref)
+        FROM invoices i
+        JOIN subscriptions s ON s.subscription_id = i.subscription_id
+        WHERE i.invoice_id = NEW.invoice_id;
+    END IF;
+END$$
