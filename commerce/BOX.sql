@@ -242,3 +242,26 @@ BEGIN
         WHERE i.invoice_id = NEW.invoice_id;
     END IF;
 END$$
+
+-- Log box delivery milestones
+CREATE TRIGGER trg_box_status_log
+AFTER UPDATE ON boxes
+FOR EACH ROW
+BEGIN
+    IF NEW.status <> OLD.status THEN
+        INSERT INTO retention_events (customer_id, subscription_id, event_type, metadata)
+        SELECT
+            s.customer_id,
+            s.subscription_id,
+            CASE
+                WHEN NEW.status = 'shipped' THEN 'box_shipped'
+                WHEN NEW.status = 'delivered' THEN 'box_delivered'
+                ELSE 'support_ticket'
+            END,
+            JSON_OBJECT('box_id', NEW.box_id, 'cycle', NEW.cycle_reference, 'carrier', NEW.carrier, 'tracking', NEW.tracking_code)
+        FROM subscriptions s
+        WHERE s.subscription_id = NEW.subscription_id;
+    END IF;
+END$$
+
+DELIMITER ;
