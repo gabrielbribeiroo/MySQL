@@ -115,6 +115,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `ecommerce_platform`: E-commerce system with products, categories, customers, orders, deliveries, payments, and reviews.
 - `restaurant_management`: Restaurant management system with menu, tables, reservations, orders, waiters, and payments.
 - `retail_inventory`: Inventory and sales control system for physical stores, with products, suppliers, purchases, and turnover reports.
+- `subscription_box`: Subscription-based commerce platform with recurring deliveries, plans, and customer retention analytics.
 
 ### 🌱 Sustainability & Environment
 - `green_projects`: Sustainable project management system with environmental impact indicators, funders, and execution tracking.
