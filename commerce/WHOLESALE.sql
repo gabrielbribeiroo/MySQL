@@ -16,3 +16,28 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+CREATE TABLE companies (
+    company_id INT AUTO_INCREMENT PRIMARY KEY,
+    company_type ENUM('supplier','retailer') NOT NULL,
+    legal_name VARCHAR(200) NOT NULL,
+    trade_name VARCHAR(200),
+    tax_id VARCHAR(40) UNIQUE,               -- CNPJ/CPF or any tax identifier
+    email VARCHAR(150),
+    phone VARCHAR(40),
+    country VARCHAR(80) DEFAULT 'Brazil',
+    city VARCHAR(120),
+    address VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Link users to companies
+CREATE TABLE company_users (
+    company_id INT NOT NULL,
+    user_id INT NOT NULL,
+    role_in_company VARCHAR(120),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (company_id, user_id),
+    FOREIGN KEY (company_id) REFERENCES companies(company_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
