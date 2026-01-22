@@ -41,3 +41,24 @@ CREATE TABLE company_users (
     FOREIGN KEY (company_id) REFERENCES companies(company_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE product_categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(120) NOT NULL UNIQUE,
+    description TEXT
+);
+
+CREATE TABLE products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    supplier_company_id INT NOT NULL,
+    category_id INT,
+    name VARCHAR(180) NOT NULL,
+    sku VARCHAR(80) UNIQUE,
+    description TEXT,
+    unit VARCHAR(30) DEFAULT 'unit',         -- e.g., unit, kg, box, pack
+    base_price DECIMAL(10,2) NOT NULL,       -- default unit price (can be overridden by bulk tiers)
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (supplier_company_id) REFERENCES companies(company_id),
+    FOREIGN KEY (category_id) REFERENCES product_categories(category_id)
+);
