@@ -62,3 +62,13 @@ CREATE TABLE products (
     FOREIGN KEY (supplier_company_id) REFERENCES companies(company_id),
     FOREIGN KEY (category_id) REFERENCES product_categories(category_id)
 );
+
+CREATE TABLE bulk_price_tiers (
+    tier_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    min_quantity INT NOT NULL,
+    max_quantity INT,                         -- NULL = no upper bound
+    unit_price DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
