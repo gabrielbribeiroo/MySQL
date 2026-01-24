@@ -72,3 +72,27 @@ CREATE TABLE bulk_price_tiers (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+CREATE TABLE warehouses (
+    warehouse_id INT AUTO_INCREMENT PRIMARY KEY,
+    supplier_company_id INT NOT NULL,
+    name VARCHAR(150) NOT NULL,
+    address VARCHAR(255),
+    city VARCHAR(120),
+    state VARCHAR(80),
+    country VARCHAR(80) DEFAULT 'Brazil',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (supplier_company_id) REFERENCES companies(company_id)
+);
+
+CREATE TABLE inventory (
+    inventory_id INT AUTO_INCREMENT PRIMARY KEY,
+    warehouse_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity_available INT DEFAULT 0,
+    reorder_level INT DEFAULT 0,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE (warehouse_id, product_id),
+    FOREIGN KEY (warehouse_id) REFERENCES warehouses(warehouse_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
