@@ -96,3 +96,29 @@ CREATE TABLE inventory (
     FOREIGN KEY (warehouse_id) REFERENCES warehouses(warehouse_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+CREATE TABLE purchase_orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    retailer_company_id INT NOT NULL,
+    supplier_company_id INT NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('draft','placed','confirmed','packed','shipped','delivered','canceled') DEFAULT 'placed',
+    currency VARCHAR(10) DEFAULT 'BRL',
+    subtotal DECIMAL(12,2) DEFAULT 0.00,
+    shipping_cost DECIMAL(12,2) DEFAULT 0.00,
+    total DECIMAL(12,2) DEFAULT 0.00,
+    notes TEXT,
+    FOREIGN KEY (retailer_company_id) REFERENCES companies(company_id),
+    FOREIGN KEY (supplier_company_id) REFERENCES companies(company_id)
+);
+
+CREATE TABLE purchase_order_items (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(10,2) NOT NULL,       -- price locked at purchase time (tier-applied)
+    line_total DECIMAL(12,2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES purchase_orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
