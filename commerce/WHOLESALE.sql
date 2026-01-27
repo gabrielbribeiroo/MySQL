@@ -140,3 +140,37 @@ CREATE TABLE payments (
     FOREIGN KEY (order_id) REFERENCES purchase_orders(order_id),
     FOREIGN KEY (method_id) REFERENCES payment_methods(method_id)
 );
+
+CREATE TABLE carriers (
+    carrier_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL UNIQUE,
+    support_phone VARCHAR(40),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE shipments (
+    shipment_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    warehouse_id INT NOT NULL,
+    carrier_id INT,
+    status ENUM('pending','packed','in_transit','delivered','returned','lost') DEFAULT 'pending',
+    tracking_code VARCHAR(120),
+    planned_ship_date DATE,
+    shipped_at DATETIME,
+    delivered_at DATETIME,
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES purchase_orders(order_id),
+    FOREIGN KEY (warehouse_id) REFERENCES warehouses(warehouse_id),
+    FOREIGN KEY (carrier_id) REFERENCES carriers(carrier_id)
+);
+
+-- Optional: shipment package breakdown
+CREATE TABLE shipment_items (
+    shipment_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    shipment_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (shipment_id) REFERENCES shipments(shipment_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
