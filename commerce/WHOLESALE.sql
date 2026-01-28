@@ -174,3 +174,17 @@ CREATE TABLE shipment_items (
     FOREIGN KEY (shipment_id) REFERENCES shipments(shipment_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+CREATE TABLE disputes (
+    dispute_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    opened_by_user_id INT NOT NULL,
+    type ENUM('missing_items','damaged','late_delivery','billing','other') DEFAULT 'other',
+    status ENUM('open','in_review','resolved','rejected') DEFAULT 'open',
+    description TEXT,
+    resolution TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    resolved_at DATETIME,
+    FOREIGN KEY (order_id) REFERENCES purchase_orders(order_id),
+    FOREIGN KEY (opened_by_user_id) REFERENCES users(user_id)
+);
