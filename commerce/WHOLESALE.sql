@@ -188,3 +188,15 @@ CREATE TABLE disputes (
     FOREIGN KEY (order_id) REFERENCES purchase_orders(order_id),
     FOREIGN KEY (opened_by_user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE kpi_snapshots (
+    snapshot_id INT AUTO_INCREMENT PRIMARY KEY,
+    snapshot_date DATE NOT NULL,
+    supplier_company_id INT,
+    retailer_company_id INT,
+    total_orders INT DEFAULT 0,
+    total_revenue DECIMAL(14,2) DEFAULT 0.00,
+    total_units INT DEFAULT 0,
+    avg_order_value DECIMAL(14,2) DEFAULT 0.00,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
