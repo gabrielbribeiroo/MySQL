@@ -211,3 +211,20 @@ CREATE TABLE audit_logs (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (actor_user_id) REFERENCES users(user_id)
 );
+
+DELIMITER $$
+
+-- Recalculate order totals after item insert
+CREATE TRIGGER trg_order_item_after_insert
+AFTER INSERT ON purchase_order_items
+FOR EACH ROW
+BEGIN
+    UPDATE purchase_orders
+    SET subtotal = (
+        SELECT COALESCE(SUM(line_total), 0) FROM purchase_order_items WHERE order_id = NEW.order_id
+    ),
+    total = (
+        SELECT COALESCE(SUM(line_total), 0) FROM purchase_order_items WHERE order_id = NEW.order_id
+    ) + shipping_cost
+    WHERE order_id = NEW.order_id;
+END$$
