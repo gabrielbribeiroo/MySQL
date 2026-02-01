@@ -228,3 +228,18 @@ BEGIN
     ) + shipping_cost
     WHERE order_id = NEW.order_id;
 END$$
+
+-- Recalculate order totals after item update
+CREATE TRIGGER trg_order_item_after_update
+AFTER UPDATE ON purchase_order_items
+FOR EACH ROW
+BEGIN
+    UPDATE purchase_orders
+    SET subtotal = (
+        SELECT COALESCE(SUM(line_total), 0) FROM purchase_order_items WHERE order_id = NEW.order_id
+    ),
+    total = (
+        SELECT COALESCE(SUM(line_total), 0) FROM purchase_order_items WHERE order_id = NEW.order_id
+    ) + shipping_cost
+    WHERE order_id = NEW.order_id;
+END$$
