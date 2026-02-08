@@ -91,3 +91,23 @@ CREATE TABLE item_options (
     extra_price DECIMAL(10,2) DEFAULT 0.00,
     FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
 );
+
+CREATE TABLE couriers (
+    courier_id INT PRIMARY KEY,  -- references users.user_id
+    vehicle_type ENUM('bike','motorcycle','car','other') DEFAULT 'motorcycle',
+    license_plate VARCHAR(20),
+    is_available BOOLEAN DEFAULT TRUE,
+    rating DECIMAL(3,2) DEFAULT 0.00,
+    total_deliveries INT DEFAULT 0,
+    FOREIGN KEY (courier_id) REFERENCES users(user_id)
+);
+
+-- Optional: courier location pings (for "real-time monitoring")
+CREATE TABLE courier_locations (
+    location_id INT AUTO_INCREMENT PRIMARY KEY,
+    courier_id INT NOT NULL,
+    latitude DECIMAL(10,7) NOT NULL,
+    longitude DECIMAL(10,7) NOT NULL,
+    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (courier_id) REFERENCES couriers(courier_id)
+);
