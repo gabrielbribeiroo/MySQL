@@ -60,3 +60,34 @@ CREATE TABLE restaurant_hours (
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id),
     UNIQUE (restaurant_id, weekday)
 );
+
+CREATE TABLE menu_categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    restaurant_id INT NOT NULL,
+    name VARCHAR(120) NOT NULL,
+    description TEXT,
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id),
+    UNIQUE (restaurant_id, name)
+);
+
+CREATE TABLE menu_items (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    restaurant_id INT NOT NULL,
+    category_id INT,
+    name VARCHAR(160) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    is_available BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id),
+    FOREIGN KEY (category_id) REFERENCES menu_categories(category_id)
+);
+
+-- Item options / add-ons (e.g., extra cheese)
+CREATE TABLE item_options (
+    option_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_id INT NOT NULL,
+    name VARCHAR(120) NOT NULL,
+    extra_price DECIMAL(10,2) DEFAULT 0.00,
+    FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
+);
