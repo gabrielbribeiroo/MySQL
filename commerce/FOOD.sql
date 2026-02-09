@@ -111,3 +111,45 @@ CREATE TABLE courier_locations (
     recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (courier_id) REFERENCES couriers(courier_id)
 );
+
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    restaurant_id INT NOT NULL,
+    delivery_address_id INT NOT NULL,
+    status ENUM(
+        'created','confirmed','preparing','ready',
+        'picked_up','delivered','canceled','refunded'
+    ) DEFAULT 'created',
+    subtotal DECIMAL(12,2) DEFAULT 0.00,
+    delivery_fee DECIMAL(12,2) DEFAULT 0.00,
+    discount DECIMAL(12,2) DEFAULT 0.00,
+    total DECIMAL(12,2) DEFAULT 0.00,
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES users(user_id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id),
+    FOREIGN KEY (delivery_address_id) REFERENCES customer_addresses(address_id)
+);
+
+CREATE TABLE order_items (
+    order_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    item_id INT NOT NULL,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(10,2) NOT NULL,      -- locked at order time
+    line_total DECIMAL(12,2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
+);
+
+-- If customer chooses add-ons for a given order item
+CREATE TABLE order_item_options (
+    order_item_option_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_item_id INT NOT NULL,
+    option_id INT NOT NULL,
+    extra_price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (order_item_id) REFERENCES order_items(order_item_id),
+    FOREIGN KEY (option_id) REFERENCES item_options(option_id)
+);
