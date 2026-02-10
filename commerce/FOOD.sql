@@ -153,3 +153,27 @@ CREATE TABLE order_item_options (
     FOREIGN KEY (order_item_id) REFERENCES order_items(order_item_id),
     FOREIGN KEY (option_id) REFERENCES item_options(option_id)
 );
+
+CREATE TABLE deliveries (
+    delivery_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    courier_id INT,
+    status ENUM('pending','assigned','picked_up','in_transit','delivered','failed') DEFAULT 'pending',
+    assigned_at DATETIME,
+    picked_up_at DATETIME,
+    delivered_at DATETIME,
+    proof_url VARCHAR(300),                 -- photo/proof of delivery
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (courier_id) REFERENCES couriers(courier_id),
+    UNIQUE (order_id)
+);
+
+-- Delivery tracking events (timeline)
+CREATE TABLE delivery_events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    delivery_id INT NOT NULL,
+    event_type ENUM('assigned','picked_up','in_transit','arrived','delivered','issue') NOT NULL,
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (delivery_id) REFERENCES deliveries(delivery_id)
+);
