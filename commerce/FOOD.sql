@@ -177,3 +177,21 @@ CREATE TABLE delivery_events (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (delivery_id) REFERENCES deliveries(delivery_id)
 );
+
+CREATE TABLE payment_methods (
+    method_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(80) NOT NULL UNIQUE        -- credit_card, pix, boleto, wallet, paypal
+);
+
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    method_id INT NOT NULL,
+    amount DECIMAL(12,2) NOT NULL,
+    status ENUM('pending','authorized','paid','failed','refunded') DEFAULT 'pending',
+    transaction_ref VARCHAR(120),
+    paid_at DATETIME,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (method_id) REFERENCES payment_methods(method_id)
+);
