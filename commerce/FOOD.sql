@@ -195,3 +195,31 @@ CREATE TABLE payments (
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (method_id) REFERENCES payment_methods(method_id)
 );
+
+CREATE TABLE restaurant_reviews (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    restaurant_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id),
+    FOREIGN KEY (customer_id) REFERENCES users(user_id),
+    UNIQUE (order_id)
+);
+
+CREATE TABLE courier_reviews (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    courier_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (courier_id) REFERENCES couriers(courier_id),
+    FOREIGN KEY (customer_id) REFERENCES users(user_id),
+    UNIQUE (order_id)
+);
