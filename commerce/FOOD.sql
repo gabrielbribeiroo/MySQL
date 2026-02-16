@@ -266,3 +266,20 @@ BEGIN
     ) + delivery_fee - discount
     WHERE order_id = NEW.order_id;
 END$$
+
+-- Update orders subtotal/total after deleting items
+CREATE TRIGGER trg_order_item_after_delete
+AFTER DELETE ON order_items
+FOR EACH ROW
+BEGIN
+    UPDATE orders
+    SET subtotal = (
+        SELECT COALESCE(SUM(line_total), 0) FROM order_items WHERE order_id = OLD.order_id
+    ),
+    total = (
+        SELECT COALESCE(SUM(line_total), 0) FROM order_items WHERE order_id = OLD.order_id
+    ) + delivery_fee - discount
+    WHERE order_id = OLD.order_id;
+END$$
+
+DELIMITER ;
