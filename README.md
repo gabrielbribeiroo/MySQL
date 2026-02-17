@@ -117,6 +117,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `retail_inventory`: Inventory and sales control system for physical stores, with products, suppliers, purchases, and turnover reports.
 - `subscription_box`: Subscription-based commerce platform with recurring deliveries, plans, and customer retention analytics.
 - `wholesale_platform`: Wholesale commerce system connecting suppliers and retailers with bulk pricing and logistics.
+- `food_delivery`: Food delivery platform with restaurants, menus, delivery agents, and payment integration.
 
 ### 🌱 Sustainability & Environment
 - `green_projects`: Sustainable project management system with environmental impact indicators, funders, and execution tracking.
