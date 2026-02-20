@@ -15,3 +15,25 @@ CREATE TABLE users (
     phone VARCHAR(40),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE regions (
+    region_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    region_type ENUM('country','state','city','district','watershed','other') DEFAULT 'other',
+    parent_region_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (parent_region_id) REFERENCES regions(region_id)
+);
+
+CREATE TABLE monitoring_sites (
+    site_id INT AUTO_INCREMENT PRIMARY KEY,
+    region_id INT NOT NULL,
+    name VARCHAR(200) NOT NULL,
+    site_type ENUM('river','lake','reservoir','coastal','groundwater','treatment_plant','other') DEFAULT 'other',
+    latitude DECIMAL(10,7) NOT NULL,
+    longitude DECIMAL(10,7) NOT NULL,
+    address VARCHAR(255),
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (region_id) REFERENCES regions(region_id)
+);
