@@ -14,7 +14,6 @@ CREATE TABLE users (
     role ENUM('field_agent','analyst','admin') NOT NULL,
     phone VARCHAR(40),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-<<<<<<< HEAD
 );
 
 CREATE TABLE regions (
@@ -37,36 +36,4 @@ CREATE TABLE monitoring_sites (
     is_active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (region_id) REFERENCES regions(region_id)
-);
-
-CREATE TABLE parameters (
-    parameter_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL UNIQUE,          -- e.g., pH, Turbidity, Dissolved Oxygen
-    unit VARCHAR(50) NOT NULL,                  -- e.g., NTU, mg/L, °C
-    category ENUM('physical','chemical','biological','microbiological','other') DEFAULT 'other',
-    description TEXT
-);
-
-CREATE TABLE parameters (
-    parameter_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL UNIQUE,          -- e.g., pH, Turbidity, Dissolved Oxygen
-    unit VARCHAR(50) NOT NULL,                  -- e.g., NTU, mg/L, °C
-    category ENUM('physical','chemical','biological','microbiological','other') DEFAULT 'other',
-    description TEXT
-);
-
--- Regulatory thresholds by region (optional)
-CREATE TABLE parameter_thresholds (
-    threshold_id INT AUTO_INCREMENT PRIMARY KEY,
-    parameter_id INT NOT NULL,
-    region_id INT,                               -- NULL = global
-    min_value DECIMAL(12,4),
-    max_value DECIMAL(12,4),
-    standard_name VARCHAR(150),                  -- e.g., "Local Regulation 2026"
-    notes TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (parameter_id) REFERENCES parameters(parameter_id),
-    FOREIGN KEY (region_id) REFERENCES regions(region_id)
-=======
->>>>>>> 59e8bba9856475b1e538b9c05eac990b62905d6a
 );
