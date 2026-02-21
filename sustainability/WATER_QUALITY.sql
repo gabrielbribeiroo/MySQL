@@ -14,6 +14,7 @@ CREATE TABLE users (
     role ENUM('field_agent','analyst','admin') NOT NULL,
     phone VARCHAR(40),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+<<<<<<< HEAD
 );
 
 CREATE TABLE regions (
@@ -66,4 +67,6 @@ CREATE TABLE parameter_thresholds (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (parameter_id) REFERENCES parameters(parameter_id),
     FOREIGN KEY (region_id) REFERENCES regions(region_id)
+=======
+>>>>>>> 59e8bba9856475b1e538b9c05eac990b62905d6a
 );
