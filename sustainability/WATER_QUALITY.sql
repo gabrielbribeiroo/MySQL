@@ -14,7 +14,6 @@ CREATE TABLE users (
     role ENUM('field_agent','analyst','admin') NOT NULL,
     phone VARCHAR(40),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-<<<<<<< HEAD
 );
 
 CREATE TABLE regions (
@@ -47,14 +46,6 @@ CREATE TABLE parameters (
     description TEXT
 );
 
-CREATE TABLE parameters (
-    parameter_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL UNIQUE,          -- e.g., pH, Turbidity, Dissolved Oxygen
-    unit VARCHAR(50) NOT NULL,                  -- e.g., NTU, mg/L, °C
-    category ENUM('physical','chemical','biological','microbiological','other') DEFAULT 'other',
-    description TEXT
-);
-
 -- Regulatory thresholds by region (optional)
 CREATE TABLE parameter_thresholds (
     threshold_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -67,6 +58,28 @@ CREATE TABLE parameter_thresholds (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (parameter_id) REFERENCES parameters(parameter_id),
     FOREIGN KEY (region_id) REFERENCES regions(region_id)
-=======
->>>>>>> 59e8bba9856475b1e538b9c05eac990b62905d6a
+);
+
+CREATE TABLE sensors (
+    sensor_id INT AUTO_INCREMENT PRIMARY KEY,
+    site_id INT NOT NULL,
+    model VARCHAR(120),
+    serial_number VARCHAR(120) UNIQUE,
+    sensor_type ENUM('fixed','portable','lab') DEFAULT 'fixed',
+    installed_at DATETIME,
+    status ENUM('active','maintenance','inactive') DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (site_id) REFERENCES monitoring_sites(site_id)
+);
+
+CREATE TABLE sensor_calibrations (
+    calibration_id INT AUTO_INCREMENT PRIMARY KEY,
+    sensor_id INT NOT NULL,
+    calibrated_by INT,                           -- user_id
+    calibration_date DATETIME NOT NULL,
+    notes TEXT,
+    next_due_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sensor_id) REFERENCES sensors(sensor_id),
+    FOREIGN KEY (calibrated_by) REFERENCES users(user_id)
 );
