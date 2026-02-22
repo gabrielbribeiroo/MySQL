@@ -97,3 +97,39 @@ CREATE TABLE collaboration_requests (
     FOREIGN KEY (sender_id) REFERENCES academics(academic_id),
     FOREIGN KEY (receiver_id) REFERENCES academics(academic_id)
 );
+
+CREATE TABLE messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    content TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sender_id) REFERENCES academics(academic_id),
+    FOREIGN KEY (receiver_id) REFERENCES academics(academic_id)
+);
+
+CREATE TABLE academic_events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    event_date DATE,
+    location VARCHAR(200)
+);
+
+CREATE TABLE event_participants (
+    event_id INT,
+    academic_id INT,
+    PRIMARY KEY(event_id, academic_id),
+    FOREIGN KEY (event_id) REFERENCES academic_events(event_id),
+    FOREIGN KEY (academic_id) REFERENCES academics(academic_id)
+);
+
+CREATE TABLE audit_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    academic_id INT,
+    action VARCHAR(200),
+    entity VARCHAR(100),
+    entity_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (academic_id) REFERENCES academics(academic_id)
+);

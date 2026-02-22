@@ -97,6 +97,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `conference_system`: Conference management platform with sessions, speakers, attendees, schedules, and feedback.
 - `innovation_lab`: Platform for innovation labs with projects, prototypes, teams, and funding sources.
 - `knowledge_base`: Internal documentation and knowledge-sharing system with articles, tags, and user contributions.
+- `academic_network`: Academic collaboration network with profiles, institutions, publications, and joint projects.
 
 ### 🎨 Arts & Culture
 - `museum_catalog`: Museum catalog system for managing artworks, artists, art types, exhibitions, and movement history.
