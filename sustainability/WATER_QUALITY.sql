@@ -83,3 +83,16 @@ CREATE TABLE sensor_calibrations (
     FOREIGN KEY (sensor_id) REFERENCES sensors(sensor_id),
     FOREIGN KEY (calibrated_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE sampling_events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    site_id INT NOT NULL,
+    collected_by INT,                            -- user_id
+    event_type ENUM('manual','automatic','lab') DEFAULT 'manual',
+    collected_at DATETIME NOT NULL,
+    weather_conditions VARCHAR(200),
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (site_id) REFERENCES monitoring_sites(site_id),
+    FOREIGN KEY (collected_by) REFERENCES users(user_id)
+);
