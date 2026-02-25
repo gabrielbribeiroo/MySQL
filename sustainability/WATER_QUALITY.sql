@@ -96,3 +96,17 @@ CREATE TABLE sampling_events (
     FOREIGN KEY (site_id) REFERENCES monitoring_sites(site_id),
     FOREIGN KEY (collected_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE measurements (
+    measurement_id INT AUTO_INCREMENT PRIMARY KEY,
+    event_id INT NOT NULL,
+    parameter_id INT NOT NULL,
+    sensor_id INT,                               -- optional (for automated/IoT)
+    value DECIMAL(12,4) NOT NULL,
+    quality_flag ENUM('valid','suspect','invalid') DEFAULT 'valid',
+    recorded_at DATETIME NOT NULL,
+    FOREIGN KEY (event_id) REFERENCES sampling_events(event_id),
+    FOREIGN KEY (parameter_id) REFERENCES parameters(parameter_id),
+    FOREIGN KEY (sensor_id) REFERENCES sensors(sensor_id),
+    UNIQUE (event_id, parameter_id, recorded_at)
+);
