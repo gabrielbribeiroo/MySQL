@@ -110,3 +110,20 @@ CREATE TABLE measurements (
     FOREIGN KEY (sensor_id) REFERENCES sensors(sensor_id),
     UNIQUE (event_id, parameter_id, recorded_at)
 );
+
+CREATE TABLE alerts (
+    alert_id INT AUTO_INCREMENT PRIMARY KEY,
+    site_id INT NOT NULL,
+    parameter_id INT NOT NULL,
+    measurement_id INT NOT NULL,
+    severity ENUM('low','medium','high','critical') DEFAULT 'medium',
+    message VARCHAR(255),
+    status ENUM('open','investigating','resolved','dismissed') DEFAULT 'open',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    resolved_at DATETIME,
+    resolved_by INT,
+    FOREIGN KEY (site_id) REFERENCES monitoring_sites(site_id),
+    FOREIGN KEY (parameter_id) REFERENCES parameters(parameter_id),
+    FOREIGN KEY (measurement_id) REFERENCES measurements(measurement_id),
+    FOREIGN KEY (resolved_by) REFERENCES users(user_id)
+);
