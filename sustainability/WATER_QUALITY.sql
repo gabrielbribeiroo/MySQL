@@ -127,3 +127,30 @@ CREATE TABLE alerts (
     FOREIGN KEY (measurement_id) REFERENCES measurements(measurement_id),
     FOREIGN KEY (resolved_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    region_id INT,
+    site_id INT,
+    title VARCHAR(250) NOT NULL,
+    report_type ENUM('monthly','quarterly','annual','incident','custom') DEFAULT 'monthly',
+    period_start DATE NOT NULL,
+    period_end DATE NOT NULL,
+    generated_by INT,
+    summary TEXT,
+    file_url VARCHAR(300),                       -- exported PDF/CSV report
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (region_id) REFERENCES regions(region_id),
+    FOREIGN KEY (site_id) REFERENCES monitoring_sites(site_id),
+    FOREIGN KEY (generated_by) REFERENCES users(user_id)
+);
+
+CREATE TABLE report_metrics (
+    metric_id INT AUTO_INCREMENT PRIMARY KEY,
+    report_id INT NOT NULL,
+    parameter_id INT NOT NULL,
+    metric_type ENUM('avg','min','max','median','stddev','count','exceedances') NOT NULL,
+    metric_value DECIMAL(18,6) NOT NULL,
+    FOREIGN KEY (report_id) REFERENCES reports(report_id),
+    FOREIGN KEY (parameter_id) REFERENCES parameters(parameter_id)
+);
