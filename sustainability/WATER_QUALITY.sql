@@ -154,3 +154,17 @@ CREATE TABLE report_metrics (
     FOREIGN KEY (report_id) REFERENCES reports(report_id),
     FOREIGN KEY (parameter_id) REFERENCES parameters(parameter_id)
 );
+
+CREATE TABLE attachments (
+    attachment_id INT AUTO_INCREMENT PRIMARY KEY,
+    event_id INT,
+    report_id INT,
+    uploaded_by INT,
+    file_name VARCHAR(200),
+    file_type VARCHAR(80),
+    file_url VARCHAR(300),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (event_id) REFERENCES sampling_events(event_id),
+    FOREIGN KEY (report_id) REFERENCES reports(report_id),
+    FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
+);
