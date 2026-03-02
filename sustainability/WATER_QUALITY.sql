@@ -179,3 +179,55 @@ CREATE TABLE audit_logs (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (actor_user_id) REFERENCES users(user_id)
 );
+
+DELIMITER $$
+
+CREATE TRIGGER trg_measurement_threshold_alert
+AFTER INSERT ON measurements
+FOR EACH ROW
+BEGIN
+    DECLARE v_site_id INT;
+    DECLARE v_region_id INT;
+    DECLARE v_min DECIMAL(12,4);
+    DECLARE v_max DECIMAL(12,4);
+    DECLARE v_severity ENUM('low','medium','high','critical');
+
+    -- Site and region for this measurement
+    SELECT se.site_id INTO v_site_id
+    FROM sampling_events se
+    WHERE se.event_id = NEW.event_id;
+
+    SELECT ms.region_id INTO v_region_id
+    FROM monitoring_sites ms
+    WHERE ms.site_id = v_site_id;
+
+    -- Prefer region-specific threshold; fallback to global (region_id IS NULL)
+    SELECT pt.min_value, pt.max_value
+    INTO v_min, v_max
+    FROM parameter_thresholds pt
+    WHERE pt.parameter_id = NEW.parameter_id
+      AND (pt.region_id = v_region_id OR pt.region_id IS NULL)
+    ORDER BY (pt.region_id = v_region_id) DESC
+    LIMIT 1;
+
+    -- If threshold exists and measurement violates it, create alert
+    IF (v_min IS NOT NULL AND NEW.value < v_min) OR (v_max IS NOT NULL AND NEW.value > v_max) THEN
+
+        -- Simple severity rule (you can adjust later)
+        SET v_severity = 'high';
+        IF (v_min IS NOT NULL AND NEW.value < v_min) OR (v_max IS NOT NULL AND NEW.value > v_max) THEN
+            SET v_severity = 'high';
+        END IF;
+
+        INSERT INTO alerts (site_id, parameter_id, measurement_id, severity, message)
+        VALUES (
+            v_site_id,
+            NEW.parameter_id,
+            NEW.measurement_id,
+            v_severity,
+            CONCAT('Threshold exceeded for parameter_id=', NEW.parameter_id, ' value=', NEW.value)
+        );
+    END IF;
+END$$
+
+DELIMITER ;
