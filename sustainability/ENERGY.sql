@@ -16,3 +16,21 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+CREATE TABLE projects (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    energy_type ENUM('solar','wind','hydro','biomass','geothermal','other') DEFAULT 'solar',
+    status ENUM('planning','construction','operational','paused','decommissioned') DEFAULT 'planning',
+    country VARCHAR(80) DEFAULT 'Brazil',
+    state VARCHAR(80),
+    city VARCHAR(120),
+    address VARCHAR(255),
+    latitude DECIMAL(10,7),
+    longitude DECIMAL(10,7),
+    start_date DATE,
+    operation_start_date DATE,
+    expected_lifetime_years INT DEFAULT 25,
+    capacity_kw DECIMAL(12,2),                          -- installed capacity in kW
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
