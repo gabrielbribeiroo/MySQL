@@ -34,3 +34,18 @@ CREATE TABLE projects (
     capacity_kw DECIMAL(12,2),                          -- installed capacity in kW
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE assets (
+    asset_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    asset_type ENUM('turbine','panel_array','inverter','meter','battery','transformer','other') DEFAULT 'other',
+    name VARCHAR(200) NOT NULL,
+    manufacturer VARCHAR(150),
+    model VARCHAR(150),
+    serial_number VARCHAR(150) UNIQUE,
+    installed_at DATE,
+    status ENUM('active','maintenance','inactive','retired') DEFAULT 'active',
+    capacity_kw DECIMAL(12,2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
