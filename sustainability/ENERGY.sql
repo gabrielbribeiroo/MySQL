@@ -49,3 +49,33 @@ CREATE TABLE assets (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
+
+CREATE TABLE generation_readings (
+    reading_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    asset_id INT,                                        -- optional: asset-level reading
+    reading_datetime DATETIME NOT NULL,
+    energy_kwh DECIMAL(14,4) NOT NULL,                   -- generated energy in kWh for the interval
+    power_kw DECIMAL(14,4),                              -- average/instantaneous power in kW (optional)
+    irradiance_w_m2 DECIMAL(14,4),                       -- solar (optional)
+    wind_speed_m_s DECIMAL(14,4),                        -- wind (optional)
+    temperature_c DECIMAL(14,4),                         -- optional
+    data_source ENUM('scada','meter','manual','api') DEFAULT 'scada',
+    quality_flag ENUM('valid','suspect','invalid') DEFAULT 'valid',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (asset_id) REFERENCES assets(asset_id),
+    UNIQUE (project_id, asset_id, reading_datetime)
+);
+
+CREATE TABLE daily_generation (
+    daily_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    day_date DATE NOT NULL,
+    total_kwh DECIMAL(16,4) NOT NULL,
+    peak_kw DECIMAL(16,4),
+    availability_pct DECIMAL(6,3),                       -- e.g., 99.500
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    UNIQUE (project_id, day_date)
+);
