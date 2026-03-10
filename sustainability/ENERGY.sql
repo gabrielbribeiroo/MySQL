@@ -79,3 +79,51 @@ CREATE TABLE daily_generation (
     FOREIGN KEY (project_id) REFERENCES projects(project_id),
     UNIQUE (project_id, day_date)
 );
+
+CREATE TABLE maintenance_requests (
+    request_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    asset_id INT,
+    opened_by INT,
+    priority ENUM('low','medium','high','critical') DEFAULT 'medium',
+    status ENUM('open','in_progress','resolved','canceled') DEFAULT 'open',
+    issue_title VARCHAR(200) NOT NULL,
+    issue_description TEXT,
+    opened_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    resolved_at DATETIME,
+    resolved_by INT,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (asset_id) REFERENCES assets(asset_id),
+    FOREIGN KEY (opened_by) REFERENCES users(user_id),
+    FOREIGN KEY (resolved_by) REFERENCES users(user_id)
+);
+
+CREATE TABLE maintenance_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    request_id INT NOT NULL,
+    technician_id INT NOT NULL,
+    action_taken TEXT NOT NULL,
+    downtime_minutes INT DEFAULT 0,
+    labor_cost DECIMAL(12,2) DEFAULT 0.00,
+    logged_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (request_id) REFERENCES maintenance_requests(request_id),
+    FOREIGN KEY (technician_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE parts (
+    part_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    sku VARCHAR(80) UNIQUE,
+    unit_cost DECIMAL(12,2) DEFAULT 0.00,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE maintenance_parts (
+    log_id INT NOT NULL,
+    part_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    unit_cost DECIMAL(12,2) NOT NULL,
+    PRIMARY KEY (log_id, part_id),
+    FOREIGN KEY (log_id) REFERENCES maintenance_logs(log_id),
+    FOREIGN KEY (part_id) REFERENCES parts(part_id)
+);
