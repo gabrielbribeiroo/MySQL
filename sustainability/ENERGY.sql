@@ -127,3 +127,37 @@ CREATE TABLE maintenance_parts (
     FOREIGN KEY (log_id) REFERENCES maintenance_logs(log_id),
     FOREIGN KEY (part_id) REFERENCES parts(part_id)
 );
+
+CREATE TABLE funding_sources (
+    funding_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    type ENUM('equity','debt','grant','internal','government','other') DEFAULT 'other',
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Project financial transactions (CAPEX/OPEX/Revenue)
+CREATE TABLE financial_transactions (
+    transaction_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    transaction_date DATE NOT NULL,
+    type ENUM('capex','opex','revenue','tax','other') DEFAULT 'other',
+    category VARCHAR(120),                               -- e.g., equipment, labor, energy_sale
+    description VARCHAR(255),
+    amount DECIMAL(14,2) NOT NULL,
+    currency VARCHAR(10) DEFAULT 'BRL',
+    related_round_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (related_round_id) REFERENCES investment_rounds(round_id)
+);
+
+-- Optional: investor allocations per round
+CREATE TABLE round_investors (
+    round_id INT NOT NULL,
+    investor_user_id INT NOT NULL,                       -- users with role=investor
+    amount DECIMAL(14,2) NOT NULL,
+    PRIMARY KEY (round_id, investor_user_id),
+    FOREIGN KEY (round_id) REFERENCES investment_rounds(round_id),
+    FOREIGN KEY (investor_user_id) REFERENCES users(user_id)
+);
