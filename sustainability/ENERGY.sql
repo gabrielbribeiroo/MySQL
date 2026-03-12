@@ -161,3 +161,26 @@ CREATE TABLE round_investors (
     FOREIGN KEY (round_id) REFERENCES investment_rounds(round_id),
     FOREIGN KEY (investor_user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT NOT NULL,
+    report_type ENUM('monthly','quarterly','annual','incident','custom') DEFAULT 'monthly',
+    period_start DATE NOT NULL,
+    period_end DATE NOT NULL,
+    generated_by INT,
+    summary TEXT,
+    file_url VARCHAR(300),                               -- PDF/CSV export
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (generated_by) REFERENCES users(user_id)
+);
+
+CREATE TABLE report_metrics (
+    metric_id INT AUTO_INCREMENT PRIMARY KEY,
+    report_id INT NOT NULL,
+    metric_name VARCHAR(150) NOT NULL,                   -- e.g., total_kwh, uptime_pct, revenue
+    metric_value DECIMAL(18,6) NOT NULL,
+    unit VARCHAR(50),
+    FOREIGN KEY (report_id) REFERENCES reports(report_id)
+);
