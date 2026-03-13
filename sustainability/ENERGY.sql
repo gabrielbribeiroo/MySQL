@@ -184,3 +184,19 @@ CREATE TABLE report_metrics (
     unit VARCHAR(50),
     FOREIGN KEY (report_id) REFERENCES reports(report_id)
 );
+
+CREATE TABLE attachments (
+    attachment_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    asset_id INT,
+    request_id INT,
+    uploaded_by INT,
+    file_name VARCHAR(200),
+    file_type VARCHAR(80),
+    file_url VARCHAR(300),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    FOREIGN KEY (asset_id) REFERENCES assets(asset_id),
+    FOREIGN KEY (request_id) REFERENCES maintenance_requests(request_id),
+    FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
+);
