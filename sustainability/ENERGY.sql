@@ -200,3 +200,14 @@ CREATE TABLE attachments (
     FOREIGN KEY (request_id) REFERENCES maintenance_requests(request_id),
     FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE audit_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    actor_user_id INT,
+    action VARCHAR(200) NOT NULL,
+    entity VARCHAR(120),
+    entity_id BIGINT,
+    details TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (actor_user_id) REFERENCES users(user_id)
+);
