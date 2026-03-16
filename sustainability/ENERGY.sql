@@ -211,3 +211,23 @@ CREATE TABLE audit_logs (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (actor_user_id) REFERENCES users(user_id)
 );
+
+DELIMITER $$
+
+CREATE TRIGGER trg_maintenance_request_resolved_audit
+AFTER UPDATE ON maintenance_requests
+FOR EACH ROW
+BEGIN
+    IF NEW.status = 'resolved' AND OLD.status <> 'resolved' THEN
+        INSERT INTO audit_logs (actor_user_id, action, entity, entity_id, details)
+        VALUES (
+            NEW.resolved_by,
+            'maintenance_request_resolved',
+            'maintenance_requests',
+            NEW.request_id,
+            CONCAT('Resolved request: ', NEW.issue_title)
+        );
+    END IF;
+END$$
+
+DELIMITER ;
