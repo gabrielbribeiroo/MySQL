@@ -124,6 +124,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `carbon_footprint`: System to measure and monitor carbon emissions for companies, sectors, or individuals.
 - `recycling_center`: Recycling center platform for selective waste collection with collection points, waste types, volumes, and reverse logistics.
 - `water_quality_monitor`: System to monitor water quality parameters across regions and generate environmental reports.
+- `renewable_energy`: Renewable energy project management with generation data, maintenance logs, and investment tracking.
 
 ### 🚍 Transport & Mobility
 - `public_transport`: Public transport system with lines, schedules, vehicles, tickets, passengers, and real-time monitoring.
