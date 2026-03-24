@@ -47,3 +47,20 @@ CREATE TABLE organization_users (
     FOREIGN KEY (organization_id) REFERENCES organizations(organization_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE waste_categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(120) NOT NULL UNIQUE,
+    description TEXT
+);
+
+CREATE TABLE waste_types (
+    waste_type_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT,
+    name VARCHAR(150) NOT NULL UNIQUE,
+    hazardous BOOLEAN DEFAULT FALSE,
+    recyclable BOOLEAN DEFAULT FALSE,
+    unit VARCHAR(30) DEFAULT 'kg',
+    description TEXT,
+    FOREIGN KEY (category_id) REFERENCES waste_categories(category_id)
+);
