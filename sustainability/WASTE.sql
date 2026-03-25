@@ -64,3 +64,17 @@ CREATE TABLE waste_types (
     description TEXT,
     FOREIGN KEY (category_id) REFERENCES waste_categories(category_id)
 );
+
+CREATE TABLE facilities (
+    facility_id INT AUTO_INCREMENT PRIMARY KEY,
+    organization_id INT NOT NULL,
+    name VARCHAR(180) NOT NULL,
+    address VARCHAR(255),
+    city VARCHAR(120),
+    state VARCHAR(80),
+    country VARCHAR(80) DEFAULT 'Brazil',
+    latitude DECIMAL(10,7),
+    longitude DECIMAL(10,7),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (organization_id) REFERENCES organizations(organization_id)
+);
