@@ -78,3 +78,28 @@ CREATE TABLE facilities (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (organization_id) REFERENCES organizations(organization_id)
 );
+
+CREATE TABLE waste_batches (
+    batch_id INT AUTO_INCREMENT PRIMARY KEY,
+    generator_org_id INT NOT NULL,
+    facility_id INT,
+    waste_type_id INT NOT NULL,
+    batch_code VARCHAR(80) UNIQUE NOT NULL,
+    generation_date DATE NOT NULL,
+    quantity DECIMAL(14,3) NOT NULL,
+    current_status ENUM(
+        'generated',
+        'stored',
+        'in_transit',
+        'received',
+        'processing',
+        'recycled',
+        'disposed',
+        'rejected'
+    ) DEFAULT 'generated',
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (generator_org_id) REFERENCES organizations(organization_id),
+    FOREIGN KEY (facility_id) REFERENCES facilities(facility_id),
+    FOREIGN KEY (waste_type_id) REFERENCES waste_types(waste_type_id)
+);
