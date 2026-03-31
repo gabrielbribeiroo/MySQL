@@ -103,3 +103,19 @@ CREATE TABLE waste_batches (
     FOREIGN KEY (facility_id) REFERENCES facilities(facility_id),
     FOREIGN KEY (waste_type_id) REFERENCES waste_types(waste_type_id)
 );
+
+CREATE TABLE collections (
+    collection_id INT AUTO_INCREMENT PRIMARY KEY,
+    batch_id INT NOT NULL,
+    collector_org_id INT NOT NULL,
+    collected_by INT,
+    collection_date DATETIME NOT NULL,
+    collected_quantity DECIMAL(14,3) NOT NULL,
+    vehicle_info VARCHAR(150),
+    manifest_number VARCHAR(100),
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (batch_id) REFERENCES waste_batches(batch_id),
+    FOREIGN KEY (collector_org_id) REFERENCES organizations(organization_id),
+    FOREIGN KEY (collected_by) REFERENCES users(user_id)
+);
