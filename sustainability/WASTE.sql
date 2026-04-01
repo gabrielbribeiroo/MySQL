@@ -119,3 +119,18 @@ CREATE TABLE collections (
     FOREIGN KEY (collector_org_id) REFERENCES organizations(organization_id),
     FOREIGN KEY (collected_by) REFERENCES users(user_id)
 );
+
+CREATE TABLE transport_events (
+    transport_id INT AUTO_INCREMENT PRIMARY KEY,
+    batch_id INT NOT NULL,
+    from_org_id INT,
+    to_org_id INT,
+    event_date DATETIME NOT NULL,
+    transport_status ENUM('departed','arrived','delayed','cancelled') DEFAULT 'departed',
+    carrier_name VARCHAR(150),
+    tracking_reference VARCHAR(120),
+    notes TEXT,
+    FOREIGN KEY (batch_id) REFERENCES waste_batches(batch_id),
+    FOREIGN KEY (from_org_id) REFERENCES organizations(organization_id),
+    FOREIGN KEY (to_org_id) REFERENCES organizations(organization_id)
+);
