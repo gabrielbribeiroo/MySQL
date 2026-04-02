@@ -134,3 +134,27 @@ CREATE TABLE transport_events (
     FOREIGN KEY (from_org_id) REFERENCES organizations(organization_id),
     FOREIGN KEY (to_org_id) REFERENCES organizations(organization_id)
 );
+
+CREATE TABLE processing_methods (
+    method_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL UNIQUE,
+    method_type ENUM('recycling','reuse','composting','incineration','landfill','treatment','other') DEFAULT 'other',
+    description TEXT
+);
+
+CREATE TABLE processing_records (
+    processing_id INT AUTO_INCREMENT PRIMARY KEY,
+    batch_id INT NOT NULL,
+    processor_org_id INT NOT NULL,
+    method_id INT NOT NULL,
+    processing_date DATE NOT NULL,
+    input_quantity DECIMAL(14,3) NOT NULL,
+    output_quantity DECIMAL(14,3),
+    residue_quantity DECIMAL(14,3),
+    status ENUM('pending','completed','failed') DEFAULT 'completed',
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (batch_id) REFERENCES waste_batches(batch_id),
+    FOREIGN KEY (processor_org_id) REFERENCES organizations(organization_id),
+    FOREIGN KEY (method_id) REFERENCES processing_methods(method_id)
+);
