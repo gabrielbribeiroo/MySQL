@@ -158,3 +158,23 @@ CREATE TABLE processing_records (
     FOREIGN KEY (processor_org_id) REFERENCES organizations(organization_id),
     FOREIGN KEY (method_id) REFERENCES processing_methods(method_id)
 );
+
+CREATE TABLE certification_types (
+    certification_type_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL UNIQUE,
+    description TEXT
+);
+
+CREATE TABLE certifications (
+    certification_id INT AUTO_INCREMENT PRIMARY KEY,
+    organization_id INT NOT NULL,
+    certification_type_id INT NOT NULL,
+    certificate_number VARCHAR(120) UNIQUE,
+    issue_date DATE,
+    expiry_date DATE,
+    issuing_authority VARCHAR(180),
+    status ENUM('valid','expired','revoked','pending') DEFAULT 'valid',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (organization_id) REFERENCES organizations(organization_id),
+    FOREIGN KEY (certification_type_id) REFERENCES certification_types(certification_type_id)
+);
