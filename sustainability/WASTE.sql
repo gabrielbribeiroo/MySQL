@@ -178,3 +178,16 @@ CREATE TABLE certifications (
     FOREIGN KEY (organization_id) REFERENCES organizations(organization_id),
     FOREIGN KEY (certification_type_id) REFERENCES certification_types(certification_type_id)
 );
+
+CREATE TABLE recycling_reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    organization_id INT NOT NULL,
+    period_start DATE NOT NULL,
+    period_end DATE NOT NULL,
+    total_generated DECIMAL(14,3) DEFAULT 0,
+    total_recycled DECIMAL(14,3) DEFAULT 0,
+    total_disposed DECIMAL(14,3) DEFAULT 0,
+    recycling_rate DECIMAL(8,4) DEFAULT 0, -- e.g. 0.8532
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (organization_id) REFERENCES organizations(organization_id)
+);
