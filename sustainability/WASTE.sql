@@ -191,3 +191,21 @@ CREATE TABLE recycling_reports (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (organization_id) REFERENCES organizations(organization_id)
 );
+
+CREATE TABLE attachments (
+    attachment_id INT AUTO_INCREMENT PRIMARY KEY,
+    batch_id INT,
+    collection_id INT,
+    processing_id INT,
+    certification_id INT,
+    uploaded_by INT,
+    file_name VARCHAR(200),
+    file_type VARCHAR(80),
+    file_url VARCHAR(300),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (batch_id) REFERENCES waste_batches(batch_id),
+    FOREIGN KEY (collection_id) REFERENCES collections(collection_id),
+    FOREIGN KEY (processing_id) REFERENCES processing_records(processing_id),
+    FOREIGN KEY (certification_id) REFERENCES certifications(certification_id),
+    FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
+);
