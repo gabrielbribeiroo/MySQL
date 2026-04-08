@@ -220,3 +220,15 @@ CREATE TABLE audit_logs (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (actor_user_id) REFERENCES users(user_id)
 );
+
+DELIMITER $$
+
+-- Update batch status when a collection is inserted
+CREATE TRIGGER trg_collection_after_insert
+AFTER INSERT ON collections
+FOR EACH ROW
+BEGIN
+    UPDATE waste_batches
+    SET current_status = 'in_transit'
+    WHERE batch_id = NEW.batch_id;
+END$$
