@@ -232,3 +232,24 @@ BEGIN
     SET current_status = 'in_transit'
     WHERE batch_id = NEW.batch_id;
 END$$
+
+-- Update batch status when processing is completed
+CREATE TRIGGER trg_processing_after_insert
+AFTER INSERT ON processing_records
+FOR EACH ROW
+BEGIN
+    IF NEW.status = 'completed' THEN
+        UPDATE waste_batches
+        SET current_status =
+            CASE
+                WHEN (SELECT method_type FROM processing_methods WHERE method_id = NEW.method_id) = 'recycling'
+                    THEN 'recycled'
+                WHEN (SELECT method_type FROM processing_methods WHERE method_id = NEW.method_id) IN ('landfill','incineration')
+                    THEN 'disposed'
+                ELSE 'processing'
+            END
+        WHERE batch_id = NEW.batch_id;
+    END IF;
+END$$
+
+DELIMITER ;
