@@ -125,6 +125,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 - `recycling_center`: Recycling center platform for selective waste collection with collection points, waste types, volumes, and reverse logistics.
 - `water_quality_monitor`: System to monitor water quality parameters across regions and generate environmental reports.
 - `renewable_energy`: Renewable energy project management with generation data, maintenance logs, and investment tracking.
+- `waste_tracking`: Waste tracking system from generation to disposal, including recycling rates and certifications.
 
 ### 🚍 Transport & Mobility
 - `public_transport`: Public transport system with lines, schedules, vehicles, tickets, passengers, and real-time monitoring.
