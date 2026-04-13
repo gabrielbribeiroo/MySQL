@@ -141,6 +141,7 @@ Each project demonstrates practical structures for real-world scenarios, such as
 ## 🛠️ Languages & Tools
 <div style="display: inline_block">
   <img align="top" alt="MySQL" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" />
+  <img align="top" alt="MySQL Workbench" height="150" width="150" src="https://img.shields.io/badge/MySQL_Workbench-4479A1?style=flat&logo=mysql&logoColor=white" />
 </div>
 
 - **SQL** (MySQL)
