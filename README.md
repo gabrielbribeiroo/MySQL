@@ -159,5 +159,5 @@ Each project demonstrates practical structures for real-world scenarios, such as
 ---
 
 ## 📜 License
-This project is licensed under the MIT License.  
+This project is licensed under the [MIT License](LICENSE).
 Feel free to use, modify, and distribute the code as needed.
